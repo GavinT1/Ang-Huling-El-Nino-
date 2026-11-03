@@ -1,37 +1,81 @@
 using UnityEngine;
+using System.Collections;
 
 public class MudSpawner : MonoBehaviour
 {
-    [Header("Spawner Settings")]
-    public GameObject mudPrefab;
-    public Transform playerTarget;
-    
-    public float spawnWidth = 15f;  // Wider for horizontal games
-    public float spawnRate = 0.2f;  // Faster to fill the wider screen
-    
-    private float nextSpawnTime;
+    public enum GamePhase { Start, Mid, Climax }
+    public GamePhase currentPhase = GamePhase.Start;
+
+    [Header("References")]
+    public Transform playerTransform; 
+    public GameObject mudPrefab;     
+
+    [Header("Map Position Thresholds (Adjust later when map is built)")]
+    public float midPhaseXPosition = 15f;     // X coordinate where Mid phase triggers
+    public float climaxPhaseXPosition = 35f;  // X coordinate where Climax phase triggers
+
+    [Header("Spawn Intervals (Seconds Between Drops)")]
+    public float startInterval = 3.0f;   
+    public float midInterval = 1.5f;     
+    public float climaxInterval = 0.75f; 
+
+    private float currentInterval;
+
+    void Start()
+    {
+        currentPhase = GamePhase.Start;
+        currentInterval = startInterval;
+        StartCoroutine(SpawnRoutine());
+    }
 
     void Update()
     {
-        if (Time.time >= nextSpawnTime)
+        
+        if (playerTransform == null) return;
+
+        float playerX = playerTransform.position.x;
+
+        
+        if (playerX >= climaxPhaseXPosition && currentPhase != GamePhase.Climax)
         {
-            SpawnMud();
-            nextSpawnTime = Time.time + spawnRate;
+            currentPhase = GamePhase.Climax;
+            currentInterval = climaxInterval;
+            Debug.Log("Entered Climax Phase!");
+        }
+        else if (playerX >= midPhaseXPosition && playerX < climaxPhaseXPosition && currentPhase == GamePhase.Start)
+        {
+            currentPhase = GamePhase.Mid;
+            currentInterval = midInterval;
+            Debug.Log("Entered Mid Phase!");
         }
     }
 
-    void SpawnMud()
+    IEnumerator SpawnRoutine()
     {
-        if (playerTarget == null || mudPrefab == null) return;
+        while (true)
+        {
+            yield return new WaitForSeconds(currentInterval);
+            TriggerMudDrop();
+        }
+    }
 
-        // Pick a random X position around the player's current location
-        float randomX = Random.Range(-spawnWidth, spawnWidth);
-        float spawnX = playerTarget.position.x + randomX;
+    void TriggerMudDrop()
+    {
+        Debug.Log($"Spawning mud | Phase: {currentPhase} | Interval: {currentInterval}s");
+
         
-        // Keep the Y position locked to this Spawner's height so rain doesn't jump
-        float spawnY = transform.position.y;
-
-        Vector3 spawnPosition = new Vector3(spawnX, spawnY, 0f);
-        Instantiate(mudPrefab, spawnPosition, Quaternion.identity);
+        if (mudPrefab != null && playerTransform != null)
+        {
+            Vector3 spawnPosition = new Vector3(
+                playerTransform.position.x + Random.Range(-4f, 4f), 
+                playerTransform.position.y + 6f, 
+                0f
+            );
+            Instantiate(mudPrefab, spawnPosition, Quaternion.identity);
+        }
+        else if (mudPrefab == null)
+        {
+            Debug.LogWarning("Mud Prefab is not assigned in the MudSpawner inspector!");
+        }
     }
 }

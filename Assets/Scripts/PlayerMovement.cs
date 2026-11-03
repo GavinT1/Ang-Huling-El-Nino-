@@ -43,13 +43,13 @@ public class PlayerMovement : MonoBehaviour
 
         rb.linearVelocity = new Vector2(moveInput * currentSpeed, rb.linearVelocity.y);
 
-        // Tell hydration system to apply sprint penalty
+        
         if (isSprinting && moveInput != 0) 
         {
             hydrationSystem.DrainFromSprint();
         }
 
-        // Tell hydration system to apply jump penalty
+        
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);

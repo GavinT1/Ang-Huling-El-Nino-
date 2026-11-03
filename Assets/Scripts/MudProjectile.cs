@@ -6,18 +6,17 @@ public class MudProjectile : MonoBehaviour
 
     void Start()
     {
-        // Automatically destroy this object after 'lifetime' seconds
         Destroy(gameObject, lifetime);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // Destroy the mud instantly if it hits the ground
+        
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             Destroy(gameObject);
         }
         
-        // We will add the Player damage check here later
+        // We will add the Player damage logic here later when the player has health implemented.
     }
 }

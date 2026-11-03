@@ -10,7 +10,7 @@ public class PlayerHydration : MonoBehaviour
     public float sprintDrain = 5f;
     public float jumpCost = 10f;
 
-    // public 'get' allows other scripts to read this number, but not overwrite it directly
+    
     public float currentHydration { get; private set; } 
 
     void Start()
@@ -31,13 +31,13 @@ public class PlayerHydration : MonoBehaviour
         }
     }
 
-    // Movement script will call this when holding Shift
+
     public void DrainFromSprint()
     {
         currentHydration -= sprintDrain * Time.deltaTime;
     }
 
-    // Movement script will call this when pressing Space
+
     public void DrainFromJump()
     {
         currentHydration -= jumpCost;

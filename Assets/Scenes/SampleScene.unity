@@ -449,6 +449,11 @@ MonoBehaviour:
   startInterval: 3
   midInterval: 1.5
   climaxInterval: 0.75
+  startDropCount: 2
+  midDropCount: 3
+  climaxDropCount: 4
+  spawnWidth: 8
+  spawnHeight: 7
 --- !u!1 &273543407
 GameObject:
   m_ObjectHideFlags: 0

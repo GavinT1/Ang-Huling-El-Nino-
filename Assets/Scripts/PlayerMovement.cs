@@ -1,7 +1,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(PlayerHydration))] // Automatically requires the hydration script
+[RequireComponent(typeof(PlayerHydration))] 
+[RequireComponent(typeof(PlayerHealth))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -15,18 +16,20 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody2D rb;
     private PlayerHydration hydrationSystem;
+    private PlayerHealth healthSystem;
     private bool isGrounded;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         hydrationSystem = GetComponent<PlayerHydration>(); // Link to the new script
+        healthSystem = GetComponent<PlayerHealth>(); // Link to the health script
     }
 
     void Update()
     {
         // Stop movement if hydration is empty
-        if (hydrationSystem.currentHydration <= 0)
+        if (hydrationSystem.currentHydration <= 0 || healthSystem.isDead)
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             return; 

@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MudProjectile : MonoBehaviour
 {
-    public float lifetime = 5f; // Failsafe: destroy after 5 seconds
+    public float lifetime = 5f;
+    public int damage = 1;
 
     void Start()
     {
@@ -11,12 +12,19 @@ public class MudProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        // Check if the mud hits the ground
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             Destroy(gameObject);
         }
-        
-        // We will add the Player damage logic here later when the player has health implemented.
+        else if (collision.CompareTag("Player"))
+        {
+            PlayerHealth health = collision.GetComponent<PlayerHealth>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+            Destroy(gameObject); 
+        }
     }
 }

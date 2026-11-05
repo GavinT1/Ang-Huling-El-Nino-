@@ -14,7 +14,7 @@ public class MudSpawner : MonoBehaviour
     public float midPhaseXPosition = 15f;     
     public float climaxPhaseXPosition = 35f;  
 
-    [Header("Spawn Intervals (Delay Between Bursts)")]
+    [Header("Spawn Intervals (Delay Between Bursts)")]  
     public float startInterval = 2.5f;   
     public float midInterval = 1.5f;     
     public float climaxInterval = 0.8f; 

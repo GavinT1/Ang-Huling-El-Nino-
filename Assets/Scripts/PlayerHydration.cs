@@ -20,14 +20,22 @@ public class PlayerHydration : MonoBehaviour
 
     void Update()
     {
-        // Passive drain happens every frame
         currentHydration -= passiveDrain * Time.deltaTime;
-
-        // Keep hydration above 0 and update the UI
         currentHydration = Mathf.Clamp(currentHydration, 0, maxHydration);
+
         if (hydrationBar != null)
         {
             hydrationBar.fillAmount = currentHydration / maxHydration;
+        }
+
+        // Trigger instant death when hydration hits zero
+        if (currentHydration <= 0)
+        {
+            PlayerHealth health = GetComponent<PlayerHealth>();
+            if (health != null && health.currentHealth > 0)
+            {
+                health.InstantDeath();
+            }
         }
     }
 

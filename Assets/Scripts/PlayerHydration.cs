@@ -8,14 +8,16 @@ public class PlayerHydration : MonoBehaviour
     public float maxHydration = 100f;
     public float passiveDrain = 1f;
     public float sprintDrain = 5f;
-    public float jumpCost = 10f;
+    public float jumpCost = 3f;
 
-    
+    public float timeToDie = 5f;
+    private float DeathTimer;
     public float currentHydration { get; private set; } 
 
     void Start()
     {
         currentHydration = maxHydration;
+        DeathTimer = timeToDie;
     }
 
     void Update()
@@ -23,20 +25,28 @@ public class PlayerHydration : MonoBehaviour
         currentHydration -= passiveDrain * Time.deltaTime;
         currentHydration = Mathf.Clamp(currentHydration, 0, maxHydration);
 
-        if (hydrationBar != null)
+        if(hydrationBar != null)
         {
             hydrationBar.fillAmount = currentHydration / maxHydration;
         }
 
-        // Trigger instant death when hydration hits zero
         if (currentHydration <= 0)
         {
-            PlayerHealth health = GetComponent<PlayerHealth>();
-            if (health != null && health.currentHealth > 0)
+            DeathTimer -= Time.deltaTime;
+            if (DeathTimer <= 0)
             {
-                health.InstantDeath();
+                PlayerHealth health = GetComponent<PlayerHealth>();
+                if (health != null && !health.isDead)
+                {
+                   health.InstantDeath(); // Inflict fatal damage
+                }
             }
         }
+        else
+        {
+            DeathTimer = timeToDie;
+        }
+
     }
 
 

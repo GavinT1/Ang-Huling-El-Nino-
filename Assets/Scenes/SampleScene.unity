@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 36845175}
   - component: {fileID: 36845174}
   - component: {fileID: 36845173}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 50749621}
   - component: {fileID: 50749620}
   - component: {fileID: 50749619}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 65005433}
   - component: {fileID: 65005432}
   - component: {fileID: 65005431}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,6 +536,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &129089826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 129089827}
+  m_Layer: 3
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &129089827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129089826}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7207611319813306098}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &142620143
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +578,7 @@ GameObject:
   - component: {fileID: 142620146}
   - component: {fileID: 142620145}
   - component: {fileID: 142620144}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1249,7 +1280,7 @@ GameObject:
   - component: {fileID: 333336619}
   - component: {fileID: 333336618}
   - component: {fileID: 333336617}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1509,7 +1540,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.69, y: -2.91, z: -10}
+  m_LocalPosition: {x: -3.69, y: -3.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1558,7 +1589,7 @@ GameObject:
   - component: {fileID: 559668986}
   - component: {fileID: 559668985}
   - component: {fileID: 559668984}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1774,7 +1805,11 @@ MonoBehaviour:
         m_SelectedSource:
           rid: -2
         m_Provider2DCache:
-          rid: -2
+          rid: 7288434075452571727
+    - rid: 7288434075452571727
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data:
+        m_Cache: []
 --- !u!4 &619394802
 Transform:
   m_ObjectHideFlags: 0
@@ -2108,7 +2143,7 @@ GameObject:
   - component: {fileID: 936016135}
   - component: {fileID: 936016134}
   - component: {fileID: 936016133}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2626,7 +2661,7 @@ Transform:
   m_GameObject: {fileID: 1108201479}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.69, y: -2.91, z: -10}
+  m_LocalPosition: {x: -3.69, y: -3.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2857,7 +2892,7 @@ GameObject:
   - component: {fileID: 1285690696}
   - component: {fileID: 1285690695}
   - component: {fileID: 1285690694}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3071,7 +3106,7 @@ GameObject:
   - component: {fileID: 1431876110}
   - component: {fileID: 1431876109}
   - component: {fileID: 1431876108}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3210,7 +3245,7 @@ GameObject:
   - component: {fileID: 1458846949}
   - component: {fileID: 1458846948}
   - component: {fileID: 1458846947}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3399,7 +3434,7 @@ GameObject:
   - component: {fileID: 1599227309}
   - component: {fileID: 1599227308}
   - component: {fileID: 1599227307}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3538,7 +3573,7 @@ GameObject:
   - component: {fileID: 1786123820}
   - component: {fileID: 1786123819}
   - component: {fileID: 1786123818}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3830,7 +3865,7 @@ GameObject:
   - component: {fileID: 2089562745}
   - component: {fileID: 2089562744}
   - component: {fileID: 2089562743}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: STAIRS (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3984,7 +4019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4598436707897368009, guid: dd8cac19fde4549b0a85aa9e4a20095f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.91
+      value: -3.01
       objectReference: {fileID: 0}
     - target: {fileID: 4598436707897368009, guid: dd8cac19fde4549b0a85aa9e4a20095f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4020,7 +4055,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4598436707897368009, guid: dd8cac19fde4549b0a85aa9e4a20095f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 129089827}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1815165217532063884, guid: dd8cac19fde4549b0a85aa9e4a20095f, type: 3}
       insertIndex: -1
@@ -4053,7 +4091,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 073a0f83d38994d58bf388fcdb16aaaf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4108,11 +4146,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   walkSpeed: 5
   sprintSpeed: 9
-  jumpForce: 5
-  groundCheck: {fileID: 273543410}
+  jumpForce: 7
+  jumpCutMultiplier: 0.5
+  groundCheck: {fileID: 129089827}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  groundCheckRadius: 0.2
 --- !u!50 &7207611319813306100
 Rigidbody2D:
   serializedVersion: 5
@@ -4129,7 +4169,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 073a0f83d38994d58bf388fcdb16aaaf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4139,7 +4179,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &7207611319813306102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4156,7 +4196,8 @@ MonoBehaviour:
   maxHydration: 100
   passiveDrain: 1
   sprintDrain: 5
-  jumpCost: 10
+  jumpCost: 3
+  timeToDie: 5
 --- !u!114 &7207611319813306104
 MonoBehaviour:
   m_ObjectHideFlags: 0

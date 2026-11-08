@@ -7,7 +7,7 @@ public class RisingWater : MonoBehaviour
     public bool isRising = false;  
 
     [Header("Damage Settings")]
-    public int damageAmount = 1;
+    public int damageAmount = 3;
 
     void Update()
     {

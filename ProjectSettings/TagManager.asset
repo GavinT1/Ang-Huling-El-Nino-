@@ -41,6 +41,30 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackgoundSky
+    uniqueID: 3857921707
+    locked: 0
+  - name: BackgroundBuildings
+    uniqueID: 2738179219
+    locked: 0
+  - name: BackgroundBuildings2
+    uniqueID: 1300178225
+    locked: 0
+  - name: BackgroundForest
+    uniqueID: 2472058105
+    locked: 0
+  - name: Decorations
+    uniqueID: 738641279
+    locked: 0
+  - name: ForeGround
+    uniqueID: 3131989191
+    locked: 0
+  - name: WaterJars
+    uniqueID: 2708492521
+    locked: 0
+  - name: Player
+    uniqueID: 1800757209
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

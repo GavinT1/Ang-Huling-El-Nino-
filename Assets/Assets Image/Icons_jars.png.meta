@@ -1,0 +1,3265 @@
+fileFormatVersion: 2
+guid: 7d66fe1b7cff94630aaf247c7e8cd777
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1586426103500988641
+    second: Icons_jars_0
+  - first:
+      213: -4783752952019486815
+    second: Icons_jars_1
+  - first:
+      213: -6967314317227695045
+    second: Icons_jars_2
+  - first:
+      213: -1193889673588954354
+    second: Icons_jars_3
+  - first:
+      213: -9139450668043214005
+    second: Icons_jars_4
+  - first:
+      213: 6388781638442369559
+    second: Icons_jars_5
+  - first:
+      213: 8892908639545946377
+    second: Icons_jars_6
+  - first:
+      213: -5893720908341873091
+    second: Icons_jars_7
+  - first:
+      213: -6052958491365198773
+    second: Icons_jars_8
+  - first:
+      213: -81763265613017737
+    second: Icons_jars_9
+  - first:
+      213: 2911910203581999929
+    second: Icons_jars_10
+  - first:
+      213: 7891341957592342846
+    second: Icons_jars_11
+  - first:
+      213: -5263641188119133380
+    second: Icons_jars_12
+  - first:
+      213: 1500912527148429
+    second: Icons_jars_13
+  - first:
+      213: 7135311596094098491
+    second: Icons_jars_14
+  - first:
+      213: -6289544071314619004
+    second: Icons_jars_15
+  - first:
+      213: 3116805253381413885
+    second: Icons_jars_16
+  - first:
+      213: 5584667365501775120
+    second: Icons_jars_17
+  - first:
+      213: 1095373137249606102
+    second: Icons_jars_18
+  - first:
+      213: -6212089612504487573
+    second: Icons_jars_19
+  - first:
+      213: 7300124710828033800
+    second: Icons_jars_20
+  - first:
+      213: 7902836709046548985
+    second: Icons_jars_21
+  - first:
+      213: 3286075443034244313
+    second: Icons_jars_22
+  - first:
+      213: -1500692180979441790
+    second: Icons_jars_23
+  - first:
+      213: -2045742251641046689
+    second: Icons_jars_24
+  - first:
+      213: 8462176195155182481
+    second: Icons_jars_25
+  - first:
+      213: -6896640336962611516
+    second: Icons_jars_26
+  - first:
+      213: 2007800670402243606
+    second: Icons_jars_27
+  - first:
+      213: 5037520581862824044
+    second: Icons_jars_28
+  - first:
+      213: -1536724769753034436
+    second: Icons_jars_29
+  - first:
+      213: -6612303513573876394
+    second: Icons_jars_30
+  - first:
+      213: 1746128992213739245
+    second: Icons_jars_31
+  - first:
+      213: 3065331272214814054
+    second: Icons_jars_32
+  - first:
+      213: -6868481451520249867
+    second: Icons_jars_33
+  - first:
+      213: 7468234265820944054
+    second: Icons_jars_34
+  - first:
+      213: -6426850692645474844
+    second: Icons_jars_35
+  - first:
+      213: -9041206944623396248
+    second: Icons_jars_36
+  - first:
+      213: -5686653676704501610
+    second: Icons_jars_37
+  - first:
+      213: -7796992421886216707
+    second: Icons_jars_38
+  - first:
+      213: -2046547685438100474
+    second: Icons_jars_39
+  - first:
+      213: 7521565872611782312
+    second: Icons_jars_40
+  - first:
+      213: -7492619402226963027
+    second: Icons_jars_41
+  - first:
+      213: -5223566345979113907
+    second: Icons_jars_42
+  - first:
+      213: 8974873340587511210
+    second: Icons_jars_43
+  - first:
+      213: -2255055683022035913
+    second: Icons_jars_44
+  - first:
+      213: 1835753620364742132
+    second: Icons_jars_45
+  - first:
+      213: -5925798443975842021
+    second: Icons_jars_46
+  - first:
+      213: -911834262660455435
+    second: Icons_jars_47
+  - first:
+      213: 1300588679619728704
+    second: Icons_jars_48
+  - first:
+      213: 2169176004292314827
+    second: Icons_jars_49
+  - first:
+      213: -3382511934282297754
+    second: Icons_jars_50
+  - first:
+      213: 9077024946850824121
+    second: Icons_jars_51
+  - first:
+      213: -366438052745386467
+    second: Icons_jars_52
+  - first:
+      213: -5455041423928584475
+    second: Icons_jars_53
+  - first:
+      213: 977586694393188750
+    second: Icons_jars_54
+  - first:
+      213: 4141832456563061777
+    second: Icons_jars_55
+  - first:
+      213: -3682874653141792462
+    second: Icons_jars_56
+  - first:
+      213: -910280871060408279
+    second: Icons_jars_57
+  - first:
+      213: -4129052746798334123
+    second: Icons_jars_58
+  - first:
+      213: -7180847171128425257
+    second: Icons_jars_59
+  - first:
+      213: -228874010044473317
+    second: Icons_jars_60
+  - first:
+      213: -2646257921559787
+    second: Icons_jars_61
+  - first:
+      213: 3609295880273853259
+    second: Icons_jars_62
+  - first:
+      213: -8439099692250143741
+    second: Icons_jars_63
+  - first:
+      213: -7144229210945534997
+    second: Icons_jars_64
+  - first:
+      213: 7012820088371496786
+    second: Icons_jars_65
+  - first:
+      213: 4763462509306335068
+    second: Icons_jars_66
+  - first:
+      213: 8100936400253905222
+    second: Icons_jars_67
+  - first:
+      213: 6391090964137169002
+    second: Icons_jars_68
+  - first:
+      213: -5486542822109721298
+    second: Icons_jars_69
+  - first:
+      213: 9145620846462865437
+    second: Icons_jars_70
+  - first:
+      213: -4088465175022791616
+    second: Icons_jars_71
+  - first:
+      213: 1097732564711208453
+    second: Icons_jars_72
+  - first:
+      213: -8657968093772659743
+    second: Icons_jars_73
+  - first:
+      213: 845772976266448203
+    second: Icons_jars_74
+  - first:
+      213: 8575085760039991195
+    second: Icons_jars_75
+  - first:
+      213: 681161586964092888
+    second: Icons_jars_76
+  - first:
+      213: -564735673935391199
+    second: Icons_jars_77
+  - first:
+      213: 1399326653875754232
+    second: Icons_jars_78
+  - first:
+      213: 6108664804796451607
+    second: Icons_jars_79
+  - first:
+      213: 2558854949828053452
+    second: Icons_jars_80
+  - first:
+      213: 6116261051165555604
+    second: Icons_jars_81
+  - first:
+      213: 2962318611444785885
+    second: Icons_jars_82
+  - first:
+      213: 6832573655897086588
+    second: Icons_jars_83
+  - first:
+      213: 8829526050183592946
+    second: Icons_jars_84
+  - first:
+      213: -6800062935091813722
+    second: Icons_jars_85
+  - first:
+      213: 2261449610695320978
+    second: Icons_jars_86
+  - first:
+      213: 4828121973032072373
+    second: Icons_jars_87
+  - first:
+      213: -3804504939393450421
+    second: Icons_jars_88
+  - first:
+      213: 35110726202199421
+    second: Icons_jars_89
+  - first:
+      213: -7135178467570485701
+    second: Icons_jars_90
+  - first:
+      213: 3628051219127211541
+    second: Icons_jars_91
+  - first:
+      213: 5410374850935341380
+    second: Icons_jars_92
+  - first:
+      213: 4850660344234829166
+    second: Icons_jars_93
+  - first:
+      213: 1005688008537490914
+    second: Icons_jars_94
+  - first:
+      213: 3326511494535656415
+    second: Icons_jars_95
+  - first:
+      213: -4256865832882744524
+    second: Icons_jars_96
+  - first:
+      213: 750116031588822152
+    second: Icons_jars_97
+  - first:
+      213: 4415837158655254156
+    second: Icons_jars_98
+  - first:
+      213: -7441782413015196580
+    second: Icons_jars_99
+  - first:
+      213: 419683000549334989
+    second: Icons_jars_100
+  - first:
+      213: 6173901580174039468
+    second: Icons_jars_101
+  - first:
+      213: -2307403489214596688
+    second: Icons_jars_102
+  - first:
+      213: 3309203175307533627
+    second: Icons_jars_103
+  - first:
+      213: 5442956255849708954
+    second: Icons_jars_104
+  - first:
+      213: 371662724737007040
+    second: Icons_jars_105
+  - first:
+      213: 7933717147998477904
+    second: Icons_jars_106
+  - first:
+      213: -2011614571187291669
+    second: Icons_jars_107
+  - first:
+      213: -1751859018586307882
+    second: Icons_jars_108
+  - first:
+      213: 6823736084314742975
+    second: Icons_jars_109
+  - first:
+      213: 2485372389492102248
+    second: Icons_jars_110
+  - first:
+      213: -1342433924898526617
+    second: Icons_jars_111
+  - first:
+      213: -6320200689343268948
+    second: Icons_jars_112
+  - first:
+      213: -4321720800896155928
+    second: Icons_jars_113
+  - first:
+      213: -883824413185175141
+    second: Icons_jars_114
+  - first:
+      213: 8579777915791585616
+    second: Icons_jars_115
+  - first:
+      213: 3980853841353556235
+    second: Icons_jars_116
+  - first:
+      213: -6708256557585638235
+    second: Icons_jars_117
+  - first:
+      213: 1933362664022520173
+    second: Icons_jars_118
+  - first:
+      213: -4561179234796929319
+    second: Icons_jars_119
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Icons_jars_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 355
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e06599c22e140610800000000000000
+      internalID: 1586426103500988641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 355
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a7f6a91902bc9db0800000000000000
+      internalID: -4783752952019486815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 355
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b34662bfa802f4f90800000000000000
+      internalID: -6967314317227695045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_3
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 355
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b29b8daa37e6fe0800000000000000
+      internalID: -1193889673588954354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_4
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 355
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b43e3115a062a2180800000000000000
+      internalID: -9139450668043214005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_5
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 355
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71245ea0d0389a850800000000000000
+      internalID: 6388781638442369559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_6
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 355
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90173208a45f96b70800000000000000
+      internalID: 8892908639545946377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 355
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d367df46f0c453ea0800000000000000
+      internalID: -5893720908341873091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_8
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 355
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b443ef172529ffba0800000000000000
+      internalID: -6052958491365198773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_9
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 355
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77dc57d3eb48ddef0800000000000000
+      internalID: -81763265613017737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_10
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 323
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93b2756f6ee296820800000000000000
+      internalID: 2911910203581999929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_11
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 323
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e316d6743bda38d60800000000000000
+      internalID: 7891341957592342846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_12
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 323
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c334b053a3ac3f6b0800000000000000
+      internalID: -5263641188119133380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_13
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 323
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d85050e6215550000800000000000000
+      internalID: 1500912527148429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_14
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 323
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3c0ae69718b50360800000000000000
+      internalID: 7135311596094098491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_15
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 323
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 485c0269dfc07b8a0800000000000000
+      internalID: -6289544071314619004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_16
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 323
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfbded94ddd114b20800000000000000
+      internalID: 3116805253381413885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_17
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 323
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01d237d4169b08d40800000000000000
+      internalID: 5584667365501775120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_18
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 323
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d99446901c833f00800000000000000
+      internalID: 1095373137249606102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_19
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 323
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b69a6c519693ac9a0800000000000000
+      internalID: -6212089612504487573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_20
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 291
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 807c4fc2fb04f4560800000000000000
+      internalID: 7300124710828033800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_21
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 291
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f9f2a8ad148cad60800000000000000
+      internalID: 7902836709046548985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_22
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 291
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d4c03f743c7a9d20800000000000000
+      internalID: 3286075443034244313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_23
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 291
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28f938399687c2be0800000000000000
+      internalID: -1500692180979441790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_24
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 291
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f597decc2401c93e0800000000000000
+      internalID: -2045742251641046689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_25
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 291
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 193cdfa3a60bf6570800000000000000
+      internalID: 8462176195155182481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_26
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 291
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c696bb47263a40a0800000000000000
+      internalID: -6896640336962611516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_27
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 291
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61ced1b62142ddb10800000000000000
+      internalID: 2007800670402243606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_28
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 291
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6817ae774ed8e540800000000000000
+      internalID: 5037520581862824044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_29
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 291
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c31935db6f47caae0800000000000000
+      internalID: -1536724769753034436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_30
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 259
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65d9c56ecf06c34a0800000000000000
+      internalID: -6612303513573876394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_31
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 259
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de629e8211f7b3810800000000000000
+      internalID: 1746128992213739245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_32
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 259
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66d924f1d8e3a8a20800000000000000
+      internalID: 3065331272214814054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_33
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 259
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ffa6c7b2804ea0a0800000000000000
+      internalID: -6868481451520249867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_34
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 259
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b658a11f7f74a760800000000000000
+      internalID: 7468234265820944054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_35
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 259
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eda460985d3fc6a0800000000000000
+      internalID: -6426850692645474844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_36
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 259
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86a7decaf2e278280800000000000000
+      internalID: -9041206944623396248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_37
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 259
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 690fb573c92f411b0800000000000000
+      internalID: -5686653676704501610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_38
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 259
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df53f09d3b48bc390800000000000000
+      internalID: -7796992421886216707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_39
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 259
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60c609129b33993e0800000000000000
+      internalID: -2046547685438100474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_40
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 227
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aee9b76f48f16860800000000000000
+      internalID: 7521565872611782312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_41
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 227
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dadef0de95ed40890800000000000000
+      internalID: -7492619402226963027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_42
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 227
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4eca3f751a2287b0800000000000000
+      internalID: -5223566345979113907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_43
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 227
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aad87d990c72d8c70800000000000000
+      internalID: 8974873340587511210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_44
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 227
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 734eeb8ddce64b0e0800000000000000
+      internalID: -2255055683022035913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_45
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 227
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fd4af40138e97910800000000000000
+      internalID: 1835753620364742132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_46
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 227
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b17e14026b553cda0800000000000000
+      internalID: -5925798443975842021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_47
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 227
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f3e718b1938853f0800000000000000
+      internalID: -911834262660455435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_48
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 227
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 045d0a7638e9c0210800000000000000
+      internalID: 1300588679619728704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_49
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 227
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc6052745167a1e10800000000000000
+      internalID: 2169176004292314827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_50
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 195
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66e859c2157ee01d0800000000000000
+      internalID: -3382511934282297754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_51
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 195
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bff666d81218fd70800000000000000
+      internalID: 9077024946850824121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_52
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 195
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d16ece158862aeaf0800000000000000
+      internalID: -366438052745386467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_53
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 195
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e612bb1abccb44b0800000000000000
+      internalID: -5455041423928584475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_54
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 195
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8154784be5119d00800000000000000
+      internalID: 977586694393188750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_55
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 195
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 114ff94ccaeba7930800000000000000
+      internalID: 4141832456563061777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_56
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 195
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2398133040dc3ecc0800000000000000
+      internalID: -3682874653141792462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_57
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 195
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9287c92ee580e53f0800000000000000
+      internalID: -910280871060408279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_58
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 195
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55ffb384768a2b6c0800000000000000
+      internalID: -4129052746798334123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_59
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 195
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d4858a2b81885c90800000000000000
+      internalID: -7180847171128425257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_60
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 163
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b10eafcec40e2dcf0800000000000000
+      internalID: -228874010044473317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_61
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 163
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 513f9901e3996fff0800000000000000
+      internalID: -2646257921559787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_62
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 163
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4bf001fa7bc61230800000000000000
+      internalID: 3609295880273853259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_63
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 163
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 304625bca8b42ea80800000000000000
+      internalID: -8439099692250143741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_64
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 163
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be34f9762699adc90800000000000000
+      internalID: -7144229210945534997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_65
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 163
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2574b1107ba825160800000000000000
+      internalID: 7012820088371496786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_66
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 163
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5f48101ae73b1240800000000000000
+      internalID: 4763462509306335068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_67
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 163
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6496a254cbe4c6070800000000000000
+      internalID: 8100936400253905222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_68
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 163
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a60da94de57b1b850800000000000000
+      internalID: 6391090964137169002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_69
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 163
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2d4e2b4f52ebd3b0800000000000000
+      internalID: -5486542822109721298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_70
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 131
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1093db44b5cbee70800000000000000
+      internalID: 9145620846462865437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_71
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 131
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 044163eb59ad247c0800000000000000
+      internalID: -4088465175022791616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_72
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 131
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5067df993fdeb3f00800000000000000
+      internalID: 1097732564711208453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_73
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 131
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e3c30ef3e7b8d780800000000000000
+      internalID: -8657968093772659743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_74
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 131
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4d8cf27a0accbb00800000000000000
+      internalID: 845772976266448203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_75
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 131
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b97b1b5e013d00770800000000000000
+      internalID: 8575085760039991195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_76
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 131
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d7d2a9bad8f37900800000000000000
+      internalID: 681161586964092888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_77
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 131
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 126171b85e7a928f0800000000000000
+      internalID: -564735673935391199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_78
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 131
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f410018d286b6310800000000000000
+      internalID: 1399326653875754232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_79
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 131
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71bc2dd564656c450800000000000000
+      internalID: 6108664804796451607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_80
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 99
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc9404cf401e28320800000000000000
+      internalID: 2558854949828053452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_81
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 99
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49bb74c450351e450800000000000000
+      internalID: 6116261051165555604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_82
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 99
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd2e1b205154c1920800000000000000
+      internalID: 2962318611444785885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_83
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 99
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7a107d1a8d22de50800000000000000
+      internalID: 6832573655897086588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_84
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 99
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fb304c6927c88a70800000000000000
+      internalID: 8829526050183592946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_85
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 99
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a26d8fe9c251a1a0800000000000000
+      internalID: -6800062935091813722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_86
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 99
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 295a0f27078426f10800000000000000
+      internalID: 2261449610695320978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_87
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 99
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b4b5de9a5fe00340800000000000000
+      internalID: 4828121973032072373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_88
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 99
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4efb3d2aeea33bc0800000000000000
+      internalID: -3804504939393450421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_89
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 99
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7d861bf40dbc7000800000000000000
+      internalID: 35110726202199421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_90
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 67
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b36f17fccf0cafc90800000000000000
+      internalID: -7135178467570485701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_91
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 67
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 516100f8c5d695230800000000000000
+      internalID: 3628051219127211541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_92
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 67
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44145b3f243851b40800000000000000
+      internalID: 5410374850935341380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_93
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 67
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e65e03812e1015340800000000000000
+      internalID: 4850660344234829166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_94
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 67
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e54fb75aebe4fd00800000000000000
+      internalID: 1005688008537490914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_95
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 67
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd33d0564942a2e20800000000000000
+      internalID: 3326511494535656415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_96
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 67
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 433d68e24139ce4c0800000000000000
+      internalID: -4256865832882744524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_97
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 67
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88c6d237e82f86a00800000000000000
+      internalID: 750116031588822152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_98
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 67
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8edd9bef74384d30800000000000000
+      internalID: 4415837158655254156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_99
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 67
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5cda78d25a79b890800000000000000
+      internalID: -7441782413015196580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_100
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 35
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcf5306277303d500800000000000000
+      internalID: 419683000549334989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_101
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 35
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca91f74c6ca1ea550800000000000000
+      internalID: 6173901580174039468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_102
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 35
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b9fddf60c47affd0800000000000000
+      internalID: -2307403489214596688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_103
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 35
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3ddcc941c6aced20800000000000000
+      internalID: 3309203175307533627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_104
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 35
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9d79ed60e3498b40800000000000000
+      internalID: 5442956255849708954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_105
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 35
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cdf33c6749682500800000000000000
+      internalID: 371662724737007040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_106
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 35
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05edfd226b93a1e60800000000000000
+      internalID: 7933717147998477904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_107
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 35
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be9b16b943f4514e0800000000000000
+      internalID: -2011614571187291669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_108
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 35
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d2499c118520b7e0800000000000000
+      internalID: -1751859018586307882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_109
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 35
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb06892a0d7c2be50800000000000000
+      internalID: 6823736084314742975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_110
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 3
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8649d3a2501dd7220800000000000000
+      internalID: 2485372389492102248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_111
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 3
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76a6df33577be5de0800000000000000
+      internalID: -1342433924898526617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_112
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 3
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca7f38a75f22a48a0800000000000000
+      internalID: -6320200689343268948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_113
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 3
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eefa2c34d92604c0800000000000000
+      internalID: -4321720800896155928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_114
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 3
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b91974001660cb3f0800000000000000
+      internalID: -883824413185175141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_115
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 3
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 051bf7a8e8e711770800000000000000
+      internalID: 8579777915791585616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_116
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 3
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b01c0ac2a75de3730800000000000000
+      internalID: 3980853841353556235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_117
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 3
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ac5ce6e33c77e2a0800000000000000
+      internalID: -6708256557585638235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_118
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 3
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d61b01b791fa4da10800000000000000
+      internalID: 1933362664022520173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icons_jars_119
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 3
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9de7a01f6af63b0c0800000000000000
+      internalID: -4561179234796929319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Icons_jars_0: 1586426103500988641
+      Icons_jars_1: -4783752952019486815
+      Icons_jars_10: 2911910203581999929
+      Icons_jars_100: 419683000549334989
+      Icons_jars_101: 6173901580174039468
+      Icons_jars_102: -2307403489214596688
+      Icons_jars_103: 3309203175307533627
+      Icons_jars_104: 5442956255849708954
+      Icons_jars_105: 371662724737007040
+      Icons_jars_106: 7933717147998477904
+      Icons_jars_107: -2011614571187291669
+      Icons_jars_108: -1751859018586307882
+      Icons_jars_109: 6823736084314742975
+      Icons_jars_11: 7891341957592342846
+      Icons_jars_110: 2485372389492102248
+      Icons_jars_111: -1342433924898526617
+      Icons_jars_112: -6320200689343268948
+      Icons_jars_113: -4321720800896155928
+      Icons_jars_114: -883824413185175141
+      Icons_jars_115: 8579777915791585616
+      Icons_jars_116: 3980853841353556235
+      Icons_jars_117: -6708256557585638235
+      Icons_jars_118: 1933362664022520173
+      Icons_jars_119: -4561179234796929319
+      Icons_jars_12: -5263641188119133380
+      Icons_jars_13: 1500912527148429
+      Icons_jars_14: 7135311596094098491
+      Icons_jars_15: -6289544071314619004
+      Icons_jars_16: 3116805253381413885
+      Icons_jars_17: 5584667365501775120
+      Icons_jars_18: 1095373137249606102
+      Icons_jars_19: -6212089612504487573
+      Icons_jars_2: -6967314317227695045
+      Icons_jars_20: 7300124710828033800
+      Icons_jars_21: 7902836709046548985
+      Icons_jars_22: 3286075443034244313
+      Icons_jars_23: -1500692180979441790
+      Icons_jars_24: -2045742251641046689
+      Icons_jars_25: 8462176195155182481
+      Icons_jars_26: -6896640336962611516
+      Icons_jars_27: 2007800670402243606
+      Icons_jars_28: 5037520581862824044
+      Icons_jars_29: -1536724769753034436
+      Icons_jars_3: -1193889673588954354
+      Icons_jars_30: -6612303513573876394
+      Icons_jars_31: 1746128992213739245
+      Icons_jars_32: 3065331272214814054
+      Icons_jars_33: -6868481451520249867
+      Icons_jars_34: 7468234265820944054
+      Icons_jars_35: -6426850692645474844
+      Icons_jars_36: -9041206944623396248
+      Icons_jars_37: -5686653676704501610
+      Icons_jars_38: -7796992421886216707
+      Icons_jars_39: -2046547685438100474
+      Icons_jars_4: -9139450668043214005
+      Icons_jars_40: 7521565872611782312
+      Icons_jars_41: -7492619402226963027
+      Icons_jars_42: -5223566345979113907
+      Icons_jars_43: 8974873340587511210
+      Icons_jars_44: -2255055683022035913
+      Icons_jars_45: 1835753620364742132
+      Icons_jars_46: -5925798443975842021
+      Icons_jars_47: -911834262660455435
+      Icons_jars_48: 1300588679619728704
+      Icons_jars_49: 2169176004292314827
+      Icons_jars_5: 6388781638442369559
+      Icons_jars_50: -3382511934282297754
+      Icons_jars_51: 9077024946850824121
+      Icons_jars_52: -366438052745386467
+      Icons_jars_53: -5455041423928584475
+      Icons_jars_54: 977586694393188750
+      Icons_jars_55: 4141832456563061777
+      Icons_jars_56: -3682874653141792462
+      Icons_jars_57: -910280871060408279
+      Icons_jars_58: -4129052746798334123
+      Icons_jars_59: -7180847171128425257
+      Icons_jars_6: 8892908639545946377
+      Icons_jars_60: -228874010044473317
+      Icons_jars_61: -2646257921559787
+      Icons_jars_62: 3609295880273853259
+      Icons_jars_63: -8439099692250143741
+      Icons_jars_64: -7144229210945534997
+      Icons_jars_65: 7012820088371496786
+      Icons_jars_66: 4763462509306335068
+      Icons_jars_67: 8100936400253905222
+      Icons_jars_68: 6391090964137169002
+      Icons_jars_69: -5486542822109721298
+      Icons_jars_7: -5893720908341873091
+      Icons_jars_70: 9145620846462865437
+      Icons_jars_71: -4088465175022791616
+      Icons_jars_72: 1097732564711208453
+      Icons_jars_73: -8657968093772659743
+      Icons_jars_74: 845772976266448203
+      Icons_jars_75: 8575085760039991195
+      Icons_jars_76: 681161586964092888
+      Icons_jars_77: -564735673935391199
+      Icons_jars_78: 1399326653875754232
+      Icons_jars_79: 6108664804796451607
+      Icons_jars_8: -6052958491365198773
+      Icons_jars_80: 2558854949828053452
+      Icons_jars_81: 6116261051165555604
+      Icons_jars_82: 2962318611444785885
+      Icons_jars_83: 6832573655897086588
+      Icons_jars_84: 8829526050183592946
+      Icons_jars_85: -6800062935091813722
+      Icons_jars_86: 2261449610695320978
+      Icons_jars_87: 4828121973032072373
+      Icons_jars_88: -3804504939393450421
+      Icons_jars_89: 35110726202199421
+      Icons_jars_9: -81763265613017737
+      Icons_jars_90: -7135178467570485701
+      Icons_jars_91: 3628051219127211541
+      Icons_jars_92: 5410374850935341380
+      Icons_jars_93: 4850660344234829166
+      Icons_jars_94: 1005688008537490914
+      Icons_jars_95: 3326511494535656415
+      Icons_jars_96: -4256865832882744524
+      Icons_jars_97: 750116031588822152
+      Icons_jars_98: 4415837158655254156
+      Icons_jars_99: -7441782413015196580
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

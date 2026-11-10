@@ -17,6 +17,13 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 12f;
     public float jumpCutMultiplier = 0.5f; 
 
+    [Header("Ladder Settings")]
+    private float ladderClimbSpeed = 3f;
+    private bool isNearLadder = false;
+    private bool isClimbingLadder = false;
+    private float originalGravity;
+    
+
     [Header("Ground Detection")]
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -31,12 +38,15 @@ public class PlayerMovement : MonoBehaviour
     private bool isOnSlope;
     private bool isGoingDownhill;
     private Vector2 slopeNormalPerp;
+    private float moveInput;
+    private float verticalInput;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         hydrationSystem = GetComponent<PlayerHydration>(); 
         healthSystem = GetComponent<PlayerHealth>(); 
+        originalGravity = rb.gravityScale;
     }
 
     void Update()
@@ -66,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         isJumping = false;
     }
 
-    float moveInput = 0f;
+    moveInput = 0f;
     if (Input.GetKey(KeyCode.A)) moveInput = -1f;
     if (Input.GetKey(KeyCode.D)) moveInput = 1f;
 
@@ -95,14 +105,17 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Downhill speed boost applied. Current Speed: " + currentSpeed);
     }
 
+    if (!isClimbingLadder)
+    {
     if (isGrounded && isOnSlope && !isJumping)
-        {
-            rb.linearVelocity = new Vector2(-moveInput * currentSpeed * slopeNormalPerp.x, -moveInput * currentSpeed * slopeNormalPerp.y);
-        }
-        else
-        {
-            rb.linearVelocity = new Vector2(moveInput * currentSpeed, rb.linearVelocity.y);
-        }
+    {
+        rb.linearVelocity = new Vector2(-moveInput * currentSpeed * slopeNormalPerp.x, -moveInput * currentSpeed * slopeNormalPerp.y);
+    }
+    else
+    {
+        rb.linearVelocity = new Vector2(moveInput * currentSpeed, rb.linearVelocity.y);
+    }
+    }
 
     if (isSprinting && moveInput != 0) 
     {
@@ -111,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // INITIATE JUMP
-    if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isJumping)
+    if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isJumping && !isClimbingLadder)
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         hydrationSystem.DrainFromJump(); 
@@ -126,7 +139,41 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
         }
     }
+    verticalInput = Input.GetAxisRaw("Vertical");
+    if (isNearLadder && Mathf.Abs(verticalInput) > 0.1f)
+    {
+        isClimbingLadder = true;
+    }
+    if (isClimbingLadder && (Input.GetKeyDown(KeyCode.Space) || !isNearLadder))
+    {
+        StopClimbingLadder();
+    }
 }
+    private void FixedUpdate()
+    {
+        if(isClimbingLadder)
+        {
+            rb.gravityScale = 0f;
+            rb.linearVelocity = new Vector2(moveInput * walkSpeed, verticalInput * ladderClimbSpeed);
+        }
+    }
+
+    public void SetNearLadder(bool near, float speed)
+    {
+        isNearLadder = near;
+        ladderClimbSpeed = speed;
+        if (!near)
+        {
+            StopClimbingLadder();
+        }
+    }
+
+    private void StopClimbingLadder()
+    {
+        isClimbingLadder = false;
+        rb.gravityScale = originalGravity;
+    }
+
     
     private void OnDrawGizmosSelected()
     {

@@ -8,7 +8,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Settings")]
     public float walkSpeed = 5f;
     public float sprintSpeed = 9f;
-    
+
+    [Header("Downhill Buff Settings")]
+    public float downhillSpeedMultiplier = 1.3f;
+    public float downhillHydrationMultiplier = 0.5f;
+
     [Header("Jump Settings")]
     public float jumpForce = 12f;
     public float jumpCutMultiplier = 0.5f; 
@@ -17,12 +21,16 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public float groundCheckRadius = 0.2f;
+    public float slopeCheckDistance = 0.5f;
     
     private Rigidbody2D rb;
     private PlayerHydration hydrationSystem;
     private PlayerHealth healthSystem;
     private bool isGrounded;
     private bool isJumping; 
+    private bool isOnSlope;
+    private bool isGoingDownhill;
+    private Vector2 slopeNormalPerp;
 
     void Start()
     {
@@ -43,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
     Collider2D hitCollider = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     isGrounded = hitCollider != null;
 
-    // DEBUG: See what the ground check is actually hitting!
     if (isGrounded)
     {
         Debug.Log("Grounded on object: " + hitCollider.gameObject.name);
@@ -63,6 +70,8 @@ public class PlayerMovement : MonoBehaviour
     if (Input.GetKey(KeyCode.A)) moveInput = -1f;
     if (Input.GetKey(KeyCode.D)) moveInput = 1f;
 
+    SlopeCheck(moveInput);
+
     bool isSprinting = Input.GetKey(KeyCode.LeftShift);
     float baseSpeed = isSprinting ? sprintSpeed : walkSpeed;
 
@@ -80,11 +89,25 @@ public class PlayerMovement : MonoBehaviour
 
     float currentSpeed = baseSpeed * speedMultiplier;
 
-    rb.linearVelocity = new Vector2(moveInput * currentSpeed, rb.linearVelocity.y);
+    if (isGrounded && isOnSlope && isGoingDownhill)
+    {
+        currentSpeed *= downhillSpeedMultiplier;
+        Debug.Log("Downhill speed boost applied. Current Speed: " + currentSpeed);
+    }
+
+    if (isGrounded && isOnSlope && !isJumping)
+        {
+            rb.linearVelocity = new Vector2(-moveInput * currentSpeed * slopeNormalPerp.x, -moveInput * currentSpeed * slopeNormalPerp.y);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(moveInput * currentSpeed, rb.linearVelocity.y);
+        }
 
     if (isSprinting && moveInput != 0) 
     {
-        hydrationSystem.DrainFromSprint();
+        float drainMultiplier = (isOnSlope && isGoingDownhill) ? downhillHydrationMultiplier : 1f;
+        hydrationSystem.DrainFromSprint(drainMultiplier);
     }
 
     // INITIATE JUMP
@@ -111,6 +134,36 @@ public class PlayerMovement : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+    }
+
+    private void SlopeCheck(float moveInput)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, slopeCheckDistance, groundLayer);
+        if (hit)
+        {
+            slopeNormalPerp = Vector2.Perpendicular(hit.normal).normalized;
+
+            if (Mathf.Abs(hit.normal.x) > 0.1f)
+            {
+                isOnSlope = true;
+
+                float slopeDirectionY = -moveInput * slopeNormalPerp.y;
+                isGoingDownhill = slopeDirectionY < -0.05f;
+            }
+            else
+            {
+                isOnSlope = false;
+                isGoingDownhill = false;
+            }
+
+            Debug.DrawRay(hit.point, slopeNormalPerp, Color.green);
+            Debug.DrawRay(hit.point, hit.normal, Color.red);
+        }
+        else
+        {
+            isOnSlope = false;
+            isGoingDownhill = false;
         }
     }
 }

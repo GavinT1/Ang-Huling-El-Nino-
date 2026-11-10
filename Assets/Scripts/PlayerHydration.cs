@@ -50,9 +50,10 @@ public class PlayerHydration : MonoBehaviour
     }
 
 
-    public void DrainFromSprint()
+    public void DrainFromSprint(float multiplier = 1f)
     {
-        currentHydration -= sprintDrain * Time.deltaTime;
+        currentHydration -= sprintDrain * multiplier * Time.deltaTime;
+        currentHydration = Mathf.Clamp(currentHydration, 0, maxHydration);
     }
 
 
@@ -61,9 +62,13 @@ public class PlayerHydration : MonoBehaviour
         currentHydration -= jumpCost;
     }
 
-    public void RefillHydration(float amount)
+    public void RefillHydration(float percentage)
     {
-        currentHydration += amount;
+
+        float amountToRestore = maxHydration * (percentage / 100f);
+        currentHydration += amountToRestore;
         currentHydration = Mathf.Clamp(currentHydration, 0, maxHydration);
+
+        Debug.Log("Hydration refilled by " + amountToRestore + ". Current Hydration: " + currentHydration);
     }
 }

@@ -80,9 +80,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1162978105
+  m_SortingLayer: 11
+  m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2722183139052269291, guid: febbc8070aec34c2a933c9f134e0211c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -171,3 +171,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MudProjectile
   lifetime: 5
+  damage: 1

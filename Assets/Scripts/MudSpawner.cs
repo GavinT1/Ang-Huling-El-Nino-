@@ -4,11 +4,17 @@ using System.Collections;
 public class MudSpawner : MonoBehaviour
 {
     public enum GamePhase { Start, Mid, Climax }
+    
+    [Header("Game Phase state")]
     public GamePhase currentPhase = GamePhase.Start;
 
     [Header("References")]
     public Transform playerTransform; 
     public GameObject mudPrefab;      
+
+    [Header("Area 1 Boundaries")]
+    public float area1MinX = -15f;
+    public float area1MaxX = 102.77f;
 
     [Header("Map Position Thresholds")]
     public float midPhaseXPosition = 15f;     
@@ -46,19 +52,35 @@ public class MudSpawner : MonoBehaviour
         float playerX = playerTransform.position.x;
 
         // Dynamic difficulty phase changes based on player position
-        if (playerX >= climaxPhaseXPosition && currentPhase != GamePhase.Climax)
+        if (playerX >= climaxPhaseXPosition)
         {
+            if(currentPhase != GamePhase.Climax)
+            {
             currentPhase = GamePhase.Climax;
             currentInterval = climaxInterval;
             currentDropCount = climaxDropCount;
             Debug.Log("Entered Climax Phase - Mud Storm!");
+            }
         }
-        else if (playerX >= midPhaseXPosition && playerX < climaxPhaseXPosition && currentPhase == GamePhase.Start)
+        else if (playerX >= midPhaseXPosition)
         {
+            if(currentPhase != GamePhase.Mid)
+            {
             currentPhase = GamePhase.Mid;
             currentInterval = midInterval;
             currentDropCount = midDropCount;
             Debug.Log("Entered Mid Phase!");
+            }
+        }
+        else
+        {
+            if(currentPhase != GamePhase.Start)
+            {
+                currentPhase = GamePhase.Start;
+                currentInterval = startInterval;
+                currentDropCount = startDropCount;
+                Debug.Log("Returned to Start Phase.");
+            }
         }
     }
 
@@ -67,7 +89,15 @@ public class MudSpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(currentInterval);
-            TriggerMudDrop();
+
+            if(playerTransform != null)
+            {
+                float playerX = playerTransform.position.x;
+                if(playerX >= area1MinX && playerX <= area1MaxX)
+                {
+                    TriggerMudDrop();
+                }
+            }
         }
     }
 
@@ -94,5 +124,17 @@ public class MudSpawner : MonoBehaviour
         }
 
         Debug.Log($"Spawned {currentDropCount} mud drops | Phase: {currentPhase}");
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (playerTransform == null) return;
+        Gizmos.color = Color.green;
+        Vector3 boxCenter = new Vector3(playerTransform.position.x, playerTransform.position.y + spawnHeight / 1f, 0f);
+        Gizmos.DrawWireCube(boxCenter, new Vector3(spawnWidth, 2f, 0));
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(new Vector3(area1MinX, playerTransform.position.y - 10f, 0), new Vector3(area1MinX, playerTransform.position.y + 10f, 0));
+        Gizmos.DrawLine(new Vector3(area1MaxX, playerTransform.position.y - 10f, 0), new Vector3(area1MaxX, playerTransform.position.y + 10f, 0));
     }
 }

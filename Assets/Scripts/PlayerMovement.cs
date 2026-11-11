@@ -18,11 +18,10 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCutMultiplier = 0.5f; 
 
     [Header("Ladder Settings")]
-    private float ladderClimbSpeed = 3f;
+    public float ladderClimbSpeed = 3f;
     private bool isNearLadder = false;
     private bool isClimbingLadder = false;
     private float originalGravity;
-    
 
     [Header("Ground Detection")]
     public Transform groundCheck;
@@ -50,108 +49,122 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update()
-{
-    if (healthSystem.isDead)
     {
-        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-        return; 
-    }
-
-    // GROUND CHECK
-    Collider2D hitCollider = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-    isGrounded = hitCollider != null;
-
-    if (isGrounded)
-    {
-        Debug.Log("Grounded on object: " + hitCollider.gameObject.name);
-    }
-    else
-    {
-        Debug.Log("NOT Grounded!");
-    }
-
-    // STRICT SINGLE JUMP RESET
-    if (isGrounded && rb.linearVelocity.y <= 0.1f)
-    {
-        isJumping = false;
-    }
-
-    moveInput = 0f;
-    if (Input.GetKey(KeyCode.A)) moveInput = -1f;
-    if (Input.GetKey(KeyCode.D)) moveInput = 1f;
-
-    SlopeCheck(moveInput);
-
-    bool isSprinting = Input.GetKey(KeyCode.LeftShift);
-    float baseSpeed = isSprinting ? sprintSpeed : walkSpeed;
-
-    float hydrationPct = hydrationSystem.currentHydration / hydrationSystem.maxHydration;
-    float speedMultiplier = 1f;
-
-    if (hydrationPct <= 0.25f)
-    {
-        speedMultiplier = 0.5f;
-    }
-    else if (hydrationPct <= 0.5f)
-    {
-        speedMultiplier = 0.75f;
-    }
-
-    float currentSpeed = baseSpeed * speedMultiplier;
-
-    if (isGrounded && isOnSlope && isGoingDownhill)
-    {
-        currentSpeed *= downhillSpeedMultiplier;
-        Debug.Log("Downhill speed boost applied. Current Speed: " + currentSpeed);
-    }
-
-    if (!isClimbingLadder)
-    {
-    if (isGrounded && isOnSlope && !isJumping)
-    {
-        rb.linearVelocity = new Vector2(-moveInput * currentSpeed * slopeNormalPerp.x, -moveInput * currentSpeed * slopeNormalPerp.y);
-    }
-    else
-    {
-        rb.linearVelocity = new Vector2(moveInput * currentSpeed, rb.linearVelocity.y);
-    }
-    }
-
-    if (isSprinting && moveInput != 0) 
-    {
-        float drainMultiplier = (isOnSlope && isGoingDownhill) ? downhillHydrationMultiplier : 1f;
-        hydrationSystem.DrainFromSprint(drainMultiplier);
-    }
-
-    // INITIATE JUMP
-    if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isJumping && !isClimbingLadder)
-    {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        hydrationSystem.DrainFromJump(); 
-        isJumping = true;
-    }
-
-    // VARIABLE JUMP HEIGHT
-    if (Input.GetKeyUp(KeyCode.Space) && isJumping)
-    {
-        if (rb.linearVelocity.y > 0) 
+        if (healthSystem.isDead)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            return; 
+        }
+
+        // 1. GROUND CHECK (Ignore ground detection while climbing ladder)
+        if (!isClimbingLadder)
+        {
+            Collider2D hitCollider = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            isGrounded = hitCollider != null;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
+        // STRICT SINGLE JUMP RESET
+        if (isGrounded && rb.linearVelocity.y <= 0.1f)
+        {
+            isJumping = false;
+        }
+
+        moveInput = 0f;
+        if (Input.GetKey(KeyCode.A)) moveInput = -1f;
+        if (Input.GetKey(KeyCode.D)) moveInput = 1f;
+
+        SlopeCheck(moveInput);
+
+        bool isSprinting = Input.GetKey(KeyCode.LeftShift);
+        float baseSpeed = isSprinting ? sprintSpeed : walkSpeed;
+
+        float hydrationPct = hydrationSystem.currentHydration / hydrationSystem.maxHydration;
+        float speedMultiplier = 1f;
+
+        if (hydrationPct <= 0.25f)
+        {
+            speedMultiplier = 0.5f;
+        }
+        else if (hydrationPct <= 0.5f)
+        {
+            speedMultiplier = 0.75f;
+        }
+
+        float currentSpeed = baseSpeed * speedMultiplier;
+
+        if (isGrounded && isOnSlope && isGoingDownhill)
+        {
+            currentSpeed *= downhillSpeedMultiplier;
+        }
+
+        // HORIZONTAL MOVEMENT
+        if (!isClimbingLadder)
+        {
+            if (isGrounded && isOnSlope && !isJumping)
+            {
+                rb.linearVelocity = new Vector2(-moveInput * currentSpeed * slopeNormalPerp.x, -moveInput * currentSpeed * slopeNormalPerp.y);
+            }
+            else
+            {
+                rb.linearVelocity = new Vector2(moveInput * currentSpeed, rb.linearVelocity.y);
+            }
+        }
+
+        if (isSprinting && moveInput != 0) 
+        {
+            float drainMultiplier = (isOnSlope && isGoingDownhill) ? downhillHydrationMultiplier : 1f;
+            hydrationSystem.DrainFromSprint(drainMultiplier);
+        }
+
+        // 2. LADDER CLIMB INPUT
+        verticalInput = Input.GetAxisRaw("Vertical");
+        if (isNearLadder && Mathf.Abs(verticalInput) > 0.1f)
+        {
+            isClimbingLadder = true;
+        }
+
+        // 3. LADDER DISMOUNT & JUMP HANDLING
+        if (isClimbingLadder)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopClimbingLadder();
+                return; // Prevents triggering a ground jump on the same frame
+            }
+
+            if (!isNearLadder)
+            {
+                StopClimbingLadder();
+            }
+        }
+        else
+        {
+            // INITIATE GROUND JUMP
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isJumping)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                hydrationSystem.DrainFromJump(); 
+                isJumping = true;
+            }
+        }
+
+        // VARIABLE JUMP HEIGHT
+        if (Input.GetKeyUp(KeyCode.Space) && isJumping)
+        {
+            if (rb.linearVelocity.y > 0) 
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
+            }
         }
     }
-    verticalInput = Input.GetAxisRaw("Vertical");
-    if (isNearLadder && Mathf.Abs(verticalInput) > 0.1f)
-    {
-        isClimbingLadder = true;
-    }
-    if (isClimbingLadder && (Input.GetKeyDown(KeyCode.Space) || !isNearLadder))
-    {
-        StopClimbingLadder();
-    }
-}
+
     private void FixedUpdate()
     {
-        if(isClimbingLadder)
+        if (isClimbingLadder)
         {
             rb.gravityScale = 0f;
             rb.linearVelocity = new Vector2(moveInput * walkSpeed, verticalInput * ladderClimbSpeed);
@@ -161,7 +174,8 @@ public class PlayerMovement : MonoBehaviour
     public void SetNearLadder(bool near, float speed)
     {
         isNearLadder = near;
-        ladderClimbSpeed = speed;
+        if (speed > 0f) ladderClimbSpeed = speed;
+
         if (!near)
         {
             StopClimbingLadder();
@@ -170,11 +184,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void StopClimbingLadder()
     {
-        isClimbingLadder = false;
-        rb.gravityScale = originalGravity;
+        if (isClimbingLadder)
+        {
+            isClimbingLadder = false;
+            rb.gravityScale = originalGravity;
+        }
     }
 
-    
     private void OnDrawGizmosSelected()
     {
         if (groundCheck != null)

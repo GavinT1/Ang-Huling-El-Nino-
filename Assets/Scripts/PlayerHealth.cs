@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Numerics;
+using NUnit.Framework;      
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -13,22 +15,28 @@ public class PlayerHealth : MonoBehaviour
     public float invincibilityDuration = 1.5f;
     private bool isInvincible = false;
 
-    [Header("Checkpoint Settings")]
-    public Vector3 currentCheckpoint;
 
     [Header("References")]
     public HeartUI heartUI;
+    public GameObject deathChoicePanel;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
 
     void Start()
     {
         currentHealth = maxHealth;
-        currentCheckpoint = transform.position; // Default checkpoint is start position
+
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
 
         if (heartUI != null)
         {
             heartUI.UpdateHearts(currentHealth);
+        }
+
+        if (deathChoicePanel !=null)
+        {
+            deathChoicePanel.SetActive(false);
         }
     }
     public void TakeDamage(int damageAmount)
@@ -45,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            DieByEnvironment();
         }
         else
         {
@@ -66,12 +74,12 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            DieByEnvironment();
         }
         else
         {
             // Respawn at nearest zone checkpoint
-            transform.position = currentCheckpoint;
+            RespawnAtCheckpoint();
             StartCoroutine(InvincibilityRoutine());
         }
     }
@@ -82,7 +90,7 @@ public class PlayerHealth : MonoBehaviour
         {
             heartUI.UpdateHearts(currentHealth);
         }
-        Die();
+        DieByEnvironment();
     }
 
     private IEnumerator InvincibilityRoutine()
@@ -115,8 +123,82 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Game Over!");
     }
 
-    public void SetCheckpoint(Vector3 newPosition)
+    public void DieByEnvironment()
     {
-        currentCheckpoint = newPosition;
+        if (isDead) return;
+        Die();
+
+        if(CheckpointManager.Instance !=null && CheckpointManager.Instance.HasReachedCheckpoint())
+        {
+            if(deathChoicePanel !=null)
+            {
+                deathChoicePanel.SetActive(true);
+            }
+        }
+        else
+        {
+            RestartFromBeginning();
+        }
+    }
+
+    public void OnClick_RespawnAtCheckpoint()
+    {
+        if(deathChoicePanel !=null)
+        {
+            deathChoicePanel.SetActive(false);
+        }
+        FullResetAndSpawn();
+    }
+
+    public void OnClick_RestartFromBeginning()
+    {
+        if(deathChoicePanel !=null)
+        {
+            deathChoicePanel.SetActive(false);
+        }
+        RestartFromBeginning();
+    }
+
+    public void RestartFromBeginning()
+    {
+        isDead = false;
+        currentHealth = maxHealth;
+        if(heartUI !=null)
+        {
+            heartUI.UpdateHearts(currentHealth);
+        }
+        if(CheckpointManager.Instance !=null)
+        {
+            transform.position = CheckpointManager.Instance.GetDefaultSpawnPosition();
+        }
+        if (rb !=null)
+        {
+            rb.linearVelocity = UnityEngine.Vector2.zero;
+        }
+    }
+
+    public void RespawnAtCheckpoint()
+    {
+        if(CheckpointManager.Instance !=null)
+        {
+            transform.position = CheckpointManager.Instance.GetCheckPointPosition();
+        }
+
+        if (rb !=null)
+        {
+            rb.linearVelocity = UnityEngine.Vector2.zero;
+        }
+    }
+
+    public void FullResetAndSpawn()
+    {
+        isDead = false;
+        currentHealth = maxHealth;
+
+        if (heartUI !=null)
+        {
+            heartUI.UpdateHearts(currentHealth);
+        }
+        RespawnAtCheckpoint();
     }
 }

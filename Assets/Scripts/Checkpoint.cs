@@ -1,15 +1,44 @@
 using UnityEngine;
-
+[RequireComponent(typeof(BoxCollider2D))]
 public class Checkpoint : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    [Header("Custom Spawn Offset")]
+    public Transform respawnPoint;
+
+    private Animator anim;
+    private bool isActivated = false;
+
+    private void Start()
     {
-        if (collision.CompareTag("Player"))
+        anim = GetComponent<Animator>();
+        if (respawnPoint == null)
         {
-            PlayerHealth health = collision.GetComponent<PlayerHealth>();
-            if (health != null)
+            respawnPoint = transform;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("FlagTrigger"+other.name);
+
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player tag detected! Updating checkpoint");
+            if (!isActivated)
             {
-                health.SetCheckpoint(transform.position);
+                isActivated = true;
+                if(anim!=null)
+                {
+                    anim.SetTrigger("Activate");
+                }
+            }
+            if (CheckpointManager.Instance !=null)
+            {
+                CheckpointManager.Instance.SetActiveCheckpoint(respawnPoint.position);
+            }
+            else
+            {
+                Debug.LogError("CheckpointManager Instance is MISSING in the scene!");
             }
         }
     }

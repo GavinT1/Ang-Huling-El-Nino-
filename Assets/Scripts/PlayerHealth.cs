@@ -19,8 +19,11 @@ public class PlayerHealth : MonoBehaviour
     [Header("References")]
     public HeartUI heartUI;
     public GameObject deathChoicePanel;
+    public RisingWater risingWater;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
+    private PlayerHydration hydration;
+
 
     void Start()
     {
@@ -28,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        hydration = GetComponent<PlayerHydration>();
 
         if (heartUI != null)
         {
@@ -163,17 +167,30 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = false;
         currentHealth = maxHealth;
+
+        if(hydration !=null)
+        {
+            hydration.ResetHydration();
+        }
+        
         if(heartUI !=null)
         {
             heartUI.UpdateHearts(currentHealth);
         }
+
         if(CheckpointManager.Instance !=null)
         {
             transform.position = CheckpointManager.Instance.GetDefaultSpawnPosition();
         }
+
         if (rb !=null)
         {
             rb.linearVelocity = UnityEngine.Vector2.zero;
+        }
+
+        if (risingWater !=null)
+        {
+            risingWater.ResetWater();
         }
     }
 
@@ -194,6 +211,16 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = false;
         currentHealth = maxHealth;
+
+        if(hydration !=null)
+        {
+            hydration.ResetHydration();
+        }
+        
+        if (risingWater !=null)
+        {
+            risingWater.ResetWater();
+        }
 
         if (heartUI !=null)
         {

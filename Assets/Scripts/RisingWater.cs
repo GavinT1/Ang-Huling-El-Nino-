@@ -9,6 +9,13 @@ public class RisingWater : MonoBehaviour
     [Header("Damage Settings")]
     public int damageAmount = 3;
 
+    private Vector3 startPosition;
+
+    void Start()
+    {
+        startPosition = transform.position;
+    }
+
     void Update()
     {
         if (isRising)
@@ -27,5 +34,11 @@ public class RisingWater : MonoBehaviour
                 playerHealth.TakeDamage(damageAmount);
             }
         }
+    }
+
+    public void ResetWater()
+    {
+        isRising = false;
+        transform.position = startPosition;
     }
 }

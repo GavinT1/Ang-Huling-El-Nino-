@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerHydration))] 
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerHealth healthSystem;
     private bool isGrounded;
     private bool isJumping; 
+    private bool isSprinting;
     private bool isOnSlope;
     private bool isGoingDownhill;
     private Vector2 slopeNormalPerp;
@@ -79,7 +82,16 @@ public class PlayerMovement : MonoBehaviour
 
         SlopeCheck(moveInput);
 
-        bool isSprinting = Input.GetKey(KeyCode.LeftShift);
+        bool shiftHeld = Input.GetKey(KeyCode.LeftShift);
+
+        if (isGrounded)
+        {
+            isSprinting = shiftHeld;
+        }
+        else if (!shiftHeld)
+        {
+            isSprinting =false;
+        }
         float baseSpeed = isSprinting ? sprintSpeed : walkSpeed;
 
         float hydrationPct = hydrationSystem.currentHydration / hydrationSystem.maxHydration;

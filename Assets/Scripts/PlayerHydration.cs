@@ -13,15 +13,17 @@ public class PlayerHydration : MonoBehaviour
     public float timeToDie = 5f;
     private float DeathTimer;
     public float currentHydration { get; private set; } 
-
+    private PlayerHealth health;
     void Start()
     {
         currentHydration = maxHydration;
         DeathTimer = timeToDie;
+        health = GetComponent<PlayerHealth>();
     }
 
     void Update()
     {
+        if(health !=null && health.isDead) return;
         currentHydration -= passiveDrain * Time.deltaTime;
         currentHydration = Mathf.Clamp(currentHydration, 0, maxHydration);
 
@@ -70,5 +72,16 @@ public class PlayerHydration : MonoBehaviour
         currentHydration = Mathf.Clamp(currentHydration, 0, maxHydration);
 
         Debug.Log("Hydration refilled by " + amountToRestore + ". Current Hydration: " + currentHydration);
+    }
+
+    public void ResetHydration()
+    {
+        currentHydration = maxHydration;
+        DeathTimer = timeToDie;
+
+        if(hydrationBar !=null)
+        {
+            hydrationBar.fillAmount = 1f;
+        }
     }
 }

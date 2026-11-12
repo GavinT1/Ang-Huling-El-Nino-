@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using System.Collections;
 
 public class DissappearingPlatform : MonoBehaviour
@@ -7,14 +8,24 @@ public class DissappearingPlatform : MonoBehaviour
     public float timeBeforeDissapear = 1f;
     public float timeBeforeReappear = 3f;
 
-    private SpriteRenderer spriteRenderer;
+    private Renderer platformRenderer; 
     private Collider2D platformCollider;
     private bool isPlayerOnPlatform = false;
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        platformCollider = GetComponent<Collider2D>();
+        // Automatically finds TilemapRenderer OR SpriteRenderer
+        platformRenderer = GetComponent<TilemapRenderer>();
+        if (platformRenderer == null)
+        {
+            platformRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        platformCollider = GetComponent<CompositeCollider2D>();
+        if (platformCollider == null)
+        {
+            platformCollider = GetComponent<Collider2D>();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -37,12 +48,14 @@ public class DissappearingPlatform : MonoBehaviour
         isPlayerOnPlatform = true;
 
         yield return new WaitForSeconds(timeBeforeDissapear);
-        spriteRenderer.enabled = false;
-        platformCollider.enabled = false;
 
-        yield return new WaitForSeconds(timeBeforeDissapear);
-        spriteRenderer.enabled = true;
-        platformCollider.enabled = true;
+        if (platformRenderer != null) platformRenderer.enabled = false;
+        if (platformCollider != null) platformCollider.enabled = false;
+
+        yield return new WaitForSeconds(timeBeforeReappear);
+
+        if (platformRenderer != null) platformRenderer.enabled = true;
+        if (platformCollider != null) platformCollider.enabled = true;
         isPlayerOnPlatform = false;
     }
 }

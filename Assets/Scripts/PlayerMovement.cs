@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump Settings")]
     public float jumpForce = 12f;
     public float jumpCutMultiplier = 0.5f; 
+    public float coyotetime = 0.12f;
+    private float coyoteTimeCounter;
 
     [Header("Ladder Settings")]
     public float ladderClimbSpeed = 3f;
@@ -68,6 +70,15 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             isGrounded = false;
+        }
+
+        if(isGrounded)
+        {
+            coyoteTimeCounter = coyotetime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
         }
 
         // STRICT SINGLE JUMP RESET
@@ -156,11 +167,12 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // INITIATE GROUND JUMP
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isJumping)
+            if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter >0f && !isJumping)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 hydrationSystem.DrainFromJump(); 
                 isJumping = true;
+                coyoteTimeCounter = 0f;
             }
         }
 

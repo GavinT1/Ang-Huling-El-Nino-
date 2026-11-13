@@ -36,11 +36,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerHydration hydrationSystem;
     private PlayerHealth healthSystem;
+    private Animator anim;
+    private SpriteRenderer spriteRenderer;
     private bool isGrounded;
     private bool isJumping; 
     private bool isSprinting;
     private bool isOnSlope;
     private bool isGoingDownhill;
+    private bool hasTriggerDeath;
     private Vector2 slopeNormalPerp;
     private float moveInput;
     private float verticalInput;
@@ -50,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         hydrationSystem = GetComponent<PlayerHydration>(); 
         healthSystem = GetComponent<PlayerHealth>(); 
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         originalGravity = rb.gravityScale;
     }
 
@@ -58,7 +63,21 @@ public class PlayerMovement : MonoBehaviour
         if (healthSystem.isDead)
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            if(!hasTriggerDeath && anim !=null)
+            {
+                anim.SetTrigger("Death");
+                hasTriggerDeath = true;
+            }
             return; 
+        }
+        else if (hasTriggerDeath)
+        {
+            hasTriggerDeath = false;
+            if(anim !=null)
+            {
+                anim.ResetTrigger("Death");
+                anim.Play("Idle");
+            }
         }
 
         // 1. GROUND CHECK (Ignore ground detection while climbing ladder)
@@ -183,6 +202,25 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
             }
+        }
+
+        if (spriteRenderer !=null)
+        {
+            if (moveInput > 0.01f)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (moveInput < -0.01f)
+            {
+                spriteRenderer.flipX = true;
+            }
+        }
+
+        if(anim !=null )
+        {
+            anim.SetFloat("Speed", Mathf.Abs(moveInput));
+            anim.SetBool("isGrounded", isGrounded);
+            anim.SetFloat("yVelocity", rb.linearVelocity.y);
         }
     }
 

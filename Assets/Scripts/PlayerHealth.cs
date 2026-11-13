@@ -141,8 +141,14 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            RestartFromBeginning();
+            StartCoroutine(RestartAfterDeathAnimation());
         }
+    }
+
+    private IEnumerator RestartAfterDeathAnimation()
+    {
+        yield return new WaitForSeconds(1.0f);
+        RestartFromBeginning();
     }
 
     public void OnClick_RespawnAtCheckpoint()
@@ -216,7 +222,7 @@ public class PlayerHealth : MonoBehaviour
         {
             hydration.ResetHydration();
         }
-        
+
         if (risingWater !=null)
         {
             risingWater.ResetWater();

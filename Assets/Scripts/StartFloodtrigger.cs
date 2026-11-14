@@ -10,7 +10,7 @@ public class StartFloodtrigger : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             floodwater.isRising = true;
-            Debug.Log("Player entered the flood trigger. Floodwater is now rising."); 
+            Debug.Log("Player entered the flood trigger. Floodwater is now rising.");    
         }
     }
 }

@@ -34098,6 +34098,7 @@ GameObject:
   - component: {fileID: 668101417}
   - component: {fileID: 668101419}
   - component: {fileID: 668101418}
+  - component: {fileID: 668101420}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -34116,7 +34117,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.6847444, y: 0.22786199, z: 0.2988354}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1281114668}
   m_Father: {fileID: 1090067165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -34144,8 +34146,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3569869936867478750, guid: 3640ba68a9a9e4aedbb9747fcd0a6471, type: 3}
-  m_Type: 3
+  m_Sprite: {fileID: 3460240569964312052, guid: 221091acafdd048a4a23a3cdc3aa46e8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -34162,6 +34164,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668101416}
   m_CullTransparentMesh: 1
+--- !u!114 &668101420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668101416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Mask
+  m_ShowMaskGraphic: 1
 --- !u!1 &671200637
 GameObject:
   m_ObjectHideFlags: 0
@@ -41126,6 +41141,7 @@ RectTransform:
   - {fileID: 1952863913}
   - {fileID: 1293218596}
   - {fileID: 1639992311}
+  - {fileID: 2041658593}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -48237,6 +48253,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &1281114667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1281114668}
+  - component: {fileID: 1281114670}
+  - component: {fileID: 1281114669}
+  m_Layer: 5
+  m_Name: HydrationFill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1281114668
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281114667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 668101417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1281114669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281114667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 2062355966987067768, guid: 64304e8e6d7d84416914626ffaf301f0, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1281114670
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281114667}
+  m_CullTransparentMesh: 1
 --- !u!1 &1293218595
 GameObject:
   m_ObjectHideFlags: 0
@@ -66428,7 +66519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1639992311
 RectTransform:
   m_ObjectHideFlags: 0
@@ -96639,6 +96730,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &2041658592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2041658593}
+  - component: {fileID: 2041658595}
+  - component: {fileID: 2041658594}
+  m_Layer: 5
+  m_Name: Hydration Logo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2041658593
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041658592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.46887112, y: 0.46887112, z: 0.46887112}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1090067165}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -507.1, y: 236.7}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2041658594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041658592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -6347503772655479911, guid: 26b4f06b15c3740ae8b8a0c11f78ce51, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2041658595
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041658592}
+  m_CullTransparentMesh: 1
 --- !u!1 &2042661572
 GameObject:
   m_ObjectHideFlags: 0
@@ -98266,7 +98432,47 @@ PrefabInstance:
     - target: {fileID: 5985304872086599777, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
       propertyPath: hydrationBar
       value: 
-      objectReference: {fileID: 668101418}
+      objectReference: {fileID: 1281114669}
+    - target: {fileID: 5985304872086599777, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      propertyPath: hydrationFrames.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5985304872086599777, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      propertyPath: 'hydrationFrames.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2062355966987067768, guid: 64304e8e6d7d84416914626ffaf301f0, type: 3}
+    - target: {fileID: 5985304872086599777, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      propertyPath: 'hydrationFrames.Array.data[1]'
+      value: 
+      objectReference: {fileID: -2185964070268935558, guid: 64304e8e6d7d84416914626ffaf301f0, type: 3}
+    - target: {fileID: 5985304872086599777, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      propertyPath: 'hydrationFrames.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6022887788588184785, guid: 64304e8e6d7d84416914626ffaf301f0, type: 3}
+    - target: {fileID: 5985304872086599777, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      propertyPath: 'hydrationFrames.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8450210109314007659, guid: 64304e8e6d7d84416914626ffaf301f0, type: 3}
+    - target: {fileID: 5985304872086599777, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      propertyPath: 'hydrationFrames.Array.data[4]'
+      value: 
+      objectReference: {fileID: -8758288772451925177, guid: 64304e8e6d7d84416914626ffaf301f0, type: 3}
+    - target: {fileID: 5985304872086599777, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      propertyPath: 'hydrationFrames.Array.data[5]'
+      value: 
+      objectReference: {fileID: -5589304651598081433, guid: 64304e8e6d7d84416914626ffaf301f0, type: 3}
+    - target: {fileID: 5985304872086599777, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      propertyPath: 'hydrationFrames.Array.data[6]'
+      value: 
+      objectReference: {fileID: -5588514422410391729, guid: 64304e8e6d7d84416914626ffaf301f0, type: 3}
+    - target: {fileID: 5985304872086599777, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      propertyPath: 'hydrationFrames.Array.data[7]'
+      value: 
+      objectReference: {fileID: -632780303818311553, guid: 64304e8e6d7d84416914626ffaf301f0, type: 3}
+    - target: {fileID: 5985304872086599777, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      propertyPath: 'hydrationFrames.Array.data[8]'
+      value: 
+      objectReference: {fileID: -9092693130856249820, guid: 64304e8e6d7d84416914626ffaf301f0, type: 3}
     - target: {fileID: 6839158794284639115, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
       propertyPath: alertBanner
       value: 

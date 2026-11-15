@@ -27,7 +27,7 @@ public class PlayerHydration : MonoBehaviour
         currentHydration -= passiveDrain * Time.deltaTime;
         currentHydration = Mathf.Clamp(currentHydration, 0, maxHydration);
 
-        if(hydrationBar != null)
+        if ( hydrationBar != null )
         {
             hydrationBar.fillAmount = currentHydration / maxHydration;
         }

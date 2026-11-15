@@ -4,28 +4,42 @@ using System.Collections;
 
 public class DissappearingPlatform : MonoBehaviour
 {
+    
     [Header("Timing Settings")]
     public float timeBeforeDissapear = 1f;
     public float timeBeforeReappear = 3f;
 
+    [Header("Crumble Warning")]
+    public float shakeAmount = 0.06f;
+    public Color warningColor = new Color(1f, 0.45f, 0.45f, 1f);
+
     private Renderer platformRenderer; 
-    private Collider2D platformCollider;
+
+    private Collider2D[] platformColliders;
+    private Rigidbody2D playerRb;
+    private Tilemap platformTilemap;
+    private SpriteRenderer spriteRenderer;
+    private Vector3 originalLocalPos;
+    private Color originalColor = Color.white;
     private bool isPlayerOnPlatform = false;
 
     void Start()
     {
-        // Automatically finds TilemapRenderer OR SpriteRenderer
-        platformRenderer = GetComponent<TilemapRenderer>();
-        if (platformRenderer == null)
-        {
-            platformRenderer = GetComponent<SpriteRenderer>();
-        }
+        originalLocalPos = transform.localPosition;
+        platformTilemap = GetComponent<Tilemap>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-        platformCollider = GetComponent<CompositeCollider2D>();
-        if (platformCollider == null)
+        if(platformTilemap !=null )
         {
-            platformCollider = GetComponent<Collider2D>();
+            platformRenderer = GetComponent<TilemapRenderer>();
+            originalColor = platformTilemap.color;
         }
+        else if (spriteRenderer !=null)
+        {
+            platformRenderer = spriteRenderer;
+            originalColor = spriteRenderer.color;
+        }
+        platformColliders = GetComponents<Collider2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,6 +50,7 @@ public class DissappearingPlatform : MonoBehaviour
             {
                 if (contact.normal.y < -0.5f)
                 {
+                    playerRb = collision.rigidbody;
                     StartCoroutine(DisappearRoutine());
                     break;
                 }
@@ -47,15 +62,45 @@ public class DissappearingPlatform : MonoBehaviour
     {
         isPlayerOnPlatform = true;
 
-        yield return new WaitForSeconds(timeBeforeDissapear);
+        float elapsed =0f;
+        while (elapsed < timeBeforeDissapear)
+        {
+            elapsed += Time.deltaTime;
+            Vector2 randomOffset = Random.insideUnitCircle * shakeAmount;
+            transform.localPosition = originalLocalPos + new Vector3(randomOffset.x, randomOffset.y, 0f);
+
+            float pulse = Mathf.PingPong(elapsed * 10f, 1f);
+            SetPlatformColor(Color.Lerp(originalColor, warningColor, pulse));
+
+            yield return null;
+        }
+
+        transform.localPosition = originalLocalPos;
+        SetPlatformColor(originalColor);
 
         if (platformRenderer != null) platformRenderer.enabled = false;
-        if (platformCollider != null) platformCollider.enabled = false;
-
+        foreach ( Collider2D col in platformColliders)
+        {
+            if (col !=null) col.enabled = false;
+        }
+        if (playerRb != null)
+        {
+            playerRb.WakeUp();
+        }
+        
         yield return new WaitForSeconds(timeBeforeReappear);
 
         if (platformRenderer != null) platformRenderer.enabled = true;
-        if (platformCollider != null) platformCollider.enabled = true;
+        foreach (Collider2D col in platformColliders)
+        {
+            if(col !=null) col.enabled = true;
+        }
         isPlayerOnPlatform = false;
+    }
+
+    private void SetPlatformColor(Color newColor)
+    {
+        if (platformTilemap !=null) platformTilemap.color = newColor;
+        else if (spriteRenderer !=null) spriteRenderer.color = newColor;
     }
 }

@@ -96,3 +96,4 @@ public class LowHydrationAlert : MonoBehaviour
     return Sprite.Create(tex, new Rect(0, 0, width, height), new Vector2 (0.5f,0.5f));
     }
 }
+    

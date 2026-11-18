@@ -41,28 +41,34 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: BackgoundSky
+  - name: Layer1
     uniqueID: 3857921707
     locked: 0
-  - name: BackgroundSmoke
+  - name: Layer1.2
+    uniqueID: 652714467
+    locked: 0
+  - name: Layer1.3
+    uniqueID: 2557128619
+    locked: 0
+  - name: Layer2
     uniqueID: 1298384291
     locked: 0
-  - name: BackgroundBuildings
+  - name: Layer3
     uniqueID: 2738179219
     locked: 0
-  - name: BackgroundBuildings2
+  - name: Layer4
     uniqueID: 1300178225
     locked: 0
-  - name: BackgroundBuildings3
+  - name: Layer5
     uniqueID: 2129295541
     locked: 0
-  - name: BackgroundBuildings4
+  - name: Layer6
     uniqueID: 35636681
     locked: 0
-  - name: BackgroundForest
+  - name: Layer7
     uniqueID: 2472058105
     locked: 0
-  - name: BackGound
+  - name: Layer8
     uniqueID: 3866042035
     locked: 0
   - name: Decorations

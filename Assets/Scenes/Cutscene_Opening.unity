@@ -1501,14 +1501,14 @@ RectTransform:
   m_GameObject: {fileID: 344145682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11605946, y: 0.11605946, z: 0.11605946}
+  m_LocalScale: {x: 0.1349774, y: 0.2378978, z: 0.1349774}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 238649290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27.499998, y: 26.400007}
+  m_AnchoredPosition: {x: -29.1, y: 29.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &344145684
@@ -1533,8 +1533,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: where the former tree line once stood,
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
+  m_sharedMaterial: {fileID: 6117849893819428939, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1901,14 +1901,14 @@ RectTransform:
   m_GameObject: {fileID: 617413136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11605946, y: 0.11605946, z: 0.11605946}
+  m_LocalScale: {x: 0.1349774, y: 0.2378978, z: 0.1349774}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 238649290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -35.1, y: 11.300007}
+  m_AnchoredPosition: {x: -56.3, y: 11.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &617413138
@@ -1933,8 +1933,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: In the decrepit neighborhood of Barangay Luma,
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
+  m_sharedMaterial: {fileID: 6117849893819428939, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1997,7 +1997,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -633.7486, w: 0}
+  m_margin: {x: 189.62476, y: 0, z: -633.7486, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2038,14 +2038,14 @@ RectTransform:
   m_GameObject: {fileID: 654215802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11605946, y: 0.11605946, z: 0.11605946}
+  m_LocalScale: {x: 0.1349774, y: 0.2378978, z: 0.1349774}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 238649290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -35.1, y: 11.300007}
+  m_AnchoredPosition: {x: -34.6, y: 11}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &654215804
@@ -2070,8 +2070,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: those unfortunate enough to live in shambling homes and tents
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
+  m_sharedMaterial: {fileID: 6117849893819428939, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2134,7 +2134,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -633.7486, w: -57.965187}
+  m_margin: {x: 0, y: 0, z: -517.6802, w: -57.965187}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2267,14 +2267,14 @@ RectTransform:
   m_GameObject: {fileID: 691677748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1338, y: 0.1338, z: 0.1338}
+  m_LocalScale: {x: 0.13497745, y: 0.23789775, z: 0.13497745}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 238649290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -26, y: 20.2}
+  m_AnchoredPosition: {x: -23.5, y: 31}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691677750
@@ -2299,8 +2299,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: It happened on a day like any other.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
+  m_sharedMaterial: {fileID: 6117849893819428939, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2363,7 +2363,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -389.638, w: 0}
+  m_margin: {x: 0, y: 0, z: -337.32773, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4372,14 +4372,14 @@ RectTransform:
   m_GameObject: {fileID: 1839964818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11605946, y: 0.11605946, z: 0.11605946}
+  m_LocalScale: {x: 0.1349774, y: 0.2378978, z: 0.1349774}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 238649290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.599998, y: -7.199994}
+  m_AnchoredPosition: {x: -15.9, y: -23.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1839964820
@@ -4404,8 +4404,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Along the adjacent forest,
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
+  m_sharedMaterial: {fileID: 6117849893819428939, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4601,14 +4601,14 @@ RectTransform:
   m_GameObject: {fileID: 1991447526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11605946, y: 0.11605946, z: 0.11605946}
+  m_LocalScale: {x: 0.1349774, y: 0.2378978, z: 0.1349774}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 238649290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.499998, y: 2.3000064}
+  m_AnchoredPosition: {x: -19.8, y: -6.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1991447528
@@ -4633,8 +4633,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: El Nino had come in full force.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
+  m_sharedMaterial: {fileID: 6117849893819428939, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4782,14 +4782,14 @@ RectTransform:
   m_GameObject: {fileID: 2113720318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11605946, y: 0.11605946, z: 0.11605946}
+  m_LocalScale: {x: 0.1349774, y: 0.2378978, z: 0.1349774}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 238649290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -35.1, y: -6.599994}
+  m_AnchoredPosition: {x: -36.5, y: -25.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2113720320
@@ -4814,8 +4814,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: were the first to fall victim to the wrath of nature.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
+  m_sharedMaterial: {fileID: 6117849893819428939, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4878,7 +4878,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -633.7486, w: 0}
+  m_margin: {x: 0, y: 0, z: -544.8132, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

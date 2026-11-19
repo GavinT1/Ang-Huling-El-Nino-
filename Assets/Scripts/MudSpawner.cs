@@ -1,140 +1,81 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MudSpawner : MonoBehaviour
 {
-    public enum GamePhase { Start, Mid, Climax }
-    
-    [Header("Game Phase state")]
-    public GamePhase currentPhase = GamePhase.Start;
+    [System.Serializable]
+    public class MudDropZone
+    {
+        public string zoneName = "Mud Zone";
+        public Transform centerPoint;
+        public float width = 3f;
+        public float spawnInterval = 2f;
+        public int dropsPerBurst = 2;
+    }
 
     [Header("References")]
-    public Transform playerTransform; 
-    public GameObject mudPrefab;      
+    public GameObject mudPrefab;
 
-    [Header("Area 1 Boundaries")]
-    public float area1MinX = -15f;
-    public float area1MaxX = 102.77f;
+    [Header("Fixed Mud Drop Zones (Set Size to 3)")]
+    public List<MudDropZone> dropZones = new List<MudDropZone>();
 
-    [Header("Map Position Thresholds")]
-    public float midPhaseXPosition = 15f;     
-    public float climaxPhaseXPosition = 35f;  
-
-    [Header("Spawn Intervals (Delay Between Bursts)")]  
-    public float startInterval = 2.5f;   
-    public float midInterval = 1.5f;     
-    public float climaxInterval = 0.8f; 
-
-    [Header("Drops Per Burst (How many drop at once!)")]
-    public int startDropCount = 2;   
-    public int midDropCount = 3;     
-    public int climaxDropCount = 4; 
-
-    [Header("Spawn Area Setup")]
-    public float spawnWidth = 8f;   // Horizontal area around player (Left to Right)
-    public float spawnHeight = 7f;  // Height above player where mud drops from
-
-    private float currentInterval;
-    private int currentDropCount;
+    [Header("Optional Performance Optimization")]
+    public Transform playerTransform;
+    public float activeDistanceFromPlayer = 25f;
 
     void Start()
     {
-        currentPhase = GamePhase.Start;
-        currentInterval = startInterval;
-        currentDropCount = startDropCount;
-        StartCoroutine(SpawnRoutine());
-    }
-
-    void Update()
-    {
-        if (playerTransform == null) return;
-
-        float playerX = playerTransform.position.x;
-
-        // Dynamic difficulty phase changes based on player position
-        if (playerX >= climaxPhaseXPosition)
+        foreach (MudDropZone zone in dropZones)
         {
-            if(currentPhase != GamePhase.Climax)
+            if (zone.centerPoint != null)
             {
-            currentPhase = GamePhase.Climax;
-            currentInterval = climaxInterval;
-            currentDropCount = climaxDropCount;
-            Debug.Log("Entered Climax Phase - Mud Storm!");
-            }
-        }
-        else if (playerX >= midPhaseXPosition)
-        {
-            if(currentPhase != GamePhase.Mid)
-            {
-            currentPhase = GamePhase.Mid;
-            currentInterval = midInterval;
-            currentDropCount = midDropCount;
-            Debug.Log("Entered Mid Phase!");
-            }
-        }
-        else
-        {
-            if(currentPhase != GamePhase.Start)
-            {
-                currentPhase = GamePhase.Start;
-                currentInterval = startInterval;
-                currentDropCount = startDropCount;
-                Debug.Log("Returned to Start Phase.");
+                StartCoroutine(ZoneSpawnRoutine(zone));
             }
         }
     }
 
-    IEnumerator SpawnRoutine()
+    IEnumerator ZoneSpawnRoutine(MudDropZone zone)
     {
         while (true)
         {
-            yield return new WaitForSeconds(currentInterval);
+            yield return new WaitForSeconds(zone.spawnInterval);
 
-            if(playerTransform != null)
+            if (mudPrefab == null || zone.centerPoint == null) continue;
+
+            if (playerTransform != null &&
+                Mathf.Abs(playerTransform.position.x - zone.centerPoint.position.x) > activeDistanceFromPlayer)
             {
-                float playerX = playerTransform.position.x;
-                if(playerX >= area1MinX && playerX <= area1MaxX)
-                {
-                    TriggerMudDrop();
-                }
+                continue;
             }
+
+            TriggerMudDropInZone(zone);
         }
     }
 
-    void TriggerMudDrop()
+    void TriggerMudDropInZone(MudDropZone zone)
     {
-        if (mudPrefab == null || playerTransform == null)
+        for (int i = 0; i < zone.dropsPerBurst; i++)
         {
-            Debug.LogWarning("Missing MudPrefab or PlayerTransform!");
-            return;
-        }
-
-        // Spawn a batch/burst of multiple drops across the area
-        for (int i = 0; i < currentDropCount; i++)
-        {
-            // Pick a random X position around the player within spawnWidth
-            float randomX = playerTransform.position.x + Random.Range(-spawnWidth / 2f, spawnWidth / 2f);
-            
-            // Slightly stagger the Y starting height so they don't fall in a perfectly flat line
-            float randomY = playerTransform.position.y + spawnHeight + Random.Range(0f, 2f);
+            float randomX = zone.centerPoint.position.x + Random.Range(-zone.width / 2f, zone.width / 2f);
+            float randomY = zone.centerPoint.position.y + Random.Range(0f, 1.5f);
 
             Vector3 spawnPosition = new Vector3(randomX, randomY, 0f);
-
             Instantiate(mudPrefab, spawnPosition, Quaternion.identity);
         }
-
-        Debug.Log($"Spawned {currentDropCount} mud drops | Phase: {currentPhase}");
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
-        if (playerTransform == null) return;
-        Gizmos.color = Color.green;
-        Vector3 boxCenter = new Vector3(playerTransform.position.x, playerTransform.position.y + spawnHeight / 1f, 0f);
-        Gizmos.DrawWireCube(boxCenter, new Vector3(spawnWidth, 2f, 0));
+        if (dropZones == null) return;
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(new Vector3(area1MinX, playerTransform.position.y - 10f, 0), new Vector3(area1MinX, playerTransform.position.y + 10f, 0));
-        Gizmos.DrawLine(new Vector3(area1MaxX, playerTransform.position.y - 10f, 0), new Vector3(area1MaxX, playerTransform.position.y + 10f, 0));
+        Gizmos.color = new Color(0.6f, 0.35f, 0.1f, 0.9f);
+        foreach (MudDropZone zone in dropZones)
+        {
+            if (zone.centerPoint != null)
+            {
+                Gizmos.DrawWireCube(zone.centerPoint.position, new Vector3(zone.width, 1.5f, 0f));
+            }
+        }
     }
 }

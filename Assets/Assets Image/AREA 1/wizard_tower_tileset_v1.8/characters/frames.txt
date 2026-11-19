@@ -1,0 +1,25 @@
+Characters face right; flip horizontally for left. Feet stand on the bottom 2 rows.
+
+name                     frames   size      speed
+archmage_idle             8 frames  32x40 px  150 ms/frame
+archmage_walk             8 frames  32x40 px  100 ms/frame
+apprentice_idle           8 frames  32x40 px  150 ms/frame
+apprentice_walk           8 frames  32x40 px  100 ms/frame
+witch_idle                8 frames  32x40 px  150 ms/frame
+witch_walk                8 frames  32x40 px  100 ms/frame
+knight_idle               8 frames  32x40 px  150 ms/frame
+knight_walk               8 frames  32x40 px  100 ms/frame
+merchant_idle             8 frames  32x40 px  150 ms/frame
+merchant_walk             8 frames  32x40 px  100 ms/frame
+noble_idle                8 frames  32x40 px  150 ms/frame
+noble_walk                8 frames  32x40 px  100 ms/frame
+maid_idle                 8 frames  32x40 px  150 ms/frame
+maid_walk                 8 frames  32x40 px  100 ms/frame
+bard_idle                 8 frames  32x40 px  150 ms/frame
+bard_walk                 8 frames  32x40 px  100 ms/frame
+farmer_idle               8 frames  32x40 px  150 ms/frame
+farmer_walk               8 frames  32x40 px  100 ms/frame
+monk_idle                 8 frames  32x40 px  150 ms/frame
+monk_walk                 8 frames  32x40 px  100 ms/frame
+sweeper_idle              8 frames  32x40 px  150 ms/frame
+sweeper_walk              8 frames  32x40 px  100 ms/frame

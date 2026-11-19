@@ -9,16 +9,23 @@ public class PlayerHydration : MonoBehaviour
     public float passiveDrain = 1f;
     public float sprintDrain = 5f;
     public float jumpCost = 3f;
+    public float barRollSpeed = 6f;
 
     public float timeToDie = 5f;
     private float DeathTimer;
     public float currentHydration { get; private set; } 
+    private float displayedHydration;
     private PlayerHealth health;
+    private HydrationPickupRingEffect ringEffect;
+    private HydrationPickupAnimation pickupAnim;
     void Start()
     {
         currentHydration = maxHydration;
+        displayedHydration = maxHydration;
         DeathTimer = timeToDie;
         health = GetComponent<PlayerHealth>();
+        ringEffect = GetComponent<HydrationPickupRingEffect>();
+        pickupAnim = GetComponent<HydrationPickupAnimation>();
     }
 
     void Update()
@@ -27,9 +34,18 @@ public class PlayerHydration : MonoBehaviour
         currentHydration -= passiveDrain * Time.deltaTime;
         currentHydration = Mathf.Clamp(currentHydration, 0, maxHydration);
 
+        if (displayedHydration < currentHydration)
+        {
+            displayedHydration = Mathf.MoveTowards(displayedHydration, currentHydration, maxHydration * barRollSpeed * Time.deltaTime);
+        }
+        else
+        {
+            displayedHydration = currentHydration;
+        }
+
         if ( hydrationBar != null )
         {
-            hydrationBar.fillAmount = currentHydration / maxHydration;
+            hydrationBar.fillAmount = displayedHydration / maxHydration;
         }
 
         if (currentHydration <= 0)
@@ -37,7 +53,6 @@ public class PlayerHydration : MonoBehaviour
             DeathTimer -= Time.deltaTime;
             if (DeathTimer <= 0)
             {
-                PlayerHealth health = GetComponent<PlayerHealth>();
                 if (health != null && !health.isDead)
                 {
                    health.InstantDeath(); // Inflict fatal damage
@@ -71,12 +86,23 @@ public class PlayerHydration : MonoBehaviour
         currentHydration += amountToRestore;
         currentHydration = Mathf.Clamp(currentHydration, 0, maxHydration);
 
+        if(ringEffect !=null)
+        {
+            ringEffect.PlayPickupRings();
+        }
+
+        if (pickupAnim !=null)
+        {
+            pickupAnim.PlayCollectEffect(amountToRestore);
+        }
+
         Debug.Log("Hydration refilled by " + amountToRestore + ". Current Hydration: " + currentHydration);
     }
 
     public void ResetHydration()
     {
         currentHydration = maxHydration;
+        displayedHydration = maxHydration;
         DeathTimer = timeToDie;
 
         if(hydrationBar !=null)

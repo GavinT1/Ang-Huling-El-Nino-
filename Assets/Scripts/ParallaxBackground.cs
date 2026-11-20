@@ -2,12 +2,24 @@ using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
 {
+    [Header("Target Camera")]
     public Transform cameraTransform;
-    [Range(0f, 1f)] public float parallaxFactorX = 0.3f; // Horizontal parallax depth
-    [Range(0f, 1f)] public float parallaxFactorY = 0.9f; // Vertical parallax depth
 
-    private Vector3 startPos;
-    private Vector3 startCameraPos;
+    [Header("Parallax Depth")]
+    [Range(0f, 1f)]
+    public float parallaxEffectX = 0.5f;
+    [Range(0f, 1f)]
+    public float parallaxEffectY = 0.1f;
+
+    [Header("Cave / Zone Cutoff")]
+    public bool useMaxCameraX = true;
+    public float maxCameraX = 32f;
+
+    [Header("Infinite Horizontal Loop")]
+    public bool infiniteHorizontal = false;
+
+    private Vector3 lastCameraPosition;
+    private float textureUnitSizeX;
 
     void Start()
     {
@@ -18,8 +30,13 @@ public class ParallaxBackground : MonoBehaviour
 
         if (cameraTransform != null)
         {
-            startPos = transform.position;
-            startCameraPos = cameraTransform.position;
+            lastCameraPosition = cameraTransform.position;
+        }
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null && sr.sprite != null)
+        {
+            textureUnitSizeX = (sr.sprite.rect.width / sr.sprite.pixelsPerUnit) * Mathf.Abs(transform.localScale.x);
         }
     }
 
@@ -27,14 +44,34 @@ public class ParallaxBackground : MonoBehaviour
     {
         if (cameraTransform == null) return;
 
-        // Calculate total distance camera has moved from start point
-        Vector3 distance = cameraTransform.position - startCameraPos;
+        float currentCamX = cameraTransform.position.x;
+        float prevCamX = lastCameraPosition.x;
 
-        // Directly anchor position to prevent Y-axis drift
-        transform.position = new Vector3(
-            startPos.x + (distance.x * parallaxFactorX),
-            startPos.y + (distance.y * parallaxFactorY),
-            startPos.z
+        if (useMaxCameraX)
+        {
+            currentCamX = Mathf.Min(currentCamX, maxCameraX);
+            prevCamX = Mathf.Min(prevCamX, maxCameraX);
+        }
+
+        float deltaX = currentCamX - prevCamX;
+        float deltaY = cameraTransform.position.y - lastCameraPosition.y;
+
+        transform.position += new Vector3(
+            deltaX * parallaxEffectX,
+            deltaY * parallaxEffectY,
+            0f
         );
+
+        lastCameraPosition = cameraTransform.position;
+
+        if (infiniteHorizontal && textureUnitSizeX > 0f)
+        {
+            float distanceFromCamera = currentCamX - transform.position.x;
+            if (Mathf.Abs(distanceFromCamera) >= textureUnitSizeX)
+            {
+                float offsetPositionX = distanceFromCamera % textureUnitSizeX;
+                transform.position = new Vector3(currentCamX + offsetPositionX, transform.position.y, transform.position.z);
+            }
+        }
     }
 }

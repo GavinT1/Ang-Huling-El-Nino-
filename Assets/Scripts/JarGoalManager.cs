@@ -37,6 +37,16 @@ public class JarGoalManager : MonoBehaviour
         collectedJars++;
         UpdateUI();
 
+        if (QuestObjectiveTracker.Instance != null)
+        {
+            QuestObjectiveTracker.Instance.RefreshJarCount(collectedJars, requiredJars);
+
+            if (collectedJars >= requiredJars)
+            {
+                QuestObjectiveTracker.Instance.SetStage(QuestObjectiveTracker.QuestStage.GoToExit);
+            }
+        }
+
         if (collectedJars >= requiredJars && levelExit != null)
         {
             levelExit.SetUnlocked(true);

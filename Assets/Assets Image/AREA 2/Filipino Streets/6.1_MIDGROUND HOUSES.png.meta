@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -132,11 +132,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 196
+        y: 195
         width: 928
         height: 255
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -149,11 +149,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: 6.1_MIDGROUND HOUSES_1
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 199
+        width: 358
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 1}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf46bab467be82b458bc17371f490814
+      internalID: -965178886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6.1_MIDGROUND HOUSES_2
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 352
+        width: 186
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2ed5c9c1ea46f4e80a0ab474665aff
+      internalID: 1356914881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 43176b4c62771ad4787b387b6d9ea294
     internalID: 0
     vertices: []
     indices: 
@@ -164,6 +208,8 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       6.1_MIDGROUND HOUSES_0: -6614319467520342126
+      6.1_MIDGROUND HOUSES_1: -965178886
+      6.1_MIDGROUND HOUSES_2: 1356914881
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

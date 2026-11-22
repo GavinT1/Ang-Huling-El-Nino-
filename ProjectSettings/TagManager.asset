@@ -74,6 +74,9 @@ TagManager:
   - name: Decorations
     uniqueID: 738641279
     locked: 0
+  - name: Rooftops
+    uniqueID: 3063324319
+    locked: 0
   - name: Flood
     uniqueID: 2685934401
     locked: 0

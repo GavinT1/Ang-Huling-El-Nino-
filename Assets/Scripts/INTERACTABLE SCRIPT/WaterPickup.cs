@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Rendering.Universal;
 
 public class WaterPickup : MonoBehaviour
 {
@@ -22,10 +23,15 @@ public class WaterPickup : MonoBehaviour
     private Collider2D jarCollider;
     private bool isCollected;
 
+    private ParticleSystem jarParticles;
+    private Light2D jarLight;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         jarCollider = GetComponent<Collider2D>();
+        jarParticles = GetComponentInChildren<ParticleSystem>();
+        jarLight = GetComponentInChildren<Light2D>();
     }
 
     private void OnEnable()
@@ -57,6 +63,8 @@ public class WaterPickup : MonoBehaviour
                 }
                 if(spriteRenderer !=null) spriteRenderer.enabled = false;
                 if(jarCollider !=null) jarCollider.enabled = false;
+                if (jarParticles != null) jarParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                if (jarLight != null) jarLight.enabled = false;
             }
         }
     }
@@ -66,6 +74,8 @@ public class WaterPickup : MonoBehaviour
         isCollected = false;
         if (spriteRenderer !=null) spriteRenderer.enabled = true;
         if(jarCollider !=null) jarCollider.enabled = true;
+        if (jarParticles != null) jarParticles.Play();
+        if (jarLight != null) jarLight.enabled = true;
     }
 
     public static void RespawnAllJars()

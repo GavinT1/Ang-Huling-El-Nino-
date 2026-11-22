@@ -198,6 +198,8 @@ public class PlayerHealth : MonoBehaviour
         {
             risingWater.ResetWater();
         }
+
+        WaterPickup.RespawnAllJars();
     }
 
     public void RespawnAtCheckpoint()
@@ -227,6 +229,7 @@ public class PlayerHealth : MonoBehaviour
         {
             risingWater.ResetWater();
         }
+        WaterPickup.RespawnAllJars();
 
         if (heartUI !=null)
         {

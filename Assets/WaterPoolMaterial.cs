@@ -6,26 +6,37 @@ public class WaterPoolMaterial : MonoBehaviour
     [Header("Pool Dimensions")]
     [SerializeField] private float width = 8f;
     [SerializeField] private float height = 2.5f;
-    [SerializeField] private int columnsPerUnit = 6;
+    [Tooltip("Higher values (10-14) make raindrop dimples pinpoint and realistic")]
+    [SerializeField] private int columnsPerUnit = 12;
 
     [Header("Rendering Order")]
-    [SerializeField] private string sortingLayerName = "Default";
-    [SerializeField] private int sortingOrder = 5;
+    [SerializeField] private string sortingLayerName = "Player";
+    [SerializeField] private int sortingOrder = 2;
 
     [Header("Spring Wave Physics")]
-    [SerializeField] private float springStiffness = 0.025f;
-    [SerializeField] private float damping = 0.035f;
-    [SerializeField] private float waveSpread = 0.04f;
+    [SerializeField] private float springStiffness = 0.02f;
+    [SerializeField] private float damping = 0.07f;
+    [SerializeField] private float waveSpread = 0.03f;
 
     [Header("Idle Surface Ripples")]
-    [SerializeField] private float idleWaveAmplitude = 0.04f;
-    [SerializeField] private float idleWaveFrequency = 1.8f;
-    [SerializeField] private float idleWaveSpeed = 2.2f;
+    [SerializeField] private float idleWaveAmplitude = 0.02f;
+    [SerializeField] private float idleWaveFrequency = 2.2f;
+    [SerializeField] private float idleWaveSpeed = 2.0f;
 
     [Header("Player Splash Interaction")]
-    [SerializeField] private float entrySplashMultiplier = 0.06f;
-    [SerializeField] private float swimRippleMultiplier = 0.015f;
-    [SerializeField] private float maxSplashVelocity = 0.45f;
+    [SerializeField] private float entrySplashMultiplier = 0.012f;
+    [SerializeField] private float swimRippleMultiplier = 0.01f;
+    [SerializeField] private float maxSplashVelocity = 0.1f;
+    [SerializeField] private int splashRadius = 6;
+    [SerializeField] private GameObject splashEffectPrefab;
+    [SerializeField] private float minEntrySpeedForParticles = 2.0f;
+
+    [Header("Realistic Rain / Droplet Dimples")]
+    [Tooltip("Keep very low (0.0003 - 0.0008) for realistic rain pitter-patter")]
+    [SerializeField] private float dropletSplashMultiplier = 0.00045f;
+    [SerializeField] private float maxDropletImpulse = 0.012f;
+    [Tooltip("Optional: Destroy raindrops/droplets as soon as they hit the water surface")]
+    [SerializeField] private bool destroyDropletsOnImpact = false;
 
     private Mesh mesh;
     private Vector3[] vertices;
@@ -79,11 +90,9 @@ public class WaterPoolMaterial : MonoBehaviour
             baseHeights[i] = halfH;
             currentHeights[i] = halfH;
 
-            // Top vertex (surface)
             vertices[i * 2] = new Vector3(x, halfH, 0f);
             uvs[i * 2] = new Vector2(t, 1f);
 
-            // Bottom vertex (pool floor)
             vertices[i * 2 + 1] = new Vector3(x, -halfH, 0f);
             uvs[i * 2 + 1] = new Vector2(t, 0f);
 
@@ -111,7 +120,6 @@ public class WaterPoolMaterial : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // 1. Update each surface spring node
         for (int i = 0; i < nodeCount; i++)
         {
             float displacement = currentHeights[i] - baseHeights[i];
@@ -120,7 +128,6 @@ public class WaterPoolMaterial : MonoBehaviour
             currentHeights[i] += velocities[i];
         }
 
-        // 2. Propagate waves to neighboring nodes
         float[] leftDeltas = new float[nodeCount];
         float[] rightDeltas = new float[nodeCount];
 
@@ -147,7 +154,6 @@ public class WaterPoolMaterial : MonoBehaviour
             }
         }
 
-        // 3. Apply spring wave + subtle idle shimmer to mesh top vertices
         for (int i = 0; i < nodeCount; i++)
         {
             float x = vertices[i * 2].x;
@@ -166,28 +172,56 @@ public class WaterPoolMaterial : MonoBehaviour
 
         float clampedVel = Mathf.Clamp(splashVelocity, -maxSplashVelocity, maxSplashVelocity);
 
-        for (int offset = -2; offset <= 2; offset++)
+        for (int offset = -splashRadius; offset <= splashRadius; offset++)
         {
             int idx = centerIndex + offset;
             if (idx >= 0 && idx < nodeCount)
             {
-                float falloff = 1f - (Mathf.Abs(offset) / 3f);
+                float t = (float)Mathf.Abs(offset) / (splashRadius + 1);
+                float falloff = Mathf.Cos(t * Mathf.PI * 0.5f);
                 velocities[idx] += clampedVel * falloff;
             }
         }
     }
 
+    private void SplashSingleNode(float worldX, float splashVelocity)
+    {
+        float localX = transform.InverseTransformPoint(new Vector3(worldX, 0f, 0f)).x;
+        float normalizedX = Mathf.InverseLerp(-width * 0.5f, width * 0.5f, localX);
+        int idx = Mathf.Clamp(Mathf.RoundToInt(normalizedX * (nodeCount - 1)), 0, nodeCount - 1);
+
+        velocities[idx] += Mathf.Clamp(splashVelocity, -maxDropletImpulse, maxDropletImpulse);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         Rigidbody2D rb = other.attachedRigidbody;
-        if (rb != null)
+        if (rb == null) return;
+
+        if (other.CompareTag("Player"))
         {
             Splash(other.transform.position.x, rb.linearVelocity.y * entrySplashMultiplier);
+
+            if (Mathf.Abs(rb.linearVelocity.y) >= minEntrySpeedForParticles)
+            {
+                SpawnSplashParticles(other.transform.position.x);
+            }
+        }
+        else
+        {
+            SplashSingleNode(other.transform.position.x, rb.linearVelocity.y * dropletSplashMultiplier);
+
+            if (destroyDropletsOnImpact)
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (!other.CompareTag("Player")) return;
+
         Rigidbody2D rb = other.attachedRigidbody;
         if (rb != null && Mathf.Abs(rb.linearVelocity.x) > 0.5f)
         {
@@ -197,6 +231,15 @@ public class WaterPoolMaterial : MonoBehaviour
                 Splash(other.transform.position.x, -Mathf.Abs(rb.linearVelocity.x) * swimRippleMultiplier * Time.fixedDeltaTime);
             }
         }
+    }
+
+    private void SpawnSplashParticles(float worldX)
+    {
+        if (splashEffectPrefab == null) return;
+
+        float surfaceWorldY = transform.position.y + (height * 0.5f);
+        Vector3 spawnPos = new Vector3(worldX, surfaceWorldY, 0f);
+        Instantiate(splashEffectPrefab, spawnPos, Quaternion.identity);
     }
 
     private void OnDrawGizmosSelected()

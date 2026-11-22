@@ -11,8 +11,8 @@ TagManager:
   - GROUND
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - RainBlocker
   - 
   - 
   - 
@@ -77,17 +77,17 @@ TagManager:
   - name: Rooftops
     uniqueID: 3063324319
     locked: 0
-  - name: Flood
-    uniqueID: 2685934401
-    locked: 0
-  - name: ForeGround
-    uniqueID: 3131989191
-    locked: 0
   - name: Interactables
     uniqueID: 2708492521
     locked: 0
   - name: Player
     uniqueID: 1800757209
+    locked: 0
+  - name: Flood
+    uniqueID: 2685934401
+    locked: 0
+  - name: ForeGround
+    uniqueID: 3131989191
     locked: 0
   m_RenderingLayers:
   - Default

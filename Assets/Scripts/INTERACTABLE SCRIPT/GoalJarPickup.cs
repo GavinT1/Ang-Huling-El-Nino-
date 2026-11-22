@@ -25,6 +25,10 @@ public class GoalJarPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (QuestObjectiveTracker.Instance != null &&
+            QuestObjectiveTracker.Instance.currentStage == QuestObjectiveTracker.QuestStage.ReadBoard)
+            return;
+            
         if (collected || !other.CompareTag("Player")) return;
         collected = true;
 

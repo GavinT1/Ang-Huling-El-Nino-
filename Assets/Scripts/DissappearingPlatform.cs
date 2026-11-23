@@ -4,7 +4,6 @@ using System.Collections;
 
 public class DissappearingPlatform : MonoBehaviour
 {
-    
     [Header("Timing Settings")]
     public float timeBeforeDissapear = 1f;
     public float timeBeforeReappear = 3f;
@@ -29,12 +28,12 @@ public class DissappearingPlatform : MonoBehaviour
         platformTilemap = GetComponent<Tilemap>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if(platformTilemap !=null )
+        if (platformTilemap != null)
         {
             platformRenderer = GetComponent<TilemapRenderer>();
             originalColor = platformTilemap.color;
         }
-        else if (spriteRenderer !=null)
+        else if (spriteRenderer != null)
         {
             platformRenderer = spriteRenderer;
             originalColor = spriteRenderer.color;
@@ -62,26 +61,28 @@ public class DissappearingPlatform : MonoBehaviour
     {
         isPlayerOnPlatform = true;
 
-        float elapsed =0f;
+        float elapsed = 0f;
+        WaitForFixedUpdate fixedWait = new WaitForFixedUpdate();
+
         while (elapsed < timeBeforeDissapear)
         {
-            elapsed += Time.deltaTime;
-            Vector2 randomOffset = Random.insideUnitCircle * shakeAmount;
-            transform.localPosition = originalLocalPos + new Vector3(randomOffset.x, randomOffset.y, 0f);
+            elapsed += Time.fixedDeltaTime;
+            float offsetX = Random.Range(-shakeAmount, shakeAmount);
+            transform.localPosition = originalLocalPos + new Vector3(offsetX, 0f, 0f);
 
             float pulse = Mathf.PingPong(elapsed * 10f, 1f);
             SetPlatformColor(Color.Lerp(originalColor, warningColor, pulse));
 
-            yield return null;
+            yield return fixedWait;
         }
 
         transform.localPosition = originalLocalPos;
         SetPlatformColor(originalColor);
 
         if (platformRenderer != null) platformRenderer.enabled = false;
-        foreach ( Collider2D col in platformColliders)
+        foreach (Collider2D col in platformColliders)
         {
-            if (col !=null) col.enabled = false;
+            if (col != null) col.enabled = false;
         }
         if (playerRb != null)
         {
@@ -93,14 +94,14 @@ public class DissappearingPlatform : MonoBehaviour
         if (platformRenderer != null) platformRenderer.enabled = true;
         foreach (Collider2D col in platformColliders)
         {
-            if(col !=null) col.enabled = true;
+            if (col != null) col.enabled = true;
         }
         isPlayerOnPlatform = false;
     }
 
     private void SetPlatformColor(Color newColor)
     {
-        if (platformTilemap !=null) platformTilemap.color = newColor;
-        else if (spriteRenderer !=null) spriteRenderer.color = newColor;
+        if (platformTilemap != null) platformTilemap.color = newColor;
+        else if (spriteRenderer != null) spriteRenderer.color = newColor;
     }
 }

@@ -913,7 +913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 54351211}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: A1_DISAPPEARING
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -948,6 +948,11 @@ Transform:
   - {fileID: 1160534919}
   m_Father: {fileID: 840083831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &55243119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2296142160881146554, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+  m_PrefabInstance: {fileID: 7377997824115652012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &63252132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8943bfa51f6b44a008b2f83d4da8654d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartFloodtrigger
-  floodwater: {fileID: 1030748095}
+  floodwater: {fileID: 0}
 --- !u!1 &72955042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,7 +2114,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -10427,7 +10432,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -15002,7 +15007,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -17081,7 +17086,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -60.958187, y: 2.6771066, z: 0}
+  m_LocalPosition: {x: -1.4551888, y: 0.28098726, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36861,7 +36866,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -44331,6 +44336,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &698519334 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2461889845043648785, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+  m_PrefabInstance: {fileID: 7377997824115652012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &698912102
 GameObject:
   m_ObjectHideFlags: 0
@@ -68755,12 +68765,179 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2093254574326393281, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
   m_PrefabInstance: {fileID: 7377997824115652012}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 698519334}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d38687fd0faac4313bb3c1572b075135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+--- !u!82 &908072481
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698519334}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &908072482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698519334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79bf66c73a664357bdfd822ee743d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFootstepAudio
+  currentSurface: 0
+  surfaceSets:
+  - surfaceName: Grass
+    surfaceType: 0
+    slowSteps:
+    - {fileID: 8300000, guid: e39f776a2e81d40cfb0db0bddf121833, type: 3}
+    - {fileID: 8300000, guid: 169c17a3e408a427a9c718c0f732afd1, type: 3}
+    - {fileID: 8300000, guid: 6136efba93f91473eab9076b0f95c8a4, type: 3}
+    - {fileID: 8300000, guid: fdc7b9e49aa6844f8a6898dad19ffb33, type: 3}
+    - {fileID: 8300000, guid: 2ebeb293723c844c385e026cbf716c64, type: 3}
+    - {fileID: 8300000, guid: 11a46dc20eb9f4afa8620703e52dc804, type: 3}
+    genericSteps:
+    - {fileID: 8300000, guid: 3db89d2aca24c4bd1b5bab4d53c0e587, type: 3}
+    - {fileID: 8300000, guid: 591a0665e792f4774913bddb96bf64a9, type: 3}
+    - {fileID: 8300000, guid: 17e9823d538634387962caeacf85bada, type: 3}
+    - {fileID: 8300000, guid: 0d812f13caf5248c992a0c8b0643d071, type: 3}
+    fastLeftFoot:
+    - {fileID: 8300000, guid: 41e89eef07d8f4c7fa7c384942257aa6, type: 3}
+    - {fileID: 8300000, guid: 3eae522ffd29e44a1a137f83d8433e6d, type: 3}
+    - {fileID: 8300000, guid: d39faf71fc577477d85058859b7f0e8f, type: 3}
+    - {fileID: 8300000, guid: 8be873768557b459ba08826ad79d2c24, type: 3}
+    fastRightFoot:
+    - {fileID: 8300000, guid: 8437a638a8e6e495dac3a46f7bbb37de, type: 3}
+    - {fileID: 8300000, guid: 3b9e536e45aff49879874b5c5ce88835, type: 3}
+    - {fileID: 8300000, guid: 933f054f7cfa04208be792dc74d5d3eb, type: 3}
+    - {fileID: 8300000, guid: ecd7490eb24eb478ab0ccda1e8afb754, type: 3}
+    fasterLeftFoot:
+    - {fileID: 8300000, guid: cb3a56c705e9d45f186c4f3a10f63351, type: 3}
+    - {fileID: 8300000, guid: 7e5b26bfa82bd4f70bdfd727cf1e61a2, type: 3}
+    - {fileID: 8300000, guid: 6da9db4791976437693572f215154619, type: 3}
+    - {fileID: 8300000, guid: 5d7bd181d5b7b405287e672f8b8a3a7a, type: 3}
+    - {fileID: 8300000, guid: 9cd86020adb8943c6b645bd0d69972a0, type: 3}
+    - {fileID: 8300000, guid: ed9d2224178254c0bb54abbc4d2aac7f, type: 3}
+    fasterRightFoot:
+    - {fileID: 8300000, guid: eb3ddf16a292c4a32a0efd387e691361, type: 3}
+    - {fileID: 8300000, guid: 9c33b118609b14c3e8eddce750b907ef, type: 3}
+    - {fileID: 8300000, guid: e02fdcd8c294946b2ba71d768107e654, type: 3}
+    - {fileID: 8300000, guid: d67554cad7b054459acacb8cbef48cbc, type: 3}
+    - {fileID: 8300000, guid: 84c7677cbcff446809244e10896bf3a7, type: 3}
+    - {fileID: 8300000, guid: 6a0bf957bc5d94e2c94b36711ceaab93, type: 3}
+    jumpClips: []
+    landClips: []
+  groundCheck: {fileID: 55243119}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  groundCheckRadius: 0.2
+  slowStepInterval: 0.52
+  walkStepInterval: 0.38
+  fastStepInterval: 0.25
+  fasterStepInterval: 0.19
+  slowSpeedThreshold: 4.2
+  fastSpeedThreshold: 6.5
+  fasterSpeedThreshold: 9.5
+  footstepVolume: 0.7
+  landVolume: 0.85
+  minPitch: 0.94
+  maxPitch: 1.06
 --- !u!1 &915783972
 GameObject:
   m_ObjectHideFlags: 0
@@ -72603,7 +72780,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -74931,7 +75108,7 @@ Transform:
   m_GameObject: {fileID: 1108201479}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -61.275673, y: 0.3870306, z: 0}
+  m_LocalPosition: {x: -1.3756752, y: 0.3870306, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -75681,7 +75858,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -76712,7 +76889,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -88023,7 +88200,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -88713,7 +88890,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -90140,7 +90317,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -121917,7 +122094,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -127579,7 +127756,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -137494,7 +137671,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -163893,7 +164070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -17, y: -11.9999695}
+  m_AnchoredPosition: {x: -17, y: -12}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1952863914
@@ -176475,7 +176652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4621374196053315365, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.8
+      value: 46.1
       objectReference: {fileID: 0}
     - target: {fileID: 4621374196053315365, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -176555,7 +176732,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4621374196053315365, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
       insertIndex: 2
       addedObject: {fileID: 862892429}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2461889845043648785, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 908072482}
+    - targetCorrespondingSourceObject: {fileID: 2461889845043648785, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 908072481}
   m_SourcePrefab: {fileID: 100100000, guid: 5cadaf373b3dd45f8a2f44600b7ee1c1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -45,12 +45,15 @@ public class WaterPoolMaterial : MonoBehaviour
     private float[] velocities;
     private int nodeCount;
     private BoxCollider2D triggerCollider;
+    private float bottomWorldY;
 
     private void Awake()
     {
         MeshRenderer mr = GetComponent<MeshRenderer>();
         mr.sortingLayerName = sortingLayerName;
         mr.sortingOrder = sortingOrder;
+
+        bottomWorldY = transform.position.y - (height * 0.5f);
 
         SetupCollider();
         BuildWaterMesh();
@@ -62,6 +65,30 @@ public class WaterPoolMaterial : MonoBehaviour
         triggerCollider.isTrigger = true;
         triggerCollider.size = new Vector2(width, height);
         triggerCollider.offset = Vector2.zero;
+    }
+
+    public void SetWaterHeight(float newHeight)
+    {
+        newHeight = Mathf.Max(0.05f, newHeight);
+        float deltaH = newHeight - height;
+        height = newHeight;
+
+        Vector3 pos = transform.position;
+        pos.y = bottomWorldY + (height * 0.5f);
+        transform.position = pos;
+
+        float halfH = height * 0.5f;
+        for (int i = 0; i < nodeCount; i++)
+        {
+            baseHeights[i] = halfH;
+            currentHeights[i] += deltaH * 0.5f;
+            vertices[i * 2 + 1].y = -halfH;
+        }
+
+        if (triggerCollider != null)
+        {
+            triggerCollider.size = new Vector2(width, height);
+        }
     }
 
     private void BuildWaterMesh()

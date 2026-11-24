@@ -7,6 +7,7 @@ public class NoticeBoardInteract : MonoBehaviour
 {
     [Header("Interaction Prompt & Note UI")]
     public GameObject interactPrompt;
+    public InspectPrompt inspectPromptAnim;
     public GameObject backgroundPanel;   // Parent "Panel" (dark backdrop)
     public GameObject notePanel;         // Child "NOTE PANEL"
     public KeyCode interactKey = KeyCode.E;
@@ -68,7 +69,20 @@ public class NoticeBoardInteract : MonoBehaviour
             targetOrthoSize = normalOrthoSize;
         }
 
-        if (interactPrompt != null) interactPrompt.SetActive(false);
+        if (interactPrompt != null && inspectPromptAnim == null)
+        {
+            inspectPromptAnim = interactPrompt.GetComponent<InspectPrompt>();
+        }
+
+        if (inspectPromptAnim != null)
+        {
+            interactPrompt.SetActive(true);
+            inspectPromptAnim.HidePrompt();
+        }
+        else if (interactPrompt != null)
+        {
+            interactPrompt.SetActive(false);
+        }
 
         if (backgroundPanel != null)
         {
@@ -107,11 +121,16 @@ public class NoticeBoardInteract : MonoBehaviour
 
                 if (playerInRange)
                 {
-                    if (interactPrompt != null && !isReading) interactPrompt.SetActive(true);
+                    if (!isReading)
+                    {
+                        if (inspectPromptAnim != null) inspectPromptAnim.ShowPrompt();
+                        else if (interactPrompt != null) interactPrompt.SetActive(true);
+                    }
                 }
                 else
                 {
-                    if (interactPrompt != null) interactPrompt.SetActive(false);
+                    if (inspectPromptAnim != null) inspectPromptAnim.HidePrompt();
+                    else if (interactPrompt != null) interactPrompt.SetActive(false);
                     if (isReading) CloseNote();
                 }
             }
@@ -163,7 +182,9 @@ public class NoticeBoardInteract : MonoBehaviour
         isReading = true;
         UpdateTargetZoom();
 
-        if (interactPrompt != null) interactPrompt.SetActive(false);
+        if (inspectPromptAnim != null) inspectPromptAnim.HidePrompt();
+        else if (interactPrompt != null) interactPrompt.SetActive(false);
+
         Time.timeScale = 0f;
 
         if (animCoroutine != null) StopCoroutine(animCoroutine);
@@ -263,9 +284,10 @@ public class NoticeBoardInteract : MonoBehaviour
         if (bgCanvasGroup != null) bgCanvasGroup.alpha = 0f;
         if (backgroundPanel != null) backgroundPanel.SetActive(false);
 
-        if (playerInRange && interactPrompt != null)
+        if (playerInRange)
         {
-            interactPrompt.SetActive(true);
+            if (inspectPromptAnim != null) inspectPromptAnim.ShowPrompt();
+            else if (interactPrompt != null) interactPrompt.SetActive(true);
         }
         animCoroutine = null;
     }

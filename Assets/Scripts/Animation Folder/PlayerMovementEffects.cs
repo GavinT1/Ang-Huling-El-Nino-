@@ -22,6 +22,11 @@ public class PlayerMovementEffects : MonoBehaviour
     public bool enableSprintAfterimage = true;
     public float afterimageInterval = 0.08f;
 
+    [Header("3. Fast Fall Wind Streaks")]
+    public float minFallSpeed = 6.5f;
+    public float fallStreakInterval = 0.05f;
+    public Color fallStreakColor = new Color(0.95f, 0.95f, 1f, 0.55f);
+
     private Rigidbody2D rb;
     private SpriteRenderer playerSR;
     private Transform groundCheck;
@@ -30,6 +35,7 @@ public class PlayerMovementEffects : MonoBehaviour
     private float stepTimer;
     private float streakTimer;
     private float afterimageTimer;
+    private float fallStreakTimer;
     private bool wasGrounded;
 
     void Awake()
@@ -91,6 +97,21 @@ public class PlayerMovementEffects : MonoBehaviour
                     SpawnAfterimageGhost();
                 }
             }
+        }
+
+        // Fast fall wind streaks
+        if (!isGrounded && rb.linearVelocity.y <= -minFallSpeed)
+        {
+            fallStreakTimer += Time.deltaTime;
+            if (fallStreakTimer >= fallStreakInterval)
+            {
+                fallStreakTimer = 0f;
+                SpawnFallStreak();
+            }
+        }
+        else
+        {
+            fallStreakTimer = fallStreakInterval * 0.8f;
         }
     }
 
@@ -164,6 +185,28 @@ public class PlayerMovementEffects : MonoBehaviour
             new Vector3(streakLength, streakThickness, 1f),
             streakVel,
             dashStreakColor,
+            0.22f,
+            shrinkOverTime: false
+        ));
+    }
+
+    private void SpawnFallStreak()
+    {
+        Vector3 spawnPos = transform.position + new Vector3(
+            Random.Range(-0.45f, 0.45f),
+            Random.Range(-0.35f, 0.15f),
+            0f
+        );
+
+        float streakThickness = 0.045f;
+        float streakLength = Random.Range(0.45f, 0.95f);
+        Vector2 streakVel = new Vector2(0f, Random.Range(2.2f, 3.8f));
+
+        StartCoroutine(AnimatePixelParticle(
+            spawnPos,
+            new Vector3(streakThickness, streakLength, 1f),
+            streakVel,
+            fallStreakColor,
             0.22f,
             shrinkOverTime: false
         ));

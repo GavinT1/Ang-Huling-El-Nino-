@@ -89,6 +89,9 @@ TagManager:
   - name: ForeGround
     uniqueID: 3131989191
     locked: 0
+  - name: WallTransitions
+    uniqueID: 3758922841
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

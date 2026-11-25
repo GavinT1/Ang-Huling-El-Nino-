@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene"); 
+        SceneManager.LoadScene("Cutscene_Opening"); 
     }
 
     public void OpenExtraPanel()

@@ -49,7 +49,7 @@ public class StorySequenceController : MonoBehaviour
     public List<StoryStep> afterItemsSteps = new List<StoryStep>();
 
     [Header("Main Game Scene")]
-    public string nextSceneName = "SampleScene";
+    public string nextSceneName = "Area1";
 
     private List<StoryStep> activePhaseList;
     private int currentStepIndex = 0;

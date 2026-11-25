@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 using TMPro;
 
 public class StorySequenceController : MonoBehaviour
@@ -17,25 +19,33 @@ public class StorySequenceController : MonoBehaviour
     public class StoryStep
     {
         public string stepLabel;
-        public PlayableDirector cutscene;
+        public GameObject videoPanel;     // Drag UI video panel here (freezes game while active)
+        public PlayableDirector cutscene; // Drag Timeline PlayableDirector here
+        public Transform cameraAnchor;    // Drag BEDROOM CAM / KITCHEN CAM here
         public List<DialogueLine> dialogueLines = new List<DialogueLine>();
     }
+
+    [Header("Opening Video (Optional)")]
+    public GameObject introVideoPanel;
+
+    [Header("Camera")]
+    public Camera mainCamera;
 
     [Header("UI References")]
     public GameObject dialoguePanel;
     public TMP_Text speakerText;
     public TMP_Text bodyText;
 
-    [Header("Player Control")]
-    public MonoBehaviour playerMovementScript;
+    [Header("Player Control (Just Drag PLAYER Here!)")]
+    public GameObject playerObject;
 
-    [Header("Phase 1: Cutscene + Dialogue BEFORE Item Pickup (e.g., 2 steps)")]
+    [Header("Phase 1: Cutscene + Dialogue BEFORE Item Pickup")]
     public List<StoryStep> beforeItemsSteps = new List<StoryStep>();
 
     [Header("Phase 2: Item Pickup")]
     public int itemsRequired = 2;
 
-    [Header("Phase 3: Cutscene + Dialogue AFTER Item Pickup (e.g., 5 steps)")]
+    [Header("Phase 3: Cutscene + Dialogue AFTER Item Pickup")]
     public List<StoryStep> afterItemsSteps = new List<StoryStep>();
 
     [Header("Main Game Scene")]
@@ -49,15 +59,38 @@ public class StorySequenceController : MonoBehaviour
     private bool isDialoguePlaying = false;
     private bool isItemHuntActive = false;
     private bool isInAfterItemsPhase = false;
+    private Coroutine stepCoroutine;
+    private RuntimeAnimatorController savedPlayerAnimatorController;
 
     void Start()
     {
+        if (mainCamera == null) mainCamera = Camera.main;
+
+        // Save PLAYER's Animator Controller so we can mute normal Idle/Walk during cutscenes
+        // while keeping Animator enabled for Timeline Animation Tracks!
+        if (playerObject != null)
+        {
+            Animator anim = playerObject.GetComponent<Animator>();
+            if (anim != null)
+            {
+                savedPlayerAnimatorController = anim.runtimeAnimatorController;
+            }
+        }
+
         dialoguePanel.SetActive(false);
         SetPlayerControl(false);
 
         isInAfterItemsPhase = false;
         activePhaseList = beforeItemsSteps;
-        PlayStep(0);
+
+        if (introVideoPanel != null && introVideoPanel.activeInHierarchy)
+        {
+            StartCoroutine(WaitForVideoPanelThenRun(introVideoPanel, () => PlayStep(0)));
+        }
+        else
+        {
+            PlayStep(0);
+        }
     }
 
     void Update()
@@ -82,19 +115,59 @@ public class StorySequenceController : MonoBehaviour
         dialoguePanel.SetActive(false);
         SetPlayerControl(false);
 
-        PlayableDirector director = activePhaseList[index].cutscene;
+        StoryStep step = activePhaseList[index];
 
-        if (director != null)
+        if (mainCamera != null && step.cameraAnchor != null)
         {
-            director.stopped -= OnCutsceneStopped;
-            director.stopped += OnCutsceneStopped;
-            director.time = 0;
-            director.Play();
+            Vector3 pos = step.cameraAnchor.position;
+            pos.z = mainCamera.transform.position.z;
+            mainCamera.transform.position = pos;
+        }
+
+        if (step.videoPanel != null)
+        {
+            step.videoPanel.SetActive(true);
+            if (stepCoroutine != null) StopCoroutine(stepCoroutine);
+            stepCoroutine = StartCoroutine(WaitForVideoPanelThenRun(step.videoPanel, () => PlayStepCutsceneOrDialogue(step)));
+        }
+        else
+        {
+            PlayStepCutsceneOrDialogue(step);
+        }
+    }
+
+    private void PlayStepCutsceneOrDialogue(StoryStep step)
+    {
+        if (step.cutscene != null)
+        {
+            Time.timeScale = 1f;
+            step.cutscene.stopped -= OnCutsceneStopped;
+            step.cutscene.stopped += OnCutsceneStopped;
+            step.cutscene.time = 0;
+            step.cutscene.Play();
         }
         else
         {
             StartDialogueForCurrentStep();
         }
+    }
+
+    private IEnumerator WaitForVideoPanelThenRun(GameObject panel, System.Action onComplete)
+    {
+        VideoPlayer vp = panel.GetComponentInChildren<VideoPlayer>(true);
+        if (vp != null)
+        {
+            vp.timeUpdateMode = VideoTimeUpdateMode.UnscaledGameTime;
+        }
+
+        Time.timeScale = 0f;
+
+        while (panel != null && panel.activeInHierarchy)
+        {
+            yield return null;
+        }
+
+        onComplete?.Invoke();
     }
 
     private void OnCutsceneStopped(PlayableDirector director)
@@ -112,6 +185,8 @@ public class StorySequenceController : MonoBehaviour
             PlayStep(currentStepIndex + 1);
             return;
         }
+
+        Time.timeScale = 0f;
 
         lineQueue.Clear();
         foreach (var line in lines)
@@ -142,6 +217,8 @@ public class StorySequenceController : MonoBehaviour
 
     private void OnPhaseFinished()
     {
+        Time.timeScale = 1f;
+
         if (!isInAfterItemsPhase)
         {
             isItemHuntActive = true;
@@ -171,9 +248,27 @@ public class StorySequenceController : MonoBehaviour
 
     private void SetPlayerControl(bool enabled)
     {
-        if (playerMovementScript != null)
+        if (playerObject == null) return;
+
+        // Keep Animator enabled so Timeline clips work, but detach the Controller during cutscenes
+        // so normal Idle/Walk loops never bleed in!
+        Animator anim = playerObject.GetComponent<Animator>();
+        if (anim != null)
         {
-            playerMovementScript.enabled = enabled;
+            anim.enabled = true;
+            anim.runtimeAnimatorController = enabled ? savedPlayerAnimatorController : null;
+        }
+
+        Rigidbody2D rb = playerObject.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            if (!enabled) rb.linearVelocity = Vector2.zero;
+            rb.simulated = enabled;
+        }
+
+        foreach (MonoBehaviour script in playerObject.GetComponents<MonoBehaviour>())
+        {
+            if (script != null) script.enabled = enabled;
         }
     }
 }

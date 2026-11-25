@@ -2338,7 +2338,7 @@ MonoBehaviour:
   - stepLabel: CUT SCENE 2
     videoPanel: {fileID: 0}
     cutscene: {fileID: 1713737570}
-    cameraAnchor: {fileID: 1970289073}
+    cameraAnchor: {fileID: 659440768}
     dialogueLines:
     - speaker: ELY
       text: This is Ely Payong, a child living below the poverty line with his family.
@@ -2350,12 +2350,40 @@ MonoBehaviour:
       text: Now, Ely and his family live in the destroyed forest outside of the city. They never recovered from the destruction on that day. Some blame nature taking its course, others blame a lack of foresight from the people.
     - speaker: ELY
       text: Ely however, blames the government, and not without good reason. They cut down the forest, their natural barrier from the flooding, and without it, the destruction followed.
+  - stepLabel: CUT SCENE 3
+    videoPanel: {fileID: 0}
+    cutscene: {fileID: 420347768}
+    cameraAnchor: {fileID: 1970289073}
+    dialogueLines:
+    - speaker: Mother
+      text: Kunin mo yung tubig Ely, malay mo kung masira yung planta ngayon.
+    - speaker: ELY
+      text: Sige po ma.
+    - speaker: ELY
+      text: The only bone that the government has ever thrown their community is the water treatment plant, and even that is privately owned.
+    - speaker: ELY
+      text: Come every flood, every disaster, the plant has always worked and provided clean drinking water and bathing water during times of crisis. Ironically, the only time Ely and his family get to enjoy those luxuries is when they're in the evacuation center.
   itemsRequired: 2
   afterItemsSteps:
-  - stepLabel: 
+  - stepLabel: Cut Scene 4
     videoPanel: {fileID: 0}
-    cutscene: {fileID: 0}
-    cameraAnchor: {fileID: 0}
+    cutscene: {fileID: 667371658}
+    cameraAnchor: {fileID: 1970289073}
+    dialogueLines:
+    - speaker: Mother
+      text: AY! Ayun na lumulubog na naman ulet yung gubatan, blisin mo na 'nak!
+    - speaker: ELY
+      text: Nagmamadali na po ako ma!
+    - speaker: ELY
+      text: The rain started falling like arrows onto their rooftop. The streets were flooded in ankle-high water, mixed with the filth left behind by inconsiderate visitors, and the dead foliage that came to rest on the forest floor.
+    - speaker: Mother
+      text: ELY! Bilisan mo na!
+    - speaker: ELY
+      text: Ito na nga ma!
+  - stepLabel: Cut Scene 5
+    videoPanel: {fileID: 0}
+    cutscene: {fileID: 2025079451}
+    cameraAnchor: {fileID: 1970289073}
     dialogueLines: []
   nextSceneName: Level_2
 --- !u!1 &178479651
@@ -2862,6 +2890,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 420347767}
+  - component: {fileID: 420347768}
   m_Layer: 0
   m_Name: CutScene3
   m_TagString: Untagged
@@ -2884,6 +2913,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &420347768
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420347766}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 0d1b316176e8d4be79645218ec9b1103, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &442327244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3598,6 +3644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 667371657}
+  - component: {fileID: 667371658}
   m_Layer: 0
   m_Name: CutScene4
   m_TagString: Untagged
@@ -3620,6 +3667,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &667371658
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667371656}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 7a02d3840fb3b4415a9c44cecea08900, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &673735181
 GameObject:
   m_ObjectHideFlags: 0
@@ -4699,7 +4763,7 @@ Transform:
   m_GameObject: {fileID: 1225850042}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.6, y: -1.36, z: 0}
+  m_LocalPosition: {x: -6.74, y: -1.36, z: 0}
   m_LocalScale: {x: 1, y: 2.3875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6088,6 +6152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284394818}
+  - component: {fileID: 1284394819}
   m_Layer: 0
   m_Name: CutScene7
   m_TagString: Untagged
@@ -6110,6 +6175,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &1284394819
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284394817}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 076c9016763d348baa1f670232f384ae, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1338416929
 GameObject:
   m_ObjectHideFlags: 0
@@ -7011,6 +7093,8 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 1588929170677484955, guid: 99eea855a30f24c3cbf01f1c9ae4d5d5, type: 2}
     value: {fileID: 1225850043}
+  - key: {fileID: 829383211452857090, guid: 99eea855a30f24c3cbf01f1c9ae4d5d5, type: 2}
+    value: {fileID: 2003422654}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1714633875
@@ -7022,6 +7106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1714633876}
+  - component: {fileID: 1714633877}
   m_Layer: 0
   m_Name: CutScene6
   m_TagString: Untagged
@@ -7044,6 +7129,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &1714633877
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714633875}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 70463b4d254544e459e55f26188a2751, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1821497343
 GameObject:
   m_ObjectHideFlags: 0
@@ -7575,6 +7677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2025079450}
+  - component: {fileID: 2025079451}
   m_Layer: 0
   m_Name: CutScene5
   m_TagString: Untagged
@@ -7597,6 +7700,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &2025079451
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025079449}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: ea000b96125e74ae2a6eb7113f70ca83, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &2112371201
 GameObject:
   m_ObjectHideFlags: 0

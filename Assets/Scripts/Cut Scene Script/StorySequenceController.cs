@@ -66,8 +66,6 @@ public class StorySequenceController : MonoBehaviour
     {
         if (mainCamera == null) mainCamera = Camera.main;
 
-        // Save PLAYER's Animator Controller so we can mute normal Idle/Walk during cutscenes
-        // while keeping Animator enabled for Timeline Animation Tracks!
         if (playerObject != null)
         {
             Animator anim = playerObject.GetComponent<Animator>();
@@ -78,7 +76,7 @@ public class StorySequenceController : MonoBehaviour
         }
 
         dialoguePanel.SetActive(false);
-        SetPlayerControl(false);
+        SetPlayerControl(false, false);
 
         isInAfterItemsPhase = false;
         activePhaseList = beforeItemsSteps;
@@ -113,7 +111,9 @@ public class StorySequenceController : MonoBehaviour
         isItemHuntActive = false;
         isDialoguePlaying = false;
         dialoguePanel.SetActive(false);
-        SetPlayerControl(false);
+
+        // Lock movement AND reset PLAYER to Idle before muting AnimatorController for video/cutscene
+        SetPlayerControl(false, false);
 
         StoryStep step = activePhaseList[index];
 
@@ -186,7 +186,9 @@ public class StorySequenceController : MonoBehaviour
             return;
         }
 
-        Time.timeScale = 0f;
+        // Keep movement locked, but enable PLAYER's normal Idle animation during dialogue!
+        Time.timeScale = 1f;
+        SetPlayerControl(false, true);
 
         lineQueue.Clear();
         foreach (var line in lines)
@@ -223,7 +225,7 @@ public class StorySequenceController : MonoBehaviour
         {
             isItemHuntActive = true;
             itemsCollected = 0;
-            SetPlayerControl(true);
+            SetPlayerControl(true, true);
         }
         else
         {
@@ -246,29 +248,41 @@ public class StorySequenceController : MonoBehaviour
         }
     }
 
-    private void SetPlayerControl(bool enabled)
+    private void SetPlayerControl(bool canMove, bool allowIdleAnimator)
     {
         if (playerObject == null) return;
 
-        // Keep Animator enabled so Timeline clips work, but detach the Controller during cutscenes
-        // so normal Idle/Walk loops never bleed in!
         Animator anim = playerObject.GetComponent<Animator>();
         if (anim != null)
         {
             anim.enabled = true;
-            anim.runtimeAnimatorController = enabled ? savedPlayerAnimatorController : null;
+            if (allowIdleAnimator)
+            {
+                anim.runtimeAnimatorController = savedPlayerAnimatorController;
+            }
+            else
+            {
+                // Snap back to default Idle pose before muting the controller for the next cutscene
+                if (savedPlayerAnimatorController != null)
+                {
+                    anim.runtimeAnimatorController = savedPlayerAnimatorController;
+                    anim.Rebind();
+                    anim.Update(0f);
+                }
+                anim.runtimeAnimatorController = null;
+            }
         }
 
         Rigidbody2D rb = playerObject.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            if (!enabled) rb.linearVelocity = Vector2.zero;
-            rb.simulated = enabled;
+            if (!canMove) rb.linearVelocity = Vector2.zero;
+            rb.simulated = canMove;
         }
 
         foreach (MonoBehaviour script in playerObject.GetComponents<MonoBehaviour>())
         {
-            if (script != null) script.enabled = enabled;
+            if (script != null) script.enabled = canMove;
         }
     }
 }

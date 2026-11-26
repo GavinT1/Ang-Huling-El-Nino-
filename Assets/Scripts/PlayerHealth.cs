@@ -199,6 +199,7 @@ public class PlayerHealth : MonoBehaviour
             risingWater.ResetWater();
         }
 
+        RisingWaterPool.ResetAllPools();
         WaterPickup.RespawnAllJars();
     }
 
@@ -213,6 +214,8 @@ public class PlayerHealth : MonoBehaviour
         {
             rb.linearVelocity = UnityEngine.Vector2.zero;
         }
+
+        RisingWaterPool.ResetAllPools();
     }
 
     public void FullResetAndSpawn()
@@ -229,6 +232,8 @@ public class PlayerHealth : MonoBehaviour
         {
             risingWater.ResetWater();
         }
+
+        RisingWaterPool.ResetAllPools();
         WaterPickup.RespawnAllJars();
 
         if (heartUI !=null)

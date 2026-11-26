@@ -79,6 +79,19 @@ public class RisingWaterPool : MonoBehaviour
     {
         currentHeight = startHeight;
         goingUp = true;
-        waterPool.SetWaterHeight(currentHeight);
+        pauseTimer = 0f;
+        isFilling = startFillingOnAwake;
+        if (waterPool != null)
+        {
+            waterPool.SetWaterHeight(currentHeight);
+        }
+    }
+
+    public static void ResetAllPools()
+    {
+        foreach (RisingWaterPool pool in FindObjectsByType<RisingWaterPool>(FindObjectsSortMode.None))
+        {
+            pool.ResetWater();
+        }
     }
 }

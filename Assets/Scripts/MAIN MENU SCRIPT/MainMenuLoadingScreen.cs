@@ -9,85 +9,77 @@ public class MainMenuLoadingScreen : MonoBehaviour
 {
     public static MainMenuLoadingScreen Instance { get; private set; }
 
-    [Header("1. Font & Real Game Art (Drag your assets here!)")]
+    [Header("1. Font & Real Game Art")]
     public TMP_FontAsset customFont;
-    [Tooltip("Drag your Main Menu wasteland background or Prologue key art here!")]
+    [Tooltip("Drag your Main Menu wasteland background or Prologue key art here")]
     public Sprite backdropArtwork;
-    [Tooltip("Optional: Drop 1 sprite or multiple animation frames (e.g. Player walking, Water Jar, Logo)")]
+    [Tooltip("Optional: Drag your 'ANG HULING EL NINO' title logo sprite")]
+    public Sprite gameLogoSprite;
+
+    [Header("2. Animated Character Runner (Optional)")]
+    [Tooltip("Drop your Player Walk/Run frames here so they run across the horizon above the loading bar!")]
     public List<Sprite> animatedFeatureSprites = new List<Sprite>();
-    public float spriteAnimationFps = 8f;
+    public float spriteAnimationFps = 10f;
+    [Range(0.5f, 3.0f)]
+    public float characterZoom = 1.6f;
 
-    [Header("2. Scene & Cinematic Flow")]
+    [Header("3. Scene & Cinematic Flow")]
     public string cutsceneSceneName = "Cutscene_Opening";
-    public float minimumLoadTime = 3.4f;
-    [Tooltip("If true, waits for player input at 100% so they can finish reading lore")]
-    public bool waitForInputWhenReady = false;
+    public float minimumLoadTime = 3.2f;
 
-    [Header("3. Chapter Dossier & Lore")]
+    [Header("4. Chapter Title Card")]
     public string actLabel = "ACT I  •  PROLOGUE";
     public string chapterTitle = "BEFORE THE LAST DROP";
     public string locationTag = "BARANGAY SAN ROQUE  —  DAY 1,462 WITHOUT RAIN";
 
-    [TextArea(2, 4)]
-    public List<string> loadingLoreEntries = new List<string>
-    {
-        "THE SCORCHING HEAT: Prolonged exposure to the sun drains your hydration. Seek shade beneath ruined arches and broken roofs.",
-        "SCAVENGING: Clay water jars and rusted canteens hidden across the valley hold the last clean drops left in the province.",
-        "NOTICE BOARDS: Townspeople left warnings and directions nailed to wooden posts before abandoning their homes.",
-        "SANCTUARIES: Rest beside glowing hearth-stones to record your journey before crossing into deeper territory."
-    };
-    public float autoCycleInterval = 5.0f;
-    public float typewriterCharsPerSec = 58f;
-
-    [Header("4. Palette (Matches Ang Huling El Nino)")]
+    [Header("5. Palette (Ang Huling El Nino)")]
     public Color bgDarkTint = new Color(0.14f, 0.06f, 0.03f, 1f);
-    public Color frameOuterIron = new Color(0.14f, 0.11f, 0.10f, 0.98f);
-    public Color frameInnerRust = new Color(0.52f, 0.24f, 0.10f, 1f);
-    public Color emberOrange = new Color(1f, 0.45f, 0.08f, 1f);
+    public Color frameOuterIron = new Color(0.13f, 0.10f, 0.09f, 0.98f);
+    public Color frameInnerRust = new Color(0.58f, 0.26f, 0.10f, 1f);
+    public Color emberOrange = new Color(1f, 0.44f, 0.07f, 1f);
     public Color sunGold = new Color(1f, 0.86f, 0.42f, 1f);
-    public Color parchmentText = new Color(0.96f, 0.92f, 0.85f, 1f);
 
     private Canvas loadingCanvas;
     private CanvasGroup rootGroup;
+    private Image rootBgImg;
 
-    // Shutter Exit Panels
+    // Cinematic Shutters
     private RectTransform topShutterRect;
     private RectTransform bottomShutterRect;
 
     // Backdrop & Volumetric Lighting
     private RectTransform backdropArtRect;
     private Image backdropArtImg;
-    private Image sunBeamImg1;
-    private Image sunBeamImg2;
+    private Image sunBeam1;
+    private Image sunBeam2;
+    private Image sunBeam3;
+    private Image heatPulseOverlay;
     private Image vignetteImg;
 
-    // Header Choreography
+    // Centerpiece Title Choreography
     private CanvasGroup contentGroup;
-    private RectTransform headerRect;
+    private RectTransform centerTitleRect;
     private TMP_Text chapterTitleTmp;
-    private RectTransform dividerRect;
-    private RectTransform dividerSparkRect;
+    private RectTransform leftWingLine;
+    private RectTransform rightWingLine;
 
-    // Journal Card & Animated Feature Box
-    private RectTransform journalCardRect;
-    private RectTransform featureBoxRect;
-    private Image featureSpriteImg;
-    private RectTransform featureSpriteRect;
-    private RectTransform featureGlintRect;
-    private TMP_Text loreBodyText;
-    private TMP_Text pageIndicatorText;
+    // Animated Character Runner on Horizon
+    private Image runnerImg;
+    private RectTransform runnerRect;
+    private RectTransform runnerShadowRect;
 
-    // Segmented Progress Gauge
-    private RectTransform barFrameRect;
+    // Molten Progress Gauge
+    private RectTransform barOuterRect;
+    private Vector2 barBaseAnchoredPos;
+    private float barRecoilOffset = 0f;
     private RectTransform progressFillRect;
     private RectTransform barShimmerRect;
     private RectTransform progressGlowRect;
     private Image barFlashOverlay;
     private TMP_Text statusText;
     private TMP_Text percentText;
-    private TMP_Text continuePromptText;
 
-    // Multi-Depth Particles & Sparks
+    // Multi-Depth Particles
     private class EmberParticle
     {
         public RectTransform rect;
@@ -95,7 +87,6 @@ public class MainMenuLoadingScreen : MonoBehaviour
         public Vector2 velocity;
         public float phase;
         public float baseAlpha;
-        public bool isBurstSpark;
         public float life;
         public float maxLife;
     }
@@ -104,20 +95,16 @@ public class MainMenuLoadingScreen : MonoBehaviour
     private readonly List<EmberParticle> burstSparks = new List<EmberParticle>();
     private readonly List<RectTransform> dustStreaks = new List<RectTransform>();
     private readonly List<float> dustSpeeds = new List<float>();
+    private readonly List<RectTransform> heatMirageBands = new List<RectTransform>();
 
     private Sprite softCircleSprite;
     private Sprite streakSprite;
 
     private bool isLoading = false;
-    private int currentLoreIndex = 0;
-    private float loreTimer = 0f;
     private float spriteFrameTimer = 0f;
     private int spriteFrameIndex = 0;
     private int lastMilestone = 0;
     private float barFlashAlpha = 0f;
-
-    private Coroutine typewriterRoutine;
-    private bool isTyping = false;
 
     private const float BAR_WIDTH = 1660f;
 
@@ -162,7 +149,8 @@ public class MainMenuLoadingScreen : MonoBehaviour
         GameObject rootObj = new GameObject("LoadingRoot", typeof(RectTransform), typeof(Image), typeof(CanvasGroup));
         rootObj.transform.SetParent(canvasObj.transform, false);
         StretchFull(rootObj.GetComponent<RectTransform>());
-        rootObj.GetComponent<Image>().color = new Color(0.035f, 0.018f, 0.012f, 1f);
+        rootBgImg = rootObj.GetComponent<Image>();
+        rootBgImg.color = new Color(0.03f, 0.015f, 0.01f, 1f);
 
         rootGroup = rootObj.GetComponent<CanvasGroup>();
         rootGroup.alpha = 0f;
@@ -174,12 +162,12 @@ public class MainMenuLoadingScreen : MonoBehaviour
         Sprite vignetteSprite = CreateVignetteSprite(256);
         Sprite beamSprite = CreateLightBeamSprite(128, 256);
 
-        // 1. DEEP BACKDROP ARTWORK (Parallax + Ken Burns)
+        // 1. DEEP BACKDROP ARTWORK
         GameObject artObj = new GameObject("BackdropGameArt", typeof(RectTransform), typeof(Image));
         artObj.transform.SetParent(rootObj.transform, false);
         backdropArtRect = artObj.GetComponent<RectTransform>();
         StretchFull(backdropArtRect);
-        backdropArtRect.localScale = Vector3.one * 1.15f;
+        backdropArtRect.localScale = Vector3.one * 1.16f;
 
         backdropArtImg = artObj.GetComponent<Image>();
         backdropArtImg.preserveAspect = false;
@@ -187,154 +175,157 @@ public class MainMenuLoadingScreen : MonoBehaviour
         if (backdropArtwork != null)
         {
             backdropArtImg.sprite = backdropArtwork;
-            backdropArtImg.color = new Color(0.75f, 0.48f, 0.34f, 0.48f);
+            backdropArtImg.color = new Color(0.84f, 0.56f, 0.40f, 0.58f);
         }
         else
         {
             backdropArtImg.color = bgDarkTint;
         }
 
-        // 2. VOLUMETRIC GOD-RAYS
-        sunBeamImg1 = CreateSunBeam(rootObj.transform, beamSprite, new Vector2(-460f, 190f), -25f, new Vector2(560f, 1500f), 0.13f);
-        sunBeamImg2 = CreateSunBeam(rootObj.transform, beamSprite, new Vector2(310f, 230f), -18f, new Vector2(720f, 1550f), 0.09f);
+        // 2. RISING HEAT-MIRAGE WAVES
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject mObj = new GameObject("HeatMirage", typeof(RectTransform), typeof(Image));
+            mObj.transform.SetParent(rootObj.transform, false);
+            RectTransform mr = mObj.GetComponent<RectTransform>();
+            mr.sizeDelta = new Vector2(Random.Range(1100f, 1750f), Random.Range(14f, 26f));
+            mr.anchoredPosition = new Vector2(Random.Range(-150f, 150f), -120f + i * 65f);
+            Image mi = mObj.GetComponent<Image>();
+            mi.sprite = streakSprite;
+            mi.color = new Color(1f, 0.72f, 0.35f, 0.045f);
+            mi.raycastTarget = false;
+            heatMirageBands.Add(mr);
+        }
 
-        // 3. BACKGROUND EMBER LAYER (Small, sharp, drifting)
-        for (int i = 0; i < 35; i++)
+        // 3. THREE VOLUMETRIC GOD-RAYS
+        sunBeam1 = CreateSunBeam(rootObj.transform, beamSprite, new Vector2(-520f, 200f), -26f, new Vector2(540f, 1550f), 0.14f);
+        sunBeam2 = CreateSunBeam(rootObj.transform, beamSprite, new Vector2(140f, 240f), -20f, new Vector2(740f, 1600f), 0.10f);
+        sunBeam3 = CreateSunBeam(rootObj.transform, beamSprite, new Vector2(680f, 180f), -15f, new Vector2(460f, 1450f), 0.08f);
+
+        // 4. WARM AMBIENT HEAT PULSE
+        GameObject heatObj = new GameObject("AmbientHeatPulse", typeof(RectTransform), typeof(Image));
+        heatObj.transform.SetParent(rootObj.transform, false);
+        heatObj.GetComponent<RectTransform>().sizeDelta = new Vector2(2200f, 1200f);
+        heatPulseOverlay = heatObj.GetComponent<Image>();
+        heatPulseOverlay.sprite = softCircleSprite;
+        heatPulseOverlay.color = new Color(emberOrange.r, emberOrange.g, emberOrange.b, 0.13f);
+        heatPulseOverlay.raycastTarget = false;
+
+        // 5. DISTANT EMBERS
+        for (int i = 0; i < 42; i++)
             SpawnAmbientEmber(rootObj.transform, isForeground: false);
 
-        // 4. CINEMATIC VIGNETTE
+        // 6. CINEMATIC VIGNETTE
         GameObject vigObj = new GameObject("CinematicVignette", typeof(RectTransform), typeof(Image));
         vigObj.transform.SetParent(rootObj.transform, false);
         StretchFull(vigObj.GetComponent<RectTransform>());
         vignetteImg = vigObj.GetComponent<Image>();
         vignetteImg.sprite = vignetteSprite;
-        vignetteImg.color = new Color(0.015f, 0.008f, 0.006f, 0.92f);
+        vignetteImg.color = new Color(0.015f, 0.008f, 0.006f, 0.88f);
         vignetteImg.raycastTarget = false;
 
-        // 5. FOREGROUND UI LAYER
+        // 7. FOREGROUND UI LAYER
         GameObject contentObj = new GameObject("ForegroundUI", typeof(RectTransform), typeof(CanvasGroup));
         contentObj.transform.SetParent(rootObj.transform, false);
         StretchFull(contentObj.GetComponent<RectTransform>());
         contentGroup = contentObj.GetComponent<CanvasGroup>();
 
-        // 6. TOP-LEFT CHAPTER DOSSIER HEADER
-        GameObject headerObj = new GameObject("ChapterHeader", typeof(RectTransform));
-        headerObj.transform.SetParent(contentObj.transform, false);
-        headerRect = headerObj.GetComponent<RectTransform>();
-        headerRect.anchorMin = headerRect.anchorMax = new Vector2(0f, 1f);
-        headerRect.pivot = new Vector2(0f, 1f);
-        headerRect.anchoredPosition = new Vector2(115f, -96f);
-        headerRect.sizeDelta = new Vector2(1200f, 180f);
-
-        TMP_Text actTxt = CreateText(headerObj.transform, "ActLabel", actLabel, 20f, FontStyles.Bold,
-            new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), Vector2.zero, new Vector2(800f, 32f),
-            TextAlignmentOptions.Left, emberOrange);
-        actTxt.characterSpacing = 9f;
-
-        chapterTitleTmp = CreateText(headerObj.transform, "ChapterTitle", chapterTitle, 58f, FontStyles.Bold,
-            new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, -34f), new Vector2(1200f, 70f),
-            TextAlignmentOptions.Left, Color.white);
-        chapterTitleTmp.characterSpacing = 12f;
-
-        GameObject divObj = new GameObject("HeaderDivider", typeof(RectTransform), typeof(Image));
-        divObj.transform.SetParent(headerObj.transform, false);
-        dividerRect = divObj.GetComponent<RectTransform>();
-        dividerRect.anchorMin = dividerRect.anchorMax = new Vector2(0f, 1f);
-        dividerRect.pivot = new Vector2(0f, 1f);
-        dividerRect.anchoredPosition = new Vector2(0f, -112f);
-        dividerRect.sizeDelta = new Vector2(580f, 3f);
-        divObj.GetComponent<Image>().color = emberOrange;
-
-        // Glowing tip on divider line
-        GameObject divSpark = new GameObject("DividerSpark", typeof(RectTransform), typeof(Image));
-        divSpark.transform.SetParent(dividerRect, false);
-        dividerSparkRect = divSpark.GetComponent<RectTransform>();
-        dividerSparkRect.anchorMin = dividerSparkRect.anchorMax = new Vector2(1f, 0.5f);
-        dividerSparkRect.sizeDelta = new Vector2(28f, 28f);
-        Image dsImg = divSpark.GetComponent<Image>();
-        dsImg.sprite = softCircleSprite;
-        dsImg.color = sunGold;
-
-        TMP_Text locTxt = CreateText(headerObj.transform, "LocationTag", locationTag, 19f, FontStyles.Normal,
-            new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, -126f), new Vector2(1050f, 34f),
-            TextAlignmentOptions.Left, sunGold);
-        locTxt.characterSpacing = 5f;
-
-        // 7. FIELD JOURNAL CARD (With Corner Rivets)
-        bool hasFeatureArt = animatedFeatureSprites != null && animatedFeatureSprites.Count > 0 && animatedFeatureSprites[0] != null;
-        float cardWidth = hasFeatureArt ? 1240f : 1400f;
-        float cardX = hasFeatureArt ? -185f : 0f;
-
-        GameObject cardOuter = CreateFramedPanel(contentObj.transform, "FieldJournalCard",
-            new Vector2(0.5f, 0.43f), new Vector2(cardX, 0f), new Vector2(cardWidth, 240f), out journalCardRect);
-
-        TMP_Text journalHeader = CreateText(cardOuter.transform, "JournalHeader", "FIELD JOURNAL  •  SURVIVAL ARCHIVE", 18f, FontStyles.Bold,
-            new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(38f, -24f), new Vector2(700f, 30f),
-            TextAlignmentOptions.Left, emberOrange);
-        journalHeader.characterSpacing = 5f;
-
-        pageIndicatorText = CreateText(cardOuter.transform, "PageIndicator", "1 / 4  [CLICK OR SPACE]", 17f, FontStyles.Bold,
-            new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-38f, -24f), new Vector2(440f, 30f),
-            TextAlignmentOptions.Right, new Color(1f, 1f, 1f, 0.55f));
-        pageIndicatorText.characterSpacing = 3f;
-
-        GameObject cardRule = new GameObject("CardRule", typeof(RectTransform), typeof(Image));
-        cardRule.transform.SetParent(cardOuter.transform, false);
-        RectTransform crRect = cardRule.GetComponent<RectTransform>();
-        crRect.anchorMin = new Vector2(0f, 1f);
-        crRect.anchorMax = new Vector2(1f, 1f);
-        crRect.pivot = new Vector2(0.5f, 1f);
-        crRect.anchoredPosition = new Vector2(0f, -62f);
-        crRect.sizeDelta = new Vector2(-76f, 2f);
-        cardRule.GetComponent<Image>().color = new Color(1f, 0.72f, 0.42f, 0.20f);
-
-        GameObject loreHolder = new GameObject("LoreTextHolder", typeof(RectTransform));
-        loreHolder.transform.SetParent(cardOuter.transform, false);
-        RectTransform lhRect = loreHolder.GetComponent<RectTransform>();
-        lhRect.anchorMin = Vector2.zero;
-        lhRect.anchorMax = Vector2.one;
-        lhRect.offsetMin = new Vector2(38f, 24f);
-        lhRect.offsetMax = new Vector2(-38f, -74f);
-
-        loreBodyText = CreateText(loreHolder.transform, "LoreText", "", 27f, FontStyles.Normal,
-            Vector2.zero, Vector2.one, new Vector2(0.5f, 0.5f), Vector2.zero, Vector2.zero,
-            TextAlignmentOptions.MidlineLeft, parchmentText);
-        loreBodyText.lineSpacing = 8f;
-
-        // 8. OPTIONAL ANIMATED PIXEL-ART SHOWCASE BOX (With Light Glint Sweep)
-        if (hasFeatureArt)
+        // Optional Top Game Logo Watermark
+        if (gameLogoSprite != null)
         {
-            GameObject featInner = CreateFramedPanel(contentObj.transform, "FeatureSpriteFrame",
-                new Vector2(0.5f, 0.43f), new Vector2(615f, 0f), new Vector2(280f, 240f), out featureBoxRect);
-
-            GameObject maskArea = new GameObject("SpriteMaskArea", typeof(RectTransform), typeof(RectMask2D));
-            maskArea.transform.SetParent(featInner.transform, false);
-            StretchFull(maskArea.GetComponent<RectTransform>());
-
-            GameObject sprObj = new GameObject("AnimatedGameSprite", typeof(RectTransform), typeof(Image));
-            sprObj.transform.SetParent(maskArea.transform, false);
-            featureSpriteRect = sprObj.GetComponent<RectTransform>();
-            featureSpriteRect.sizeDelta = new Vector2(184f, 184f);
-            featureSpriteImg = sprObj.GetComponent<Image>();
-            featureSpriteImg.sprite = animatedFeatureSprites[0];
-            featureSpriteImg.preserveAspect = true;
-            featureSpriteImg.raycastTarget = false;
-
-            // Diagonal sheen sweeping across showcase box
-            GameObject glintObj = new GameObject("ShowcaseGlint", typeof(RectTransform), typeof(Image));
-            glintObj.transform.SetParent(maskArea.transform, false);
-            featureGlintRect = glintObj.GetComponent<RectTransform>();
-            featureGlintRect.sizeDelta = new Vector2(65f, 340f);
-            featureGlintRect.localRotation = Quaternion.Euler(0f, 0f, -25f);
-            Image gImg = glintObj.GetComponent<Image>();
-            gImg.sprite = streakSprite;
-            gImg.color = new Color(1f, 0.92f, 0.72f, 0.14f);
-            gImg.raycastTarget = false;
+            GameObject logoObj = new GameObject("GameLogoCrest", typeof(RectTransform), typeof(Image));
+            logoObj.transform.SetParent(contentObj.transform, false);
+            RectTransform lr = logoObj.GetComponent<RectTransform>();
+            lr.anchorMin = lr.anchorMax = new Vector2(0.5f, 1f);
+            lr.pivot = new Vector2(0.5f, 1f);
+            lr.anchoredPosition = new Vector2(0f, -86f);
+            lr.sizeDelta = new Vector2(420f, 140f);
+            Image lImg = logoObj.GetComponent<Image>();
+            lImg.sprite = gameLogoSprite;
+            lImg.preserveAspect = true;
+            lImg.color = new Color(1f, 1f, 1f, 0.92f);
+            lImg.raycastTarget = false;
         }
 
-        // 9. SEGMENTED MOLTEN PROGRESS GAUGE
+        // 8. CENTERPIECE CINEMATIC CHAPTER TITLE (No Tip Box!)
+        GameObject centerObj = new GameObject("CenterpieceChapterTitle", typeof(RectTransform));
+        centerObj.transform.SetParent(contentObj.transform, false);
+        centerTitleRect = centerObj.GetComponent<RectTransform>();
+        centerTitleRect.anchorMin = centerTitleRect.anchorMax = new Vector2(0.5f, 0.54f);
+        centerTitleRect.anchoredPosition = Vector2.zero;
+        centerTitleRect.sizeDelta = new Vector2(1500f, 260f);
+
+        // Soft warm glow behind title
+        GameObject titleGlow = new GameObject("TitleBackGlow", typeof(RectTransform), typeof(Image));
+        titleGlow.transform.SetParent(centerObj.transform, false);
+        titleGlow.GetComponent<RectTransform>().sizeDelta = new Vector2(1200f, 260f);
+        Image tgImg = titleGlow.GetComponent<Image>();
+        tgImg.sprite = softCircleSprite;
+        tgImg.color = new Color(0.02f, 0.01f, 0.006f, 0.72f);
+
+        // Act Label with Flanking Wing Lines
+        TMP_Text actTxt = CreateText(centerObj.transform, "ActLabel", actLabel, 22f, FontStyles.Bold,
+            new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -12f), new Vector2(600f, 34f),
+            TextAlignmentOptions.Center, emberOrange);
+        actTxt.characterSpacing = 12f;
+
+        leftWingLine = CreateLine(centerObj.transform, "LeftWing", new Vector2(-340f, -29f), new Vector2(240f, 2f), emberOrange);
+        rightWingLine = CreateLine(centerObj.transform, "RightWing", new Vector2(340f, -29f), new Vector2(240f, 2f), emberOrange);
+
+        // Main Chapter Title
+        chapterTitleTmp = CreateText(centerObj.transform, "ChapterTitle", chapterTitle, 74f, FontStyles.Bold,
+            new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0f, 6f), new Vector2(1480f, 92f),
+            TextAlignmentOptions.Center, Color.white);
+        chapterTitleTmp.characterSpacing = 14f;
+
+        // Bottom Ornate Rule + Diamond Crest
+        CreateLine(centerObj.transform, "BottomRule", new Vector2(0f, -54f), new Vector2(780f, 2f), new Color(1f, 0.75f, 0.42f, 0.45f));
+
+        GameObject diamond = new GameObject("CenterDiamond", typeof(RectTransform), typeof(Image));
+        diamond.transform.SetParent(centerObj.transform, false);
+        RectTransform dRect = diamond.GetComponent<RectTransform>();
+        dRect.anchoredPosition = new Vector2(0f, -54f);
+        dRect.sizeDelta = new Vector2(12f, 12f);
+        dRect.localRotation = Quaternion.Euler(0f, 0f, 45f);
+        diamond.GetComponent<Image>().color = sunGold;
+
+        // Location / Day Subtitle
+        TMP_Text locTxt = CreateText(centerObj.transform, "LocationTag", locationTag, 21f, FontStyles.Normal,
+            new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 16f), new Vector2(1200f, 36f),
+            TextAlignmentOptions.Center, sunGold);
+        locTxt.characterSpacing = 7f;
+
+        // 9. ANIMATED CHARACTER RUNNING ABOVE THE PROGRESS BAR
+        bool hasRunner = animatedFeatureSprites != null && animatedFeatureSprites.Count > 0 && animatedFeatureSprites[0] != null;
+        if (hasRunner)
+        {
+            GameObject shadObj = new GameObject("RunnerShadow", typeof(RectTransform), typeof(Image));
+            shadObj.transform.SetParent(contentObj.transform, false);
+            runnerShadowRect = shadObj.GetComponent<RectTransform>();
+            runnerShadowRect.anchorMin = runnerShadowRect.anchorMax = new Vector2(0.5f, 0f);
+            runnerShadowRect.anchoredPosition = new Vector2(0f, 146f);
+            runnerShadowRect.sizeDelta = new Vector2(96f, 16f);
+            Image shImg = shadObj.GetComponent<Image>();
+            shImg.sprite = softCircleSprite;
+            shImg.color = new Color(0f, 0f, 0f, 0.75f);
+
+            GameObject runObj = new GameObject("HorizonRunner", typeof(RectTransform), typeof(Image));
+            runObj.transform.SetParent(contentObj.transform, false);
+            runnerRect = runObj.GetComponent<RectTransform>();
+            runnerRect.anchorMin = runnerRect.anchorMax = new Vector2(0.5f, 0f);
+            runnerRect.pivot = new Vector2(0.5f, 0f);
+            runnerRect.anchoredPosition = new Vector2(0f, 148f);
+            runnerRect.sizeDelta = new Vector2(96f * characterZoom, 96f * characterZoom);
+            runnerImg = runObj.GetComponent<Image>();
+            runnerImg.sprite = animatedFeatureSprites[0];
+            runnerImg.preserveAspect = true;
+            runnerImg.raycastTarget = false;
+        }
+
+        // 10. SEGMENTED MOLTEN PROGRESS GAUGE
+        barBaseAnchoredPos = new Vector2(0f, 96f);
         GameObject barInner = CreateFramedPanel(contentObj.transform, "ProgressBarFrame",
-            new Vector2(0.5f, 0f), new Vector2(0f, 96f), new Vector2(BAR_WIDTH + 16f, 36f), out barFrameRect);
+            new Vector2(0.5f, 0f), barBaseAnchoredPos, new Vector2(BAR_WIDTH + 16f, 38f), out barOuterRect);
 
         GameObject barTrack = new GameObject("BarTrack", typeof(RectTransform), typeof(Image), typeof(RectMask2D));
         barTrack.transform.SetParent(barInner.transform, false);
@@ -344,7 +335,6 @@ public class MainMenuLoadingScreen : MonoBehaviour
         trackRect.offsetMax = new Vector2(-4f, -4f);
         barTrack.GetComponent<Image>().color = new Color(0.05f, 0.025f, 0.015f, 1f);
 
-        // Ember Orange Fill
         GameObject fillObj = new GameObject("Fill", typeof(RectTransform), typeof(Image));
         fillObj.transform.SetParent(barTrack.transform, false);
         progressFillRect = fillObj.GetComponent<RectTransform>();
@@ -355,7 +345,6 @@ public class MainMenuLoadingScreen : MonoBehaviour
         progressFillRect.sizeDelta = new Vector2(0f, 0f);
         fillObj.GetComponent<Image>().color = emberOrange;
 
-        // Top Gold Highlight Strip
         GameObject topHighlight = new GameObject("FillTopGold", typeof(RectTransform), typeof(Image));
         topHighlight.transform.SetParent(fillObj.transform, false);
         RectTransform thRect = topHighlight.GetComponent<RectTransform>();
@@ -366,18 +355,16 @@ public class MainMenuLoadingScreen : MonoBehaviour
         thRect.sizeDelta = new Vector2(0f, 4f);
         topHighlight.GetComponent<Image>().color = sunGold;
 
-        // Animated Shimmer Sweep inside Bar
         GameObject shimObj = new GameObject("BarShimmer", typeof(RectTransform), typeof(Image));
         shimObj.transform.SetParent(fillObj.transform, false);
         barShimmerRect = shimObj.GetComponent<RectTransform>();
         barShimmerRect.anchorMin = new Vector2(0f, 0f);
         barShimmerRect.anchorMax = new Vector2(0f, 1f);
-        barShimmerRect.sizeDelta = new Vector2(200f, 0f);
+        barShimmerRect.sizeDelta = new Vector2(220f, 0f);
         Image shimImg = shimObj.GetComponent<Image>();
         shimImg.sprite = streakSprite;
-        shimImg.color = new Color(1f, 0.96f, 0.82f, 0.55f);
+        shimImg.color = new Color(1f, 0.96f, 0.82f, 0.6f);
 
-        // Segment Notch Dividers
         int segments = 20;
         for (int s = 1; s < segments; s++)
         {
@@ -389,66 +376,57 @@ public class MainMenuLoadingScreen : MonoBehaviour
             nRect.anchorMax = new Vector2(0f, 1f);
             nRect.anchoredPosition = new Vector2(nx, 0f);
             nRect.sizeDelta = new Vector2(3f, 0f);
-            notch.GetComponent<Image>().color = new Color(0.04f, 0.02f, 0.01f, 0.8f);
+            notch.GetComponent<Image>().color = new Color(0.04f, 0.02f, 0.01f, 0.85f);
         }
 
-        // Milestone Shockwave Flash Overlay
         GameObject flashObj = new GameObject("BarMilestoneFlash", typeof(RectTransform), typeof(Image));
         flashObj.transform.SetParent(barTrack.transform, false);
         StretchFull(flashObj.GetComponent<RectTransform>());
         barFlashOverlay = flashObj.GetComponent<Image>();
-        barFlashOverlay.color = new Color(1f, 0.9f, 0.6f, 0f);
+        barFlashOverlay.color = new Color(1f, 0.92f, 0.65f, 0f);
         barFlashOverlay.raycastTarget = false;
 
-        // Leading Glow Spark
         GameObject glowDot = new GameObject("LeadingSpark", typeof(RectTransform), typeof(Image));
         glowDot.transform.SetParent(barTrack.transform, false);
         progressGlowRect = glowDot.GetComponent<RectTransform>();
         progressGlowRect.anchorMin = progressGlowRect.anchorMax = new Vector2(0f, 0.5f);
-        progressGlowRect.sizeDelta = new Vector2(54f, 54f);
+        progressGlowRect.sizeDelta = new Vector2(58f, 58f);
         Image gdImg = glowDot.GetComponent<Image>();
         gdImg.sprite = softCircleSprite;
         gdImg.color = sunGold;
 
-        // Status & Percentage Labels
         statusText = CreateText(contentObj.transform, "StatusText", "PREPARING PROLOGUE...", 22f, FontStyles.Bold,
-            new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 0f), new Vector2(-BAR_WIDTH * 0.5f, 142f), new Vector2(900f, 36f),
+            new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 0f), new Vector2(-BAR_WIDTH * 0.5f, 144f), new Vector2(900f, 36f),
             TextAlignmentOptions.BottomLeft, Color.white);
         statusText.characterSpacing = 6f;
 
         percentText = CreateText(contentObj.transform, "PercentText", "0%", 28f, FontStyles.Bold,
-            new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(1f, 0f), new Vector2(BAR_WIDTH * 0.5f, 140f), new Vector2(300f, 40f),
+            new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(1f, 0f), new Vector2(BAR_WIDTH * 0.5f, 142f), new Vector2(300f, 40f),
             TextAlignmentOptions.BottomRight, sunGold);
 
-        continuePromptText = CreateText(contentObj.transform, "ContinuePrompt", "PRESS ANY KEY OR CLICK TO BEGIN", 22f, FontStyles.Bold,
-            new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 142f), new Vector2(800f, 36f),
-            TextAlignmentOptions.Bottom, sunGold);
-        continuePromptText.characterSpacing = 6f;
-        continuePromptText.gameObject.SetActive(false);
-
-        // 10. FOREGROUND WIND STREAKS & LARGE DEPTH-BLUR EMBERS
-        for (int i = 0; i < 14; i++)
+        // 11. FOREGROUND WIND STREAKS & BOKEH EMBERS
+        for (int i = 0; i < 16; i++)
         {
             GameObject dObj = new GameObject("ForegroundWind", typeof(RectTransform), typeof(Image));
             dObj.transform.SetParent(rootObj.transform, false);
-            RectTransform dRect = dObj.GetComponent<RectTransform>();
-            dRect.sizeDelta = new Vector2(Random.Range(260f, 560f), Random.Range(2f, 5f));
-            dRect.localRotation = Quaternion.Euler(0f, 0f, 3.5f);
-            dRect.anchoredPosition = new Vector2(Random.Range(-1000f, 1000f), Random.Range(-480f, 480f));
+            RectTransform windRect = dObj.GetComponent<RectTransform>();
+            windRect.sizeDelta = new Vector2(Random.Range(280f, 600f), Random.Range(2f, 5f));
+            windRect.localRotation = Quaternion.Euler(0f, 0f, 3.5f);
+            windRect.anchoredPosition = new Vector2(Random.Range(-1000f, 1000f), Random.Range(-480f, 480f));
             Image dImg = dObj.GetComponent<Image>();
             dImg.sprite = streakSprite;
-            dImg.color = new Color(1f, 0.78f, 0.52f, Random.Range(0.06f, 0.14f));
+            dImg.color = new Color(1f, 0.78f, 0.52f, Random.Range(0.06f, 0.15f));
             dImg.raycastTarget = false;
-            dustStreaks.Add(dRect);
-            dustSpeeds.Add(Random.Range(420f, 760f));
+            dustStreaks.Add(windRect);
+            dustSpeeds.Add(Random.Range(450f, 800f));
         }
 
-        for (int i = 0; i < 18; i++)
+        for (int i = 0; i < 22; i++)
             SpawnAmbientEmber(rootObj.transform, isForeground: true);
 
-        // 11. TOP & BOTTOM CINEMA SHUTTER BARS (Used for dramatic exit wipe!)
-        topShutterRect = CreateShutterBar(rootObj.transform, true, 56f);
-        bottomShutterRect = CreateShutterBar(rootObj.transform, false, 56f);
+        // 12. CINEMA SHUTTER BARS
+        topShutterRect = CreateShutterBar(rootObj.transform, true, 58f);
+        bottomShutterRect = CreateShutterBar(rootObj.transform, false, 58f);
     }
 
     private void Update()
@@ -458,25 +436,9 @@ public class MainMenuLoadingScreen : MonoBehaviour
         float dt = Time.unscaledDeltaTime;
         float t = Time.unscaledTime;
 
-        // Interactive Lore Control: If currently typing, snap full text; otherwise flip to next entry
-        if (loadingLoreEntries.Count > 0 && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)))
-        {
-            if (isTyping)
-            {
-                if (typewriterRoutine != null) StopCoroutine(typewriterRoutine);
-                loreBodyText.maxVisibleCharacters = 99999;
-                isTyping = false;
-            }
-            else if (loadingLoreEntries.Count > 1)
-            {
-                NextLoreEntry();
-            }
-        }
-
-        // 1. Deep Parallax + Subtle Mouse Tilt on Backdrop Artwork
         if (backdropArtRect != null)
         {
-            float scale = 1.15f + Mathf.Sin(t * 0.22f) * 0.03f;
+            float scale = 1.16f + Mathf.Sin(t * 0.22f) * 0.03f;
             backdropArtRect.localScale = new Vector3(scale, scale, 1f);
 
             Vector2 mouseShift = Vector2.zero;
@@ -484,29 +446,48 @@ public class MainMenuLoadingScreen : MonoBehaviour
             {
                 float nx = (Input.mousePosition.x / Screen.width - 0.5f) * 2f;
                 float ny = (Input.mousePosition.y / Screen.height - 0.5f) * 2f;
-                mouseShift = new Vector2(-nx * 22f, -ny * 12f);
+                mouseShift = new Vector2(-nx * 26f, -ny * 14f);
             }
 
-            Vector2 drift = new Vector2(Mathf.Sin(t * 0.18f) * 26f, Mathf.Cos(t * 0.15f) * 14f);
+            Vector2 drift = new Vector2(Mathf.Sin(t * 0.18f) * 28f, Mathf.Cos(t * 0.15f) * 14f);
             backdropArtRect.anchoredPosition = Vector2.Lerp(backdropArtRect.anchoredPosition, drift + mouseShift, dt * 3f);
         }
 
-        // 2. Volumetric Sunbeam Pulse
-        if (sunBeamImg1 != null)
+        for (int i = 0; i < heatMirageBands.Count; i++)
         {
-            Color c = sunBeamImg1.color;
-            c.a = 0.09f + Mathf.Sin(t * 1.1f) * 0.035f;
-            sunBeamImg1.color = c;
-        }
-        if (sunBeamImg2 != null)
-        {
-            Color c = sunBeamImg2.color;
-            c.a = 0.07f + Mathf.Cos(t * 0.9f) * 0.03f;
-            sunBeamImg2.color = c;
+            RectTransform mr = heatMirageBands[i];
+            if (mr == null) continue;
+            Vector2 p = mr.anchoredPosition;
+            p.x = Mathf.Sin(t * 1.1f + i * 1.5f) * 90f;
+            mr.anchoredPosition = p;
         }
 
-        // 3. Feature Pixel Sprite Animation + Glint Sweep
-        if (featureSpriteImg != null && animatedFeatureSprites.Count > 0)
+        if (sunBeam1 != null)
+        {
+            Color c = sunBeam1.color;
+            c.a = 0.09f + Mathf.Sin(t * 1.1f) * 0.04f;
+            sunBeam1.color = c;
+        }
+        if (sunBeam2 != null)
+        {
+            Color c = sunBeam2.color;
+            c.a = 0.07f + Mathf.Cos(t * 0.9f) * 0.03f;
+            sunBeam2.color = c;
+        }
+        if (sunBeam3 != null)
+        {
+            Color c = sunBeam3.color;
+            c.a = 0.06f + Mathf.Sin(t * 1.4f + 1.2f) * 0.03f;
+            sunBeam3.color = c;
+        }
+        if (heatPulseOverlay != null)
+        {
+            Color hc = heatPulseOverlay.color;
+            hc.a = 0.10f + Mathf.Sin(t * 1.8f) * 0.04f;
+            heatPulseOverlay.color = hc;
+        }
+
+        if (runnerImg != null && animatedFeatureSprites.Count > 0)
         {
             if (animatedFeatureSprites.Count > 1)
             {
@@ -516,26 +497,26 @@ public class MainMenuLoadingScreen : MonoBehaviour
                     spriteFrameTimer = 0f;
                     spriteFrameIndex = (spriteFrameIndex + 1) % animatedFeatureSprites.Count;
                     if (animatedFeatureSprites[spriteFrameIndex] != null)
-                        featureSpriteImg.sprite = animatedFeatureSprites[spriteFrameIndex];
+                        runnerImg.sprite = animatedFeatureSprites[spriteFrameIndex];
                 }
             }
-            else if (featureSpriteRect != null)
+            else if (runnerRect != null)
             {
-                featureSpriteRect.anchoredPosition = new Vector2(0f, Mathf.Sin(t * 2.4f) * 6f);
+                float bob = Mathf.Abs(Mathf.Sin(t * 4f)) * 6f;
+                runnerRect.anchoredPosition = new Vector2(runnerRect.anchoredPosition.x, 148f + bob);
             }
         }
 
-        if (featureGlintRect != null)
-        {
-            float gx = Mathf.Repeat(t * 190f, 520f) - 260f;
-            featureGlintRect.anchoredPosition = new Vector2(gx, 0f);
-        }
-
-        // 4. Progress Bar Shimmer & Milestone Flash Decay
         if (barShimmerRect != null)
         {
-            float sweepX = Mathf.Repeat(t * 720f, BAR_WIDTH + 400f) - 200f;
+            float sweepX = Mathf.Repeat(t * 760f, BAR_WIDTH + 400f) - 200f;
             barShimmerRect.anchoredPosition = new Vector2(sweepX, 0f);
+        }
+
+        if (barOuterRect != null && barRecoilOffset > 0f)
+        {
+            barRecoilOffset = Mathf.MoveTowards(barRecoilOffset, 0f, dt * 32f);
+            barOuterRect.anchoredPosition = barBaseAnchoredPos + new Vector2(0f, -barRecoilOffset);
         }
 
         if (barFlashOverlay != null && barFlashAlpha > 0f)
@@ -546,7 +527,6 @@ public class MainMenuLoadingScreen : MonoBehaviour
             barFlashOverlay.color = fc;
         }
 
-        // 5. Wind Streaks, Ambient Embers & Burst Sparks
         for (int i = 0; i < dustStreaks.Count; i++)
         {
             RectTransform d = dustStreaks[i];
@@ -561,7 +541,7 @@ public class MainMenuLoadingScreen : MonoBehaviour
         {
             EmberParticle p = ambientEmbers[i];
             Vector2 pos = p.rect.anchoredPosition + p.velocity * dt;
-            pos.x += Mathf.Sin(t * 2.4f + p.phase) * 24f * dt;
+            pos.x += Mathf.Sin(t * 2.4f + p.phase) * 26f * dt;
             if (pos.x > 1020f) pos.x = -1020f;
             if (pos.y > 580f) pos.y = -580f;
             p.rect.anchoredPosition = pos;
@@ -581,18 +561,11 @@ public class MainMenuLoadingScreen : MonoBehaviour
                 burstSparks.RemoveAt(i);
                 continue;
             }
-            sp.velocity.y -= 260f * dt; // Gravity arc
+            sp.velocity.y -= 280f * dt;
             sp.rect.anchoredPosition += sp.velocity * dt;
             Color sc = sp.img.color;
             sc.a = 1f - (sp.life / sp.maxLife);
             sp.img.color = sc;
-        }
-
-        if (continuePromptText != null && continuePromptText.gameObject.activeSelf)
-        {
-            Color cc = continuePromptText.color;
-            cc.a = 0.55f + 0.45f * Mathf.Sin(t * 4.5f);
-            continuePromptText.color = cc;
         }
     }
 
@@ -605,25 +578,20 @@ public class MainMenuLoadingScreen : MonoBehaviour
         rootGroup.gameObject.SetActive(true);
         rootGroup.blocksRaycasts = true;
         rootGroup.alpha = 0f;
-        continuePromptText.gameObject.SetActive(false);
 
         lastMilestone = 0;
         barFlashAlpha = 0f;
+        barRecoilOffset = 0f;
         SetProgress(0f);
 
-        // Reset Shutter & Entrance Positions
-        topShutterRect.sizeDelta = new Vector2(0f, 56f);
-        bottomShutterRect.sizeDelta = new Vector2(0f, 56f);
+        topShutterRect.sizeDelta = new Vector2(0f, 58f);
+        bottomShutterRect.sizeDelta = new Vector2(0f, 58f);
         contentGroup.alpha = 0f;
-        headerRect.anchoredPosition = new Vector2(75f, -96f);
-        dividerRect.localScale = new Vector3(0f, 1f, 1f);
-        chapterTitleTmp.characterSpacing = 26f;
+        centerTitleRect.localScale = Vector3.one * 0.94f;
+        chapterTitleTmp.characterSpacing = 32f;
+        leftWingLine.localScale = new Vector3(0f, 1f, 1f);
+        rightWingLine.localScale = new Vector3(0f, 1f, 1f);
 
-        currentLoreIndex = 0;
-        loreTimer = 0f;
-        StartLoreEntry(0);
-
-        // 1. Fade in Loading Screen & fade out Menu Audio
         float fadeIn = 0.5f;
         float elapsed = 0f;
         while (elapsed < fadeIn)
@@ -637,10 +605,8 @@ public class MainMenuLoadingScreen : MonoBehaviour
         rootGroup.alpha = 1f;
         AudioListener.volume = 0f;
 
-        // 2. Staggered Title Tracking & Card Entrance
-        StartCoroutine(RevealContentRoutine());
+        StartCoroutine(RevealTitleCardRoutine());
 
-        // 3. Async Scene Load
         AsyncOperation op = SceneManager.LoadSceneAsync(sceneName);
         op.allowSceneActivation = false;
 
@@ -651,33 +617,26 @@ public class MainMenuLoadingScreen : MonoBehaviour
         {
             float dt = Time.unscaledDeltaTime;
             loadTimer += dt;
-            loreTimer += dt;
-
-            if (!isTyping && loadingLoreEntries.Count > 1 && loreTimer >= autoCycleInterval)
-            {
-                NextLoreEntry();
-            }
 
             float realProg = Mathf.Clamp01(op.progress / 0.9f);
             float timeProg = Mathf.Clamp01(loadTimer / minimumLoadTime);
             float target = Mathf.Min(realProg, timeProg);
 
-            displayed = Mathf.MoveTowards(displayed, target, dt * 1.1f);
+            displayed = Mathf.MoveTowards(displayed, target, dt * 1.05f);
             SetProgress(displayed);
 
-            // Spawn subtle continuous sparks off leading edge
-            if (displayed > 0.02f && displayed < 0.99f && Random.value < dt * 18f)
+            if (displayed > 0.02f && displayed < 0.99f && Random.value < dt * 22f)
             {
                 SpawnGaugeSparks(displayed, 1);
             }
 
-            // Milestone bursts at 25%, 50%, 75%
             int milestone = Mathf.FloorToInt(displayed * 4f);
             if (milestone > lastMilestone && milestone <= 3)
             {
                 lastMilestone = milestone;
-                barFlashAlpha = 0.55f;
-                SpawnGaugeSparks(displayed, 10);
+                barFlashAlpha = 0.65f;
+                barRecoilOffset = 5f;
+                SpawnGaugeSparks(displayed, 12);
             }
 
             if (displayed > 0.6f)
@@ -686,8 +645,9 @@ public class MainMenuLoadingScreen : MonoBehaviour
             if (op.progress >= 0.9f && loadTimer >= minimumLoadTime && displayed >= 0.99f)
             {
                 SetProgress(1f);
-                barFlashAlpha = 0.85f;
-                SpawnGaugeSparks(1f, 16);
+                barFlashAlpha = 0.9f;
+                barRecoilOffset = 7f;
+                SpawnGaugeSparks(1f, 20);
                 statusText.text = "READY";
                 break;
             }
@@ -695,22 +655,21 @@ public class MainMenuLoadingScreen : MonoBehaviour
             yield return null;
         }
 
-        if (waitForInputWhenReady)
+        yield return new WaitForSecondsRealtime(0.45f);
+
+        float shutterCloseTime = 0.32f;
+        elapsed = 0f;
+        while (elapsed < shutterCloseTime)
         {
-            continuePromptText.gameObject.SetActive(true);
+            elapsed += Time.unscaledDeltaTime;
+            float k = Mathf.SmoothStep(0f, 1f, elapsed / shutterCloseTime);
+            float h = Mathf.Lerp(58f, 545f, k);
+            topShutterRect.sizeDelta = new Vector2(0f, h);
+            bottomShutterRect.sizeDelta = new Vector2(0f, h);
+            contentGroup.alpha = 1f - k;
             yield return null;
-            while (!Input.anyKeyDown && !Input.GetMouseButtonDown(0))
-            {
-                yield return null;
-            }
-            continuePromptText.gameObject.SetActive(false);
-        }
-        else
-        {
-            yield return new WaitForSecondsRealtime(0.4f);
         }
 
-        // 4. Activate Cutscene Scene
         op.allowSceneActivation = true;
         while (!op.isDone)
         {
@@ -718,18 +677,34 @@ public class MainMenuLoadingScreen : MonoBehaviour
         }
         yield return null;
 
-        // 5. Cinematic Shutter Wipe & Fade Out into Opening Cutscene
-        float fadeOut = 0.7f;
+        backdropArtImg.enabled = false;
+        vignetteImg.enabled = false;
+        heatPulseOverlay.enabled = false;
+        sunBeam1.enabled = false;
+        sunBeam2.enabled = false;
+        sunBeam3.enabled = false;
+        rootBgImg.enabled = false;
+
+        float shutterOpenTime = 0.55f;
         elapsed = 0f;
-        while (elapsed < fadeOut)
+        while (elapsed < shutterOpenTime)
         {
             elapsed += Time.unscaledDeltaTime;
-            float k = Mathf.SmoothStep(0f, 1f, elapsed / fadeOut);
-            contentGroup.alpha = 1f - Mathf.Clamp01(k * 1.6f);
-            rootGroup.alpha = 1f - k;
+            float k = Mathf.SmoothStep(0f, 1f, elapsed / shutterOpenTime);
+            float h = Mathf.Lerp(545f, 0f, k);
+            topShutterRect.sizeDelta = new Vector2(0f, h);
+            bottomShutterRect.sizeDelta = new Vector2(0f, h);
             AudioListener.volume = Mathf.Lerp(0f, startVol, k);
             yield return null;
         }
+
+        backdropArtImg.enabled = true;
+        vignetteImg.enabled = true;
+        heatPulseOverlay.enabled = true;
+        sunBeam1.enabled = true;
+        sunBeam2.enabled = true;
+        sunBeam3.enabled = true;
+        rootBgImg.enabled = true;
 
         AudioListener.volume = startVol;
         rootGroup.alpha = 0f;
@@ -738,60 +713,24 @@ public class MainMenuLoadingScreen : MonoBehaviour
         isLoading = false;
     }
 
-    private IEnumerator RevealContentRoutine()
+    private IEnumerator RevealTitleCardRoutine()
     {
-        float dur = 0.65f;
+        float dur = 0.75f;
         float t = 0f;
         while (t < dur)
         {
             t += Time.unscaledDeltaTime;
             float ease = 1f - Mathf.Pow(1f - Mathf.Clamp01(t / dur), 3f);
             contentGroup.alpha = ease;
-            headerRect.anchoredPosition = Vector2.Lerp(new Vector2(75f, -96f), new Vector2(115f, -96f), ease);
-            dividerRect.localScale = new Vector3(ease, 1f, 1f);
-            chapterTitleTmp.characterSpacing = Mathf.Lerp(26f, 12f, ease);
+            centerTitleRect.localScale = Vector3.Lerp(Vector3.one * 0.94f, Vector3.one, ease);
+            chapterTitleTmp.characterSpacing = Mathf.Lerp(32f, 14f, ease);
+            leftWingLine.localScale = new Vector3(ease, 1f, 1f);
+            rightWingLine.localScale = new Vector3(ease, 1f, 1f);
             yield return null;
         }
         contentGroup.alpha = 1f;
-        chapterTitleTmp.characterSpacing = 12f;
-    }
-
-    private void NextLoreEntry()
-    {
-        int next = (currentLoreIndex + 1) % loadingLoreEntries.Count;
-        StartLoreEntry(next);
-    }
-
-    private void StartLoreEntry(int index)
-    {
-        if (loadingLoreEntries.Count == 0) return;
-        currentLoreIndex = index;
-        loreTimer = 0f;
-        pageIndicatorText.text = $"{currentLoreIndex + 1} / {loadingLoreEntries.Count}   [CLICK OR SPACE]";
-
-        if (typewriterRoutine != null) StopCoroutine(typewriterRoutine);
-        typewriterRoutine = StartCoroutine(TypewriterRoutine(loadingLoreEntries[currentLoreIndex]));
-    }
-
-    private IEnumerator TypewriterRoutine(string fullText)
-    {
-        isTyping = true;
-        loreBodyText.text = fullText;
-        loreBodyText.ForceMeshUpdate();
-
-        int totalChars = loreBodyText.textInfo.characterCount;
-        loreBodyText.maxVisibleCharacters = 0;
-
-        float visible = 0f;
-        while (visible < totalChars)
-        {
-            visible += Time.unscaledDeltaTime * typewriterCharsPerSec;
-            loreBodyText.maxVisibleCharacters = Mathf.FloorToInt(visible);
-            yield return null;
-        }
-
-        loreBodyText.maxVisibleCharacters = totalChars;
-        isTyping = false;
+        centerTitleRect.localScale = Vector3.one;
+        chapterTitleTmp.characterSpacing = 14f;
     }
 
     private void SetProgress(float val)
@@ -801,16 +740,34 @@ public class MainMenuLoadingScreen : MonoBehaviour
         if (progressFillRect != null) progressFillRect.sizeDelta = new Vector2(w, 0f);
         if (progressGlowRect != null) progressGlowRect.anchoredPosition = new Vector2(w, 0f);
         if (percentText != null) percentText.text = $"{Mathf.RoundToInt(val * 100f)}%";
+
+        // Character runs along the progress bar tip!
+        if (runnerRect != null)
+        {
+            float rx = -BAR_WIDTH * 0.5f + w;
+            runnerRect.anchoredPosition = new Vector2(rx, runnerRect.anchoredPosition.y);
+            if (runnerShadowRect != null)
+                runnerShadowRect.anchoredPosition = new Vector2(rx, 146f);
+        }
     }
 
-    // --- PARTICLE & UI BUILDERS ---
+    private RectTransform CreateLine(Transform parent, string name, Vector2 pos, Vector2 size, Color col)
+    {
+        GameObject obj = new GameObject(name, typeof(RectTransform), typeof(Image));
+        obj.transform.SetParent(parent, false);
+        RectTransform r = obj.GetComponent<RectTransform>();
+        r.anchoredPosition = pos;
+        r.sizeDelta = size;
+        obj.GetComponent<Image>().color = col;
+        return r;
+    }
 
     private void SpawnAmbientEmber(Transform parent, bool isForeground)
     {
         GameObject eObj = new GameObject(isForeground ? "FgEmber" : "BgEmber", typeof(RectTransform), typeof(Image));
         eObj.transform.SetParent(parent, false);
         RectTransform rect = eObj.GetComponent<RectTransform>();
-        float sz = isForeground ? Random.Range(10f, 20f) : Random.Range(3f, 7f);
+        float sz = isForeground ? Random.Range(11f, 22f) : Random.Range(3f, 7f);
         rect.sizeDelta = new Vector2(sz, sz);
         rect.anchoredPosition = new Vector2(Random.Range(-960f, 960f), Random.Range(-540f, 540f));
 
@@ -822,7 +779,7 @@ public class MainMenuLoadingScreen : MonoBehaviour
             : new Color(1f, 0.94f, 0.68f, alpha);
         img.raycastTarget = false;
 
-        float speedMult = isForeground ? 1.5f : 0.85f;
+        float speedMult = isForeground ? 1.55f : 0.85f;
         ambientEmbers.Add(new EmberParticle
         {
             rect = rect,
@@ -835,13 +792,13 @@ public class MainMenuLoadingScreen : MonoBehaviour
 
     private void SpawnGaugeSparks(float normalizedX, int count)
     {
-        if (barFrameRect == null) return;
+        if (barOuterRect == null) return;
         float spawnX = -BAR_WIDTH * 0.5f + (BAR_WIDTH * normalizedX);
 
         for (int i = 0; i < count; i++)
         {
             GameObject spObj = new GameObject("GaugeSpark", typeof(RectTransform), typeof(Image));
-            spObj.transform.SetParent(barFrameRect.parent, false);
+            spObj.transform.SetParent(barOuterRect.parent, false);
             RectTransform r = spObj.GetComponent<RectTransform>();
             r.anchorMin = r.anchorMax = new Vector2(0.5f, 0f);
             r.anchoredPosition = new Vector2(spawnX, 96f);
@@ -857,7 +814,7 @@ public class MainMenuLoadingScreen : MonoBehaviour
             {
                 rect = r,
                 img = img,
-                velocity = new Vector2(Random.Range(-110f, 140f), Random.Range(90f, 220f)),
+                velocity = new Vector2(Random.Range(-120f, 150f), Random.Range(100f, 240f)),
                 life = 0f,
                 maxLife = Random.Range(0.45f, 0.85f)
             });
@@ -890,20 +847,6 @@ public class MainMenuLoadingScreen : MonoBehaviour
         iRect.offsetMax = new Vector2(-3f, -3f);
         inner.GetComponent<Image>().color = new Color(0.065f, 0.04f, 0.03f, 0.96f);
 
-        // Decorative Corner Rivets
-        Vector2[] rivetAnchors = { new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0f, 0f), new Vector2(1f, 0f) };
-        Vector2[] rivetOffsets = { new Vector2(12f, -12f), new Vector2(-12f, -12f), new Vector2(12f, 12f), new Vector2(-12f, 12f) };
-        for (int i = 0; i < 4; i++)
-        {
-            GameObject riv = new GameObject("Rivet", typeof(RectTransform), typeof(Image));
-            riv.transform.SetParent(inner.transform, false);
-            RectTransform rr = riv.GetComponent<RectTransform>();
-            rr.anchorMin = rr.anchorMax = rivetAnchors[i];
-            rr.anchoredPosition = rivetOffsets[i];
-            rr.sizeDelta = new Vector2(6f, 6f);
-            riv.GetComponent<Image>().color = new Color(0.75f, 0.45f, 0.22f, 0.75f);
-        }
-
         return inner;
     }
 
@@ -932,7 +875,7 @@ public class MainMenuLoadingScreen : MonoBehaviour
         r.pivot = new Vector2(0.5f, isTop ? 1f : 0f);
         r.anchoredPosition = Vector2.zero;
         r.sizeDelta = new Vector2(0f, height);
-        bar.GetComponent<Image>().color = new Color(0.012f, 0.008f, 0.006f, 0.99f);
+        bar.GetComponent<Image>().color = new Color(0.01f, 0.006f, 0.004f, 1f);
         return r;
     }
 

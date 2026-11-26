@@ -348,7 +348,7 @@ RectTransform:
   m_GameObject: {fileID: 746703009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6791474, y: 1.6791474, z: 1.6791474}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1062425696}
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d6457830cd14d1583801099760ef08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  extraPanel: {fileID: 0}
+  extraPanel: {fileID: 1062425695}
 --- !u!4 &791295667
 Transform:
   m_ObjectHideFlags: 0
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 1062425697}
   - component: {fileID: 1062425699}
   m_Layer: 5
-  m_Name: SETTINGS panel
+  m_Name: Extra panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3839,20 +3839,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4136aa1072b504bb7bfc1d49f5fe0fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuLoadingScreen
-  customFont: {fileID: 0}
+  customFont: {fileID: 11400000, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
+  backdropArtwork: {fileID: 8092970127234110154, guid: a6cbbd0f791214088a542126612f5ef2, type: 3}
+  gameLogoSprite: {fileID: 4855796935591688104, guid: a524631399ed943abafaaf67ff91b745, type: 3}
+  animatedFeatureSprites:
+  - {fileID: 4944230376442633554, guid: ab19dd0d026e09941ae566a54eb4d897, type: 3}
+  - {fileID: -2274363484027164459, guid: ab19dd0d026e09941ae566a54eb4d897, type: 3}
+  - {fileID: 8284087734974297348, guid: ab19dd0d026e09941ae566a54eb4d897, type: 3}
+  - {fileID: 5304202850863732263, guid: ab19dd0d026e09941ae566a54eb4d897, type: 3}
+  - {fileID: 2833043080597125133, guid: ab19dd0d026e09941ae566a54eb4d897, type: 3}
+  - {fileID: -2217414122262695004, guid: ab19dd0d026e09941ae566a54eb4d897, type: 3}
+  - {fileID: -4440497016933152808, guid: ab19dd0d026e09941ae566a54eb4d897, type: 3}
+  - {fileID: 8676454946275842879, guid: ab19dd0d026e09941ae566a54eb4d897, type: 3}
+  spriteAnimationFps: 6
+  characterZoom: 1.6
   cutsceneSceneName: Cutscene_Opening
-  minimumLoadTime: 2.2
-  chapterHeader: PROLOGUE
-  chapterSubheader: BEFORE THE LAST DROP
-  loadingTips:
-  - "TIP: Keep an eye on your hydration bar\u2014the scorching heat drains your strength faster than you think."
-  - 'TIP: Collect water jars and inspect notice boards to uncover what happened to the town.'
-  - 'TIP: Rest at glowing checkpoints to save your progress before venturing deeper into the wasteland.'
-  - "LORE: When the rains stopped coming, only the stubborn\u2014and the desperate\u2014remained behind."
-  tipSwitchInterval: 3.5
-  backdropColor: {r: 0.06, g: 0.04, b: 0.03, a: 1}
-  emberAccentColor: {r: 1, g: 0.52, b: 0.12, a: 1}
-  goldHighlightColor: {r: 1, g: 0.85, b: 0.45, a: 1}
+  minimumLoadTime: 5
+  actLabel: "ACT I  \u2022  PROLOGUE"
+  chapterTitle: BEFORE THE LAST DROP
+  locationTag: "BARANGAY SAN ROQUE  \u2014  DAY 1,462 WITHOUT RAIN"
+  bgDarkTint: {r: 0.14, g: 0.06, b: 0.03, a: 1}
+  frameOuterIron: {r: 0.16, g: 0.13, b: 0.12, a: 0.96}
+  frameInnerRust: {r: 0.45, g: 0.22, b: 0.1, a: 1}
+  emberOrange: {r: 1, g: 0.45, b: 0.08, a: 1}
+  sunGold: {r: 1, g: 0.84, b: 0.42, a: 1}
 --- !u!4 &1785864927
 Transform:
   m_ObjectHideFlags: 0

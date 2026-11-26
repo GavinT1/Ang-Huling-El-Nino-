@@ -36,8 +36,9 @@ public class StorySequenceController : MonoBehaviour
     public TMP_Text speakerText;
     public TMP_Text bodyText;
 
-    [Header("Player Control (Just Drag PLAYER Here!)")]
+    [Header("Player & NPC Control (Drag PLAYER and family memeber Here!)")]
     public GameObject playerObject;
+    public List<GameObject> npcObjects = new List<GameObject>();
 
     [Header("Phase 1: Cutscene + Dialogue BEFORE Item Pickup")]
     public List<StoryStep> beforeItemsSteps = new List<StoryStep>();
@@ -60,23 +61,21 @@ public class StorySequenceController : MonoBehaviour
     private bool isItemHuntActive = false;
     private bool isInAfterItemsPhase = false;
     private Coroutine stepCoroutine;
-    private RuntimeAnimatorController savedPlayerAnimatorController;
+
+    private Dictionary<GameObject, RuntimeAnimatorController> savedControllers = new Dictionary<GameObject, RuntimeAnimatorController>();
 
     void Start()
     {
         if (mainCamera == null) mainCamera = Camera.main;
 
-        if (playerObject != null)
+        SaveAnimatorController(playerObject);
+        foreach (GameObject npc in npcObjects)
         {
-            Animator anim = playerObject.GetComponent<Animator>();
-            if (anim != null)
-            {
-                savedPlayerAnimatorController = anim.runtimeAnimatorController;
-            }
+            SaveAnimatorController(npc);
         }
 
         dialoguePanel.SetActive(false);
-        SetPlayerControl(false, false);
+        SetAllCharactersControl(false, false);
 
         isInAfterItemsPhase = false;
         activePhaseList = beforeItemsSteps;
@@ -88,6 +87,16 @@ public class StorySequenceController : MonoBehaviour
         else
         {
             PlayStep(0);
+        }
+    }
+
+    private void SaveAnimatorController(GameObject obj)
+    {
+        if (obj == null) return;
+        Animator anim = obj.GetComponent<Animator>();
+        if (anim != null && !savedControllers.ContainsKey(obj))
+        {
+            savedControllers[obj] = anim.runtimeAnimatorController;
         }
     }
 
@@ -112,8 +121,8 @@ public class StorySequenceController : MonoBehaviour
         isDialoguePlaying = false;
         dialoguePanel.SetActive(false);
 
-        // Lock movement AND reset PLAYER to Idle before muting AnimatorController for video/cutscene
-        SetPlayerControl(false, false);
+        // Lock movement AND mute AnimatorController for PLAYER + family memeber during cutscene
+        SetAllCharactersControl(false, false);
 
         StoryStep step = activePhaseList[index];
 
@@ -186,9 +195,9 @@ public class StorySequenceController : MonoBehaviour
             return;
         }
 
-        // Keep movement locked, but enable PLAYER's normal Idle animation during dialogue!
+        // Keep movement locked, and enable animations for PLAYER + family memeber during dialogue
         Time.timeScale = 1f;
-        SetPlayerControl(false, true);
+        SetAllCharactersControl(false, true);
 
         lineQueue.Clear();
         foreach (var line in lines)
@@ -225,7 +234,7 @@ public class StorySequenceController : MonoBehaviour
         {
             isItemHuntActive = true;
             itemsCollected = 0;
-            SetPlayerControl(true, true);
+            SetAllCharactersControl(true, true);
         }
         else
         {
@@ -248,24 +257,35 @@ public class StorySequenceController : MonoBehaviour
         }
     }
 
-    private void SetPlayerControl(bool canMove, bool allowIdleAnimator)
+    private void SetAllCharactersControl(bool canMove, bool allowIdleAnimator)
     {
-        if (playerObject == null) return;
+        ApplyCharacterControl(playerObject, canMove, allowIdleAnimator);
+        foreach (GameObject npc in npcObjects)
+        {
+            // NPCs never get player movement scripts enabled, only their Animator toggles
+            ApplyCharacterControl(npc, false, allowIdleAnimator);
+        }
+    }
 
-        Animator anim = playerObject.GetComponent<Animator>();
+    private void ApplyCharacterControl(GameObject target, bool canMove, bool allowIdleAnimator)
+    {
+        if (target == null) return;
+
+        Animator anim = target.GetComponent<Animator>();
         if (anim != null)
         {
             anim.enabled = true;
+            savedControllers.TryGetValue(target, out RuntimeAnimatorController savedCtrl);
+
             if (allowIdleAnimator)
             {
-                anim.runtimeAnimatorController = savedPlayerAnimatorController;
+                anim.runtimeAnimatorController = savedCtrl;
             }
             else
             {
-                // Snap back to default Idle pose before muting the controller for the next cutscene
-                if (savedPlayerAnimatorController != null)
+                if (savedCtrl != null)
                 {
-                    anim.runtimeAnimatorController = savedPlayerAnimatorController;
+                    anim.runtimeAnimatorController = savedCtrl;
                     anim.Rebind();
                     anim.Update(0f);
                 }
@@ -273,16 +293,19 @@ public class StorySequenceController : MonoBehaviour
             }
         }
 
-        Rigidbody2D rb = playerObject.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        if (target == playerObject)
         {
-            if (!canMove) rb.linearVelocity = Vector2.zero;
-            rb.simulated = canMove;
-        }
+            Rigidbody2D rb = target.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                if (!canMove) rb.linearVelocity = Vector2.zero;
+                rb.simulated = canMove;
+            }
 
-        foreach (MonoBehaviour script in playerObject.GetComponents<MonoBehaviour>())
-        {
-            if (script != null) script.enabled = canMove;
+            foreach (MonoBehaviour script in target.GetComponents<MonoBehaviour>())
+            {
+                if (script != null) script.enabled = canMove;
+            }
         }
     }
 }

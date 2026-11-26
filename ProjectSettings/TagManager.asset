@@ -80,6 +80,9 @@ TagManager:
   - name: Rooftops
     uniqueID: 3063324319
     locked: 0
+  - name: CaveMidGround
+    uniqueID: 3982616053
+    locked: 0
   - name: Interactables
     uniqueID: 2708492521
     locked: 0

@@ -80,8 +80,14 @@ TagManager:
   - name: Cave Background
     uniqueID: 408404497
     locked: 0
+  - name: ConstructionBackground
+    uniqueID: 3672012807
+    locked: 0
   - name: Rooftops
     uniqueID: 3063324319
+    locked: 0
+  - name: ConsstructionMidground
+    uniqueID: 4223114199
     locked: 0
   - name: CaveMidGround
     uniqueID: 3982616053
@@ -97,6 +103,9 @@ TagManager:
     locked: 0
   - name: ForeGround
     uniqueID: 3131989191
+    locked: 0
+  - name: ConstructionsDecorationForegound
+    uniqueID: 989693941
     locked: 0
   - name: WallTransitions
     uniqueID: 3758922841

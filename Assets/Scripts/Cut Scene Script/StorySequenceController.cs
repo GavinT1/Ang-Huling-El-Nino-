@@ -67,6 +67,7 @@ public class StorySequenceController : MonoBehaviour
     void Start()
     {
         if (mainCamera == null) mainCamera = Camera.main;
+        SetHorizontalCameraFollow(false);
 
         SaveAnimatorController(playerObject);
         foreach (GameObject npc in npcObjects)
@@ -120,6 +121,7 @@ public class StorySequenceController : MonoBehaviour
         isItemHuntActive = false;
         isDialoguePlaying = false;
         dialoguePanel.SetActive(false);
+        SetHorizontalCameraFollow(false);
 
         // Lock movement AND mute AnimatorController for PLAYER + family memeber during cutscene
         SetAllCharactersControl(false, false);
@@ -235,9 +237,11 @@ public class StorySequenceController : MonoBehaviour
             isItemHuntActive = true;
             itemsCollected = 0;
             SetAllCharactersControl(true, true);
+            SetHorizontalCameraFollow(true);
         }
         else
         {
+            SetHorizontalCameraFollow(false);
             SceneManager.LoadScene(nextSceneName);
         }
     }
@@ -252,8 +256,19 @@ public class StorySequenceController : MonoBehaviour
         {
             isItemHuntActive = false;
             isInAfterItemsPhase = true;
+            SetHorizontalCameraFollow(false);
             activePhaseList = afterItemsSteps;
             PlayStep(0);
+        }
+    }
+
+    private void SetHorizontalCameraFollow(bool enabledState)
+    {
+        if (mainCamera == null) return;
+        HorizontalCameraFollow camFollow = mainCamera.GetComponent<HorizontalCameraFollow>();
+        if (camFollow != null)
+        {
+            camFollow.enabled = enabledState;
         }
     }
 

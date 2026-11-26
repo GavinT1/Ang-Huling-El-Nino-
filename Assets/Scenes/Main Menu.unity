@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 566793239}
   - component: {fileID: 566793241}
   - component: {fileID: 566793240}
+  - component: {fileID: 566793242}
   m_Layer: 5
   m_Name: LOGO
   m_TagString: Untagged
@@ -244,16 +245,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566793238}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.654495, y: 2.4023197, z: 2.4023197}
+  m_LocalScale: {x: 4.703849, y: 2.4274473, z: 4.315769}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1269097700}
+  m_Father: {fileID: 2145003635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16, y: 208}
+  m_AnchoredPosition: {x: -16.169657, y: 212.45953}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566793240
@@ -294,6 +295,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566793238}
   m_CullTransparentMesh: 1
+--- !u!114 &566793242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566793238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ff561b7178c458ea999eeb399a04ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TitleLogoAnimator
+  playEntrance: 1
+  entranceDuration: 0.55
+  startScaleMultiplier: 1.35
+  dropOffsetY: 65
+  floatDistance: 8
+  floatSpeed: 1.6
+  breathScaleAmount: 0.025
+  breathSpeed: 1.9
+  tiltAngle: 1.2
+  tiltSpeed: 1.1
+  enableHeatPulse: 1
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  emberFlashColor: {r: 1, g: 0.86, b: 0.72, a: 1}
+  heatPulseSpeed: 2.5
 --- !u!1 &791295665
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,6 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 791295667}
   - component: {fileID: 791295666}
+  - component: {fileID: 791295668}
   m_Layer: 0
   m_Name: MAIN MENU MANAGER
   m_TagString: Untagged
@@ -339,6 +367,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &791295668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791295665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98ad2ccf7751431b8da860f3cd000cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuAtmosphere
+  backgroundRect: {fileID: 1269097700}
+  emberCount: 38
+  windStreakCount: 14
+  ashFlakeCount: 25
 --- !u!1 &1120900836
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,13 +650,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0106035, y: 1.0104598, z: 1.7965008}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 566793239}
+  m_Children: []
   m_Father: {fileID: 2145003635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 2.2839}
+  m_AnchoredPosition: {x: 0, y: 2.2839}
   m_SizeDelta: {x: 1920, y: 1194.1584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1269097701
@@ -3562,6 +3605,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1269097700}
+  - {fileID: 566793239}
   - {fileID: 1605330389}
   - {fileID: 1498432809}
   - {fileID: 1605963448}
@@ -3623,7 +3667,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1266415981}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

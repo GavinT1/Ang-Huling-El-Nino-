@@ -242,7 +242,14 @@ public class StorySequenceController : MonoBehaviour
         else
         {
             SetHorizontalCameraFollow(false);
-            SceneManager.LoadScene(nextSceneName);
+            if (SceneTransitionManager.Instance != null)
+            {
+                SceneTransitionManager.Instance.TransitionToScene(nextSceneName);
+            }
+            else
+            {
+                SceneManager.LoadScene(nextSceneName);
+            }
         }
     }
 

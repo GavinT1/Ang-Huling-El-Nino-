@@ -27,6 +27,8 @@ public class SceneTransitionManager : MonoBehaviour
 
     [Header("Chapter / Area Title Card")]
     public bool showTitleCard = true;
+    public TMP_FontAsset titleFont;
+    public TMP_FontAsset subtitleFont;
     public string defaultTitle = "AREA 1";
     public string defaultSubtitle = "The Cave Entrance";
     public bool fadeAudioDuringTransition = true;
@@ -104,8 +106,8 @@ public class SceneTransitionManager : MonoBehaviour
         titleGroup.alpha = 0f;
         titleGroup.blocksRaycasts = false;
 
-        titleText = CreateCenteredText(titleHolder.transform, "MainTitle", defaultTitle, 64f, FontStyles.Bold, new Vector2(0f, 24f), Color.white);
-        subtitleText = CreateCenteredText(titleHolder.transform, "SubTitle", defaultSubtitle, 28f, FontStyles.Normal, new Vector2(0f, -34f), new Color(1f, 1f, 1f, 0.75f));
+        titleText = CreateCenteredText(titleHolder.transform, "MainTitle", defaultTitle, titleFont, 64f, FontStyles.Bold, new Vector2(0f, 24f), Color.white);
+        subtitleText = CreateCenteredText(titleHolder.transform, "SubTitle", defaultSubtitle, subtitleFont, 28f, FontStyles.Normal, new Vector2(0f, -34f), new Color(1f, 1f, 1f, 0.75f));
     }
 
     private RectTransform CreateBar(Transform parent, string name, Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot)
@@ -125,7 +127,7 @@ public class SceneTransitionManager : MonoBehaviour
         return rect;
     }
 
-    private TMP_Text CreateCenteredText(Transform parent, string name, string content, float fontSize, FontStyles fontStyle, Vector2 offset, Color color)
+    private TMP_Text CreateCenteredText(Transform parent, string name, string content, TMP_FontAsset customFont, float fontSize, FontStyles fontStyle, Vector2 offset, Color color)
     {
         GameObject obj = new GameObject(name, typeof(RectTransform), typeof(TextMeshProUGUI));
         obj.transform.SetParent(parent, false);
@@ -137,6 +139,10 @@ public class SceneTransitionManager : MonoBehaviour
         rect.sizeDelta = new Vector2(1200f, 100f);
 
         TMP_Text tmp = obj.GetComponent<TextMeshProUGUI>();
+        if (customFont != null)
+        {
+            tmp.font = customFont;
+        }
         tmp.text = content;
         tmp.fontSize = fontSize;
         tmp.fontStyle = fontStyle;

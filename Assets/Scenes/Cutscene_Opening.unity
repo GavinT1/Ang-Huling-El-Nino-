@@ -5930,7 +5930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1120027968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11594,8 +11594,10 @@ MonoBehaviour:
   holdDuration: 0.75
   openDuration: 0.85
   showTitleCard: 1
+  titleFont: {fileID: 11400000, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
+  subtitleFont: {fileID: 11400000, guid: 57a12210d9c2445a4a719fa2f5fa6ba2, type: 2}
   defaultTitle: AREA 1
-  defaultSubtitle: The Cave Entrance
+  defaultSubtitle: Gubatan
   fadeAudioDuringTransition: 1
 --- !u!1 &1970289072
 GameObject:

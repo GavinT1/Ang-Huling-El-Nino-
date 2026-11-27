@@ -1803,15 +1803,15 @@ RectTransform:
   m_GameObject: {fileID: 109741873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1309285, y: 7.642602, z: 1.1309285}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1102184501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -642, y: -181}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -21.84999}
+  m_SizeDelta: {x: -100, y: -153.70001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109741875
 MonoBehaviour:
@@ -1860,8 +1860,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45.6
+  m_fontSizeBase: 45.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1879,7 +1879,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -1899,7 +1899,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -1201.9127, w: 15.230604}
+  m_margin: {x: 0, y: 0, z: 0, w: 15.230604}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2335,36 +2335,38 @@ MonoBehaviour:
       text: Naghihintay na yung tatay mo at yung kapatid mo sa labas. Bilisan mo na 'nak.
     - speaker: ELY
       text: Sige po ma. Ang layo pa ng evacuation center, aabutan ba namin? Sana nga.
-    - speaker: ELY
-      text: e
   - stepLabel: CUT SCENE 2
     videoPanel: {fileID: 0}
     cutscene: {fileID: 1713737570}
     cameraAnchor: {fileID: 659440768}
     dialogueLines:
-    - speaker: ELY
+    - speaker: 
       text: This is Ely Payong, a child living below the poverty line with his family.
-    - speaker: ELY
+    - speaker: 
       text: His mother and his father used to work at their own bakery. Theirs was a business beloved by the community.
-    - speaker: ELY
+    - speaker: 
       text: Until one day, El Nino came, and swept their lives, along with many others, away.
-    - speaker: ELY
-      text: Now, Ely and his family live in the destroyed forest outside of the city. They never recovered from the destruction on that day. Some blame nature taking its course, others blame a lack of foresight from the people.
-    - speaker: ELY
+    - speaker: 
+      text: 'Now, Ely and his family live in the destroyed forest outside of the city. They never recovered from the destruction on that day. '
+    - speaker: 
+      text: Some blame nature taking its course, others blame a lack of foresight from the people.
+    - speaker: 
       text: Ely however, blames the government, and not without good reason. They cut down the forest, their natural barrier from the flooding, and without it, the destruction followed.
   - stepLabel: CUT SCENE 3
     videoPanel: {fileID: 0}
     cutscene: {fileID: 420347768}
     cameraAnchor: {fileID: 659440768}
     dialogueLines:
-    - speaker: Mother
+    - speaker: MOTHER
       text: Kunin mo yung tubig Ely, malay mo kung masira yung planta ngayon.
     - speaker: ELY
       text: Sige po ma.
-    - speaker: ELY
+    - speaker: 
       text: The only bone that the government has ever thrown their community is the water treatment plant, and even that is privately owned.
-    - speaker: ELY
-      text: Come every flood, every disaster, the plant has always worked and provided clean drinking water and bathing water during times of crisis. Ironically, the only time Ely and his family get to enjoy those luxuries is when they're in the evacuation center.
+    - speaker: 
+      text: 'Come every flood, every disaster, the plant has always worked and provided clean drinking water and bathing water during times of crisis. '
+    - speaker: 
+      text: Ironically, the only time Ely and his family get to enjoy those luxuries is when they're in the evacuation center.
   itemsRequired: 2
   afterItemsSteps:
   - stepLabel: Cut Scene 4
@@ -4075,15 +4077,15 @@ RectTransform:
   m_GameObject: {fileID: 505338091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4338657, y: 9.689794, z: 1.4338657}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1102184501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -688, y: 108}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250.3, y: -37.4}
+  m_SizeDelta: {x: 263.3631, y: 55.3546}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &505338093
 MonoBehaviour:
@@ -4132,14 +4134,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 58.7
+  m_fontSizeBase: 58.7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

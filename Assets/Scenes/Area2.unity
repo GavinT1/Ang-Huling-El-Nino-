@@ -68005,7 +68005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AreaTitleDisplay
   areaTitle: AREA 2
-  areaSubtitle: BRGY. Don Manuel
+  areaSubtitle: BRGY. LUMA
   titleText: {fileID: 765552875}
   subtitleText: {fileID: 2109295354}
   dividerTransform: {fileID: 0}

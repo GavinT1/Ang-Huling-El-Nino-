@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AreaTitleDisplay
   areaTitle: AREA 1
-  areaSubtitle: THE RAINY OUTSKIRTS
+  areaSubtitle: GUBATAN
   titleText: {fileID: 2091523388}
   subtitleText: {fileID: 440564900}
   dividerTransform: {fileID: 0}
